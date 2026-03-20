@@ -9,11 +9,16 @@ class BargeGeometryScene(BargeSceneBase):
     def construct(self):
         self.setup_barge_geometry()
 
+        intro_text = Text("Hoveddimensjoner for en rektangulær lekter", font_size=38).move_to(ORIGIN)
+
         profile = self.create_profile_view(color=GREEN)
-        profile.shift(UP * 0.6)
+        profile.scale(1.15)
+        profile.shift(UP * 1.0 + RIGHT * 1.0)
         transverse = self.create_transverse_view(color=GREEN)
-        transverse.shift(UP * 0.6)
+        transverse.scale(1.15)
+        transverse.shift(UP * 1.0 + RIGHT * 0.5)
         plan = self.create_plan_view(color=GREEN)
+        plan.scale(1.15)
         plan.next_to(profile, DOWN, buff=1.1).align_to(profile, LEFT)
 
         profile_label = MathTex(r"\text{Profilsnitt}", font_size=28).next_to(profile, DOWN, buff=0.45)
@@ -52,11 +57,12 @@ class BargeGeometryScene(BargeSceneBase):
         beam_arrow_plan.shift(LEFT * 0.3)
         beam_label_plan = Tex(r"B", font_size=30).next_to(beam_arrow_plan, LEFT, buff=0.08)
 
-        title = self.top_text("Hoveddimensjoner for en rektangulær lekter", font_size=34)
+        self.add(intro_text)
+        self.wait(0.8)
+        self.play(FadeOut(intro_text))
 
         self.play(
             FadeIn(profile, transverse, plan, transverse_cl, plan_cl),
-            Write(title),
             Write(profile_label),
             Write(transverse_label),
             Write(plan_label),

@@ -9,10 +9,14 @@ class BargeHydrostaticsScene(BargeSceneBase):
     def construct(self):
         self.setup_barge_geometry()
 
+        intro_text = Text("Volumdeplasement for rektangulær lekter", font_size=38).move_to(ORIGIN)
+
         profile = self.create_profile_view(color=GREEN)
-        profile.shift(UP * 0.6)
+        profile.scale(1.15)
+        profile.shift(UP * 1.0 + RIGHT * 1.0)
         transverse = self.create_transverse_view(color=GREEN)
-        transverse.shift(UP * 0.6)
+        transverse.scale(1.15)
+        transverse.shift(UP * 1.0 + RIGHT * 0.5)
 
         profile_label = MathTex(r"\text{Profilsnitt}", font_size=28).next_to(profile, DOWN, buff=0.45)
         transverse_label = MathTex(r"\text{Tverrsnitt}", font_size=28).next_to(transverse, DOWN, buff=0.45)
@@ -79,11 +83,12 @@ class BargeHydrostaticsScene(BargeSceneBase):
         equation = MathTex(r"\nabla = L \times B \times T", font_size=36, color=WHITE)
         equation.move_to([0, eq_y, 0])
 
-        title = self.top_text("Volumdeplasement for rektangulær lekter", font_size=34)
+        self.add(intro_text)
+        self.wait(0.8)
+        self.play(FadeOut(intro_text))
 
         self.play(
             FadeIn(profile, transverse, transverse_cl),
-            Write(title),
             Write(profile_label),
             Write(transverse_label),
             Write(ap_label),

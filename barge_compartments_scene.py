@@ -9,24 +9,15 @@ class BargeCompartmentsScene(BargeSceneBase):
     def construct(self):
         self.setup_barge_geometry()
 
+        intro_text = Text("Lekteren har 3 vanntette avdelinger", font_size=38).move_to(ORIGIN)
+
         profile = self.create_profile_view(color=GREEN)
-        profile.shift(UP * 0.6)
+        profile.scale(1.3)
+        profile.move_to(ORIGIN)
 
         profile_label = MathTex(r"\text{Profilsnitt}", font_size=28).next_to(profile, DOWN, buff=0.45)
         ap_label = Tex(r"AP", font_size=14).next_to(profile.get_corner(DL), DOWN + LEFT, buff=0.05)
         fp_label = Tex(r"FP", font_size=14).next_to(profile.get_corner(DR), DOWN + RIGHT, buff=0.05)
-
-        wl_y = profile.get_bottom()[1] + self.water_y
-        profile_waterline = Line(
-            start=[profile.get_left()[0] - 0.2, wl_y, 0],
-            end=[profile.get_right()[0] + 0.2, wl_y, 0],
-            color=BLUE,
-            stroke_width=2,
-        )
-        profile_waterline.set_dash([0.1, 0.1])
-        wl_label = Tex(r"WL", font_size=14).next_to(
-            np.array([profile.get_right()[0] + 0.2, wl_y, 0]), RIGHT, buff=0.05
-        )
 
         dividers, spacing = self.create_compartment_dividers(profile)
 
@@ -51,15 +42,15 @@ class BargeCompartmentsScene(BargeSceneBase):
             dim_label = Tex(r"L/3", font_size=28).next_to(arrow, UP, buff=0.1)
             comp_dim_labels.add(dim_label)
 
-        title = self.top_text("Vanntett inndeling i tre avdelinger", font_size=34)
+        self.add(intro_text)
+        self.wait(0.8)
+        self.play(FadeOut(intro_text))
 
         self.play(
-            FadeIn(profile, profile_waterline),
-            Write(title),
+            FadeIn(profile),
             Write(profile_label),
             Write(ap_label),
             Write(fp_label),
-            Write(wl_label),
         )
         self.play(FadeIn(dividers, comp_labels))
         self.play(FadeIn(comp_arrows, comp_dim_labels))

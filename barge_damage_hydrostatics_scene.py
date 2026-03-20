@@ -125,7 +125,7 @@ class BargeDamageHydrostaticsScene(Scene):
 
         self.play(FadeIn(self.side_group), Write(title))
         self.play(FadeIn(T_arrow, T_label, Ts_arrow, Ts_label))
-        self.wait(0.6)
+        self.wait(1.0)
 
         self.phase_1_title = title
         self.phase_1_dims = VGroup(T_arrow, T_label, Ts_arrow, Ts_label)
@@ -134,7 +134,7 @@ class BargeDamageHydrostaticsScene(Scene):
         text = Text("Fase 2: Effektivt oppdriftsvolum", font_size=30, color=BLACK).to_edge(UP, buff=0.4)
         self.play(Transform(self.phase_1_title, text))
         self.play(FadeIn(self.comp1_active, self.comp3_active, self.comp2_lost))
-        self.wait(0.6)
+        self.wait(1.0)
 
     def phase_3_show_vertical_shift_in_kb(self):
         text = Text("Fase 3: Vertikal forskyvning av KB", font_size=30, color=BLACK).to_edge(UP, buff=0.4)
@@ -148,7 +148,7 @@ class BargeDamageHydrostaticsScene(Scene):
 
         kb_eq = MathTex(r"KB = \frac{\int z\,dV}{\nabla}", font_size=32, color=BLACK).to_edge(DOWN, buff=0.5)
         self.play(Write(kb_eq))
-        self.wait(0.7)
+        self.wait(1.2)
 
         self.kb_graphics = VGroup(self.kb_initial, kb_label, kb_eq)
 
@@ -165,7 +165,7 @@ class BargeDamageHydrostaticsScene(Scene):
 
         pulse = SurroundingRectangle(VGroup(self.comp1_active, self.comp3_active), color=BLUE, buff=0.08)
         self.play(FadeIn(callout), Create(pulse))
-        self.wait(0.8)
+        self.wait(1.2)
         self.play(FadeOut(pulse))
 
         self.phase_4_callout = callout
@@ -207,7 +207,7 @@ class BargeDamageHydrostaticsScene(Scene):
         aw_text = MathTex(r"A_{W,eff} < A_W", font_size=32, color=BLACK).next_to(plan_box, DOWN, buff=0.3)
 
         self.play(FadeIn(plan_box, plan_dividers, plan_comp1, plan_comp2_lost, plan_comp3, aw_text))
-        self.wait(0.7)
+        self.wait(1.2)
 
         self.plan_group = VGroup(plan_box, plan_dividers, plan_comp1, plan_comp2_lost, plan_comp3, aw_text)
 
@@ -225,7 +225,7 @@ class BargeDamageHydrostaticsScene(Scene):
         self.play(FadeIn(it_before))
         self.play(Transform(it_before, it_after), FadeIn(it_label))
         self.play(Write(bm_eq), Write(bm_change))
-        self.wait(0.8)
+        self.wait(1.2)
 
         self.phase_6_group = VGroup(it_before, it_label, bm_eq, bm_change)
 
@@ -244,8 +244,9 @@ class BargeDamageHydrostaticsScene(Scene):
         conclusion.to_edge(DOWN, buff=0.25)
 
         self.play(Write(summary))
+        self.wait(1.0)
         self.play(Write(conclusion))
-        self.wait(1.2)
+        self.wait(1.8)
 
 
 if __name__ == "__main__":

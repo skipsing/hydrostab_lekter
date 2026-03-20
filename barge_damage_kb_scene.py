@@ -9,6 +9,8 @@ class BargeDamageKBScene(BargeSceneBase):
     def construct(self):
         self.setup_barge_geometry()
 
+        intro_text = Text("Vertikal forflytning av oppdriftsenteret B", font_size=36).move_to(ORIGIN)
+
         sf = 1.5   # visual scale factor for sections
         sw = self.breadth_width * sf      # scaled width  = 3.0
         sh = self.depth_height * sf       # scaled height = 1.5
@@ -103,12 +105,13 @@ class BargeDamageKBScene(BargeSceneBase):
             font_size=34,
         ).move_to([0, -2.5, 0])
 
-        title = self.top_text("Vertikal forflytning av oppdriftsenteret B", font_size=30)
-
         # ── animation ─────────────────────────────────────────────────────────
+        self.add(intro_text)
+        self.wait(0.8)
+        self.play(FadeOut(intro_text))
+
         self.play(
             FadeIn(sect_l, cl_l, wl_l),
-            Write(title),
             Write(sect_l_title),
             Write(sect_l_sublabel),
             Write(cl_label_l),
@@ -124,7 +127,8 @@ class BargeDamageKBScene(BargeSceneBase):
             Write(wl_label_r),
         )
         self.play(FadeIn(kb_dot_r, kb_label_r, kb_arrow_r, kb_arr_label_r, kb_guide_r))
+        self.wait(1.5)
 
         self.play(Write(eq_text), Write(eq))
-        self.wait(1)
+        self.wait(1.5)
 

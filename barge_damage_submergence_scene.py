@@ -9,8 +9,13 @@ class BargeDamageSubmergenceScene(BargeSceneBase):
     def construct(self):
         self.setup_barge_geometry()
 
+        layout_shift_x = 0.45
+
+        intro_text = Text("Etablere ny flytestilling ved symmetrisk skade", font_size=38).move_to(ORIGIN)
+
         profile = self.create_profile_view(color=GREEN)
-        profile.shift(UP * 0.6)
+        profile.scale(1.15)
+        profile.shift(UP * 1.0 + RIGHT * layout_shift_x)
 
         profile_label = MathTex(r"\text{Profilsnitt}", font_size=28).next_to(profile, DOWN, buff=0.45)
         ap_label = Tex(r"AP", font_size=14).next_to(profile.get_corner(DL), DOWN + LEFT, buff=0.05)
@@ -44,12 +49,13 @@ class BargeDamageSubmergenceScene(BargeSceneBase):
         comp2_width = comp2_right - comp2_left
         comp2_bottom_y = profile.get_bottom()[1]
 
-        title = self.top_text("Skade, innfylling og ny dypgang", font_size=34)
+        self.add(intro_text)
+        self.wait(0.8)
+        self.play(FadeOut(intro_text))
 
         # --- Phase 1: initial scene ---
         self.play(
             FadeIn(profile, dividers, waterline, comp_number_labels),
-            Write(title),
             Write(profile_label),
             Write(ap_label),
             Write(fp_label),
@@ -79,6 +85,17 @@ class BargeDamageSubmergenceScene(BargeSceneBase):
         water_fill.move_to([comp2_center_x, comp2_bottom_y + self.water_y / 2, 0])
         self.play(FadeIn(water_fill))
 
+        t_s_arrow = always_redraw(
+            lambda: create_dimension_arrow(
+                np.array([profile.get_left()[0], wl_y, 0]),
+                np.array([profile.get_left()[0], profile.get_bottom()[1], 0]),
+            ).shift(LEFT * 0.3)
+        )
+        t_s_label = always_redraw(
+            lambda: MathTex(r"T_S", font_size=32).next_to(t_s_arrow, LEFT, buff=0.1)
+        )
+        self.play(FadeIn(t_s_arrow, t_s_label))
+
         descent = 0.3
         self.play(
             profile.animate.shift(DOWN * descent),
@@ -93,17 +110,8 @@ class BargeDamageSubmergenceScene(BargeSceneBase):
             run_time=2,
         )
 
-        # --- Phase 4: T_S arrow (AP/FP stay put, arrow uses post-sinking bottom) ---
-        t_s_arrow = create_dimension_arrow(
-            np.array([profile.get_left()[0], wl_y, 0]),
-            np.array([profile.get_left()[0], profile.get_bottom()[1], 0]),
-        )
-        t_s_arrow.shift(LEFT * 0.3)
-        t_s_label = MathTex(r"T_S", font_size=32).next_to(t_s_arrow, LEFT, buff=0.1)
-        self.play(FadeIn(t_s_arrow, t_s_label))
-
-        # --- Phase 5: equation sequence, centred at eq_cx ---
-        eq_cx = 3.2   # horizontal centre of the text column
+        # --- Phase 4: equation sequence, centred at eq_cx ---
+        eq_cx = 3.2 + layout_shift_x   # horizontal centre of the text column
         eq_top = 2.5  # top y of first item
 
         def cx(mob):
@@ -133,7 +141,7 @@ class BargeDamageSubmergenceScene(BargeSceneBase):
             font_size=28,
         ).next_to(txt2, DOWN, buff=0.12))
 
-        txt3 = cx(Text("Volumdeplasementet forblir uendret", font_size=20).next_to(eq2, DOWN, buff=0.3))
+        txt3 = cx(Text("Volumdeplasementet er uendret", font_size=20).next_to(eq2, DOWN, buff=0.3))
         eq3  = cx(MathTex(r"\nabla = \nabla_S", font_size=30).next_to(txt3, DOWN, buff=0.12))
 
         down_arrow = Arrow(
@@ -156,14 +164,18 @@ class BargeDamageSubmergenceScene(BargeSceneBase):
         ).next_to(txt5, DOWN, buff=0.12))
 
         self.play(Write(txt1), Write(eq1))
+        self.wait(1.0)
         self.play(
             Write(txt2),
             FadeIn(comp1_arrow, comp1_dim_label, comp3_arrow, comp3_dim_label),
         )
         self.play(Write(eq2))
+        self.wait(1.0)
         self.play(Write(txt3), Write(eq3))
+        self.wait(1.0)
         self.play(FadeIn(down_arrow))
         self.play(Write(eq4))
+        self.wait(1.0)
         self.play(Write(txt5))
         self.play(Write(eq5))
-        self.wait(1)
+        self.wait(1.5)

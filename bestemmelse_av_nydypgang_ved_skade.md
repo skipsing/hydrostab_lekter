@@ -77,12 +77,12 @@ Lekteren får så en skade under vannlinjen i avdeling 2.
 Lekteren vil søke ny likevekt ved en ny dypgang: **T_S**
 
 ### Hva som skjer:
-1. Vann fyller avdeling 2 helt opp til vannlinjen
+1. Skade i avdeling 2 gir vanninntrengning helt opp til vannlinjen
 2. Skipet synker (dypgangen øker fra T til T_S)
 3. Vannet som må fortrengdes blir redusert
 4. Ny likevekt oppnås når:
    - Kun avdeling 1 og 3 bidrar til oppdrift
-   - Avdeling 2 er helt fullvunnet
+   - Avdeling 2 er skadet og står i fri forbindelse med sjøen
 
 ---
 
@@ -122,7 +122,7 @@ $$T_S = 1.5 \times T$$
 **Betydning:**
 - Skipet synker fra normaldypgang **T** til ny dypgang **T_S = 1.5T**
 - En 50% økning i dypgang
-- Hele avdeling 2 er under vann (fullvunnet)
+- Hele avdeling 2 er skadet og står i fri forbindelse med sjøen
 
 ### Fysisk Tolkning:
 - Skipet mister en tredjedel av sitt oppdriftsgivende volum (avdeling 2)

@@ -388,7 +388,8 @@ class BargeDamageTrimScene(BargeSceneBase):
             fp_label,
         )
 
-        title = self.top_text("Trimmende moment ved skade i avdeling 3", font_size=32)
+        intro_text = Text("Etablere ny flytestilling ved usymmetrisk skade", font_size=36).move_to(ORIGIN)
+        title = Text("Fordeling av trim", font_size=28, color=WHITE).to_edge(UP, buff=0.3)
 
         # ─────────────────────────────────────────────────────────────────────
         # PLAN VIEW - shows LCF and damage in compartment 3
@@ -448,7 +449,7 @@ class BargeDamageTrimScene(BargeSceneBase):
             np.array([plan_left_x, plan.get_center()[1], 0]),
             np.array([plan_center_x, plan.get_center()[1], 0]),
         )
-        lcf_dim_label = MathTex(r"L/2 = LCF", font_size=24, color=WHITE).next_to(lcf_dim_arrow, UP, buff=0.08)
+        lcf_dim_label = MathTex(r"LCF = L/2", font_size=24, color=WHITE).next_to(lcf_dim_arrow, UP, buff=0.08)
 
         # Damage indication in compartment 3 (plan view)
         comp3_plan_left = plan_left_x + 2 * plan_spacing
@@ -516,7 +517,7 @@ class BargeDamageTrimScene(BargeSceneBase):
             np.array([plan_left_x, plan.get_center()[1], 0]),
             np.array([lcf_s_x, plan.get_center()[1], 0]),
         )
-        lcf_dim_label_s = MathTex(r"LCF_S", font_size=24, color=WHITE).next_to(lcf_dim_arrow_s, UP, buff=0.08)
+        lcf_dim_label_s = MathTex(r"LCF_S = L/3", font_size=24, color=WHITE).next_to(lcf_dim_arrow_s, UP, buff=0.08)
 
         # Equations for longitudinal stiffness (right side, below trim moment)
         txt_mct = cx(Text("Enhetstrimmomentet ved skade", font_size=22))
@@ -525,7 +526,7 @@ class BargeDamageTrimScene(BargeSceneBase):
         txt_bm = cx(Text("Longitudinalt BM", font_size=22).next_to(eq_mct, DOWN, buff=0.25))
         eq_bm = cx(MathTex(r"BM_{L_S} = \frac{I_{F_S}}{\nabla}", font_size=32).next_to(txt_bm, DOWN, buff=0.15))
 
-        txt_if = Text("Vannlinjens treghetsmoment", font_size=22)
+        txt_if = Text("Treghetsmoment om LCF", font_size=22)
         eq_if = MathTex(r"I_{F_S} = \frac{1}{12} B \left(\frac{2L}{3}\right)^3", font_size=32)
 
         beam_dim_arrow = create_dimension_arrow(
@@ -551,7 +552,11 @@ class BargeDamageTrimScene(BargeSceneBase):
         # ─────────────────────────────────────────────────────────────────────
         # ANIMATION
         # ─────────────────────────────────────────────────────────────────────
-        
+
+        self.add(intro_text)
+        self.wait(0.8)
+        self.play(FadeOut(intro_text))
+
         # Phase 1: Show profile with compartments and waterline
         self.play(
             FadeIn(profile, dividers, wl_0, comp_labels),
@@ -603,16 +608,16 @@ class BargeDamageTrimScene(BargeSceneBase):
             b_label.animate.become(b_s_label),
             run_time=2.8,
         )
-        self.wait(0.35)
+        self.wait(0.7)
 
         # Phase 9: Show T_S dimension
         self.play(FadeIn(t_s_arrow, t_s_label))
 
         # Phase 10: Show trim moment text, then equation
         self.play(Write(txt_trim))
-        self.wait(0.4)
+        self.wait(0.8)
         self.play(Write(eq_tm))
-        self.wait(0.4)
+        self.wait(0.8)
 
         # Phase 11: Remove T_S before rotating
         self.play(FadeOut(t_s_arrow, t_s_label))
@@ -641,159 +646,11 @@ class BargeDamageTrimScene(BargeSceneBase):
 
         # Phase 14: Show total trim text and equation
         self.play(Write(txt_total_trim))
-        self.wait(0.4)
+        self.wait(0.8)
         self.play(Write(eq_total_trim))
-        self.wait(0.4)
+        self.wait(0.8)
 
-        # Phase 15: Show MCT_1cm_S text and equation
-        txt_mct.next_to(eq_total_trim, DOWN, buff=0.45)
-        cx(txt_mct)
-        eq_mct.next_to(txt_mct, DOWN, buff=0.15)
-        cx(eq_mct)
-        self.play(Write(txt_mct))
-        self.wait(0.4)
-        self.play(Write(eq_mct))
-        self.wait(0.4)
-
-        # Phase 16: Fade out profile view with all dimensions
-        self.play(
-            FadeOut(
-                profile_rotation_group,
-                profile_label,
-                wl_0,
-                wl_0_label,
-                b_dot, b_label, b_arrow,
-                g_arrow,
-                water_fill,
-                fore_trim_line, aft_trim_line, t_dim_arrow, t_dim_label,
-            )
-        )
-
-        # Phase 17: Show BM_L_S equation
-        txt_bm.next_to(eq_mct, DOWN, buff=0.45)
-        cx(txt_bm)
-        eq_bm.next_to(txt_bm, DOWN, buff=0.15)
-        cx(eq_bm)
-        self.play(Write(txt_bm))
-        self.wait(0.4)
-        self.play(Write(eq_bm))
-        self.wait(0.6)
-
-        # Phase 18: Fade out equations; show plan view on LEFT, animate damage + LCF → LCF_S, then I_F_S
-        profile_left_edge = profile.get_left()[0]
-        plan_left_edge = plan.get_left()[0]
-        profile_center_y = profile.get_center()[1]
-        plan_center_y = plan.get_center()[1]
-
-        # Collect ALL plan-related objects into one group so they shift as a unit
-        plan_master = VGroup(
-            plan, plan_dividers, plan_comp_labels,
-            plan_cl, plan_cl_label, ap_plan_label, fp_plan_label, plan_label,
-            plan_fill_comp1, plan_fill_comp2, plan_fill_comp3,
-            lcf_axis,
-            lcf_dim_arrow, lcf_dim_label,
-            damage_zone_plan, damage_x_plan,
-            lcf_s_axis,
-            lcf_dim_arrow_s, lcf_dim_label_s,
-            beam_dim_arrow, beam_dim_label,
-            reduced_dim_arrows, reduced_dim_labels,
-        )
-        # Match the same leftmost position and vertical start as the earlier profile view.
-        plan_master.shift(
-            np.array([
-                profile_left_edge - plan_left_edge,
-                profile_center_y - plan_center_y,
-                0.0,
-            ])
-        )
-
-        base_plan = VGroup(
-            plan, plan_dividers, plan_comp_labels,
-            plan_cl, plan_cl_label, ap_plan_label, fp_plan_label, plan_label,
-            plan_fill_comp1, plan_fill_comp2, plan_fill_comp3,
-        )
-
-        self.play(
-            FadeOut(
-                txt_trim, eq_tm,
-                txt_total_trim, eq_total_trim,
-                txt_mct, eq_mct,
-                txt_bm, eq_bm,
-                title,
-            ),
-            FadeIn(base_plan),
-        )
-        self.wait(0.4)
-
-        # Clear compartment numbers before introducing LCF.
-        self.play(FadeOut(plan_comp_labels))
-        self.remove(plan_comp_labels)
-        self.wait(0.3)
-
-        # Show LCF axis and dimension
-        self.play(FadeIn(lcf_axis, lcf_dim_arrow, lcf_dim_label))
-        self.wait(0.5)
-
-        # Damage compartment 3: fill turns red, X appears
-        self.play(
-            Transform(plan_fill_comp3, damage_zone_plan),
-            FadeIn(damage_x_plan),
-        )
-        self.wait(0.5)
-
-        # LCF moves aft to LCF_S
-        self.play(
-            Transform(lcf_axis, lcf_s_axis),
-            Transform(lcf_dim_arrow, lcf_dim_arrow_s),
-            Transform(lcf_dim_label, lcf_dim_label_s),
-        )
-        self.wait(0.5)
-
-        # Show beam and reduced-length dimensions first.
-        self.play(FadeIn(beam_dim_arrow, beam_dim_label))
-        self.wait(0.3)
-        self.play(FadeIn(reduced_dim_arrows, reduced_dim_labels))
-        self.wait(0.4)
-
-        # Show A_WL_S text and equation first.
-        txt_awl = Text("Effektivt vannlinjeareal", font_size=22).move_to([3.8, 3.2, 0])
-        eq_awl = MathTex(
-            r"A_{WL_S} = B \cdot \left(\frac{1}{3} + \frac{1}{3}\right) L",
-            font_size=32,
-        ).next_to(txt_awl, DOWN, buff=0.25).set_x(3.8)
-        self.play(Write(txt_awl))
-        self.wait(0.4)
-        self.play(Write(eq_awl))
-        self.wait(0.4)
-
-        # Then show I_F_S text and equation on the right side.
-        txt_if.next_to(eq_awl, DOWN, buff=0.45).set_x(3.8)
-        eq_if.next_to(txt_if, DOWN, buff=0.25).set_x(3.8)
-        self.play(Write(txt_if))
-        self.wait(0.4)
-        self.play(Write(eq_if))
-        self.wait(0.6)
-
-        # Den totale trimmen – formula then filled-in values.
-        # Values: L=60m, B=20m, T=4m, nabla=4800m³, rho=1.025t/m³, l_k=L/6=10m
-        # I_F_S = (1/12)*20*40³ ≈ 106 667 m⁴
-        # BM_L_S = 106 667 / 4800 ≈ 22.2 m
-        # MCT_1cm_S = (4800*1.025*22.2)/(100*60) ≈ 18.2 t·m/cm
-        # M_T = 4800*1.025*10 = 49 200 t·m
-        # t = 49 200 / 18.2 ≈ 2 700 cm
-        txt_tot = Text("Den totale trimmen", font_size=22).next_to(eq_if, DOWN, buff=0.55).set_x(3.8)
-        eq_tot_formula = MathTex(
-            r"t = \frac{M_T}{MCT_{1cm_S}}",
-            font_size=32,
-        ).next_to(txt_tot, DOWN, buff=0.25).set_x(3.8)
-        eq_tot_values = MathTex(
-            r"t = \frac{\nabla \cdot \rho \cdot \ell_k}{\dfrac{\nabla \cdot \rho \cdot \frac{I_{F_S}}{\nabla}}{100 \cdot L}}",
-            font_size=28,
-        ).next_to(eq_tot_formula, DOWN, buff=0.2).set_x(3.8)
-        eq_tot_simplified = MathTex(
-            r"t = \frac{100 \cdot L \cdot \nabla \cdot \ell_k}{I_{F_S}}",
-            font_size=32,
-        ).move_to([3.8, 3.2, 0])
+        # Phase 15: Clear the first equation block and continue directly with trim distribution.
         txt_trim_split = Text("Fordeler den totale trimmen", font_size=22).move_to([3.8, 2.2, 0])
         eq_ta = MathTex(
             r"t_a = t \cdot \frac{LCF_S}{L}",
@@ -805,80 +662,29 @@ class BargeDamageTrimScene(BargeSceneBase):
         ).next_to(eq_ta, DOWN, buff=0.18).set_x(3.8)
         txt_ta_draft = Text("Dypgang akter", font_size=22).move_to([3.8, -0.15, 0])
         eq_ta_draft = MathTex(
-              r"T_A = T_S - \frac{t_a}{100}",
+            r"T_A = T_S - \frac{t_a}{100}",
             font_size=30,
         ).next_to(txt_ta_draft, DOWN, buff=0.18).set_x(3.8)
         txt_tf_draft = Text("Dypgang forrut", font_size=22).next_to(eq_ta_draft, DOWN, buff=0.42).set_x(3.8)
         eq_tf_draft = MathTex(
-              r"T_F = T_S + \frac{t_f}{100}",
+            r"T_F = T_S + \frac{t_f}{100}",
             font_size=30,
         ).next_to(txt_tf_draft, DOWN, buff=0.18).set_x(3.8)
-        self.play(Write(txt_tot))
-        self.wait(0.4)
-        self.play(Write(eq_tot_formula))
-        self.wait(0.4)
-        self.play(Write(eq_tot_values))
-        self.wait(0.4)
 
-        # Fade out the plan/equation section, then return to the final profile state.
-        self.play(
-            FadeOut(
-                plan,
-                plan_dividers,
-                plan_cl,
-                plan_cl_label,
-                ap_plan_label,
-                fp_plan_label,
-                plan_label,
-                plan_fill_comp1,
-                plan_fill_comp2,
-                plan_fill_comp3,
-                lcf_axis,
-                lcf_dim_arrow,
-                lcf_dim_label,
-                damage_x_plan,
-                beam_dim_arrow,
-                beam_dim_label,
-                reduced_dim_arrows,
-                reduced_dim_labels,
-                txt_awl,
-                eq_awl,
-                txt_if,
-                eq_if,
-                txt_tot,
-                eq_tot_formula,
-                eq_tot_values,
-            )
-        )
-        self.wait(0.4)
-        self.play(
-            FadeIn(
-                final_profile_group,
-                profile_label,
-                wl_0,
-                wl_0_label,
-                water_fill,
-                fore_trim_line,
-                aft_trim_line,
-                t_dim_arrow,
-                t_dim_label,
-            )
-        )
-        self.wait(0.4)
-        self.play(Write(eq_tot_simplified))
-        self.wait(0.4)
+        self.play(FadeOut(txt_trim, eq_tm, txt_total_trim, eq_total_trim))
+        self.wait(0.6)
         self.play(FadeOut(fore_trim_line, aft_trim_line, t_dim_arrow, t_dim_label))
-        self.wait(0.3)
+        self.wait(0.6)
         self.play(Write(txt_trim_split))
-        self.wait(0.3)
+        self.wait(0.6)
         self.play(Write(eq_ta), Write(eq_tf))
-        self.wait(0.4)
+        self.wait(0.8)
         self.play(FadeIn(fore_trim_line, middle_trim_line, aft_distribution_line, lcf_s_profile_arrow, lcf_s_profile_label))
-        self.wait(0.3)
+        self.wait(0.6)
         self.play(FadeIn(t_f_dim_arrow, t_f_dim_label, t_a_dim_arrow, t_a_dim_label))
-        self.wait(0.4)
+        self.wait(0.8)
         self.play(Write(txt_ta_draft), Write(eq_ta_draft))
-        self.wait(0.3)
+        self.wait(0.6)
         self.play(Write(txt_tf_draft), Write(eq_tf_draft))
 
-        self.wait(1)
+        self.wait(1.5)
