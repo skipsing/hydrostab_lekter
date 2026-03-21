@@ -41,7 +41,7 @@ class Hoveddimensjoner_for_en_rektangulaer_lekter(PngSceneBase):
             color=BLACK,
             dashed_ratio=0.6,
         )
-        transverse_cl_label = Text("℄", font_size=16, color=BLACK).next_to(transverse_cl, DOWN, buff=0.05)
+        transverse_cl_label = Tex(r"CL", font_size=16, color=BLACK).next_to(transverse_cl, DOWN, buff=0.05)
 
         plan_cl = Line(
             start=plan.get_left() + LEFT * 0.2,
@@ -49,7 +49,7 @@ class Hoveddimensjoner_for_en_rektangulaer_lekter(PngSceneBase):
             color=BLACK,
             stroke_width=2,
         )
-        plan_cl_label = Text("℄", font_size=16, color=BLACK).next_to(plan_cl.get_right(), RIGHT, buff=0.05)
+        plan_cl_label = Tex(r"CL", font_size=16, color=BLACK).next_to(plan_cl.get_right(), RIGHT, buff=0.05)
 
         ap_plan_label = Tex(r"AP", font_size=16, color=BLACK).next_to(plan.get_left() + DOWN * 0.2, LEFT, buff=0.05)
         fp_plan_label = Tex(r"FP", font_size=16, color=BLACK).next_to(plan.get_right() + DOWN * 0.2, RIGHT, buff=0.05)
@@ -118,7 +118,7 @@ class Volumdeplasement_for_rektangulaer_lekter(PngSceneBase):
             color=BLACK,
             dashed_ratio=0.6,
         )
-        trans_cl_label = Text("⅁", font_size=16, color=BLACK).next_to(trans_cl, DOWN, buff=0.05)
+        trans_cl_label = Tex(r"CL", font_size=16, color=BLACK).next_to(trans_cl, DOWN, buff=0.05)
 
         l_arrow = self.dim_arrow(profile.get_left() + UP * (profile.height / 2), profile.get_right() + UP * (profile.height / 2)).shift(UP * 0.28)
         l_label = Tex(r"L", font_size=32, color=BLACK).next_to(l_arrow, UP, buff=0.08)
@@ -343,11 +343,24 @@ class Vertikal_forflytning_av_oppdriftsenteret_B(PngSceneBase):
 
         cl_l = DashedLine(sect_l.get_top() + UP * 0.2, sect_l.get_bottom() + DOWN * 0.2, color=BLACK, dashed_ratio=0.6)
         cl_r = DashedLine(sect_r.get_top() + UP * 0.2, sect_r.get_bottom() + DOWN * 0.2, color=BLACK, dashed_ratio=0.6)
+        cl_l_label = Tex(r"CL", font_size=14, color=BLACK).next_to(cl_l, DOWN, buff=0.05)
+        cl_r_label = Tex(r"CL", font_size=14, color=BLACK).next_to(cl_r, DOWN, buff=0.05)
 
         b_l = Dot([cx_left, base_y + wy / 2, 0], color=BLACK, radius=0.06)
         b_r = Dot([cx_right, base_y + t_s / 2, 0], color=BLACK, radius=0.06)
         b_l_label = MathTex(r"B", font_size=26, color=BLACK).next_to(b_l, RIGHT, buff=0.1)
         b_r_label = MathTex(r"B_S", font_size=26, color=BLACK).next_to(b_r, RIGHT, buff=0.1)
+
+        b_l_line = DashedLine(
+            [sect_l.get_left()[0], base_y + wy / 2, 0],
+            [cx_left, base_y + wy / 2, 0],
+            color=BLACK, stroke_width=1.5, dashed_ratio=0.5,
+        )
+        b_r_line = DashedLine(
+            [sect_r.get_left()[0], base_y + t_s / 2, 0],
+            [cx_right, base_y + t_s / 2, 0],
+            color=BLACK, stroke_width=1.5, dashed_ratio=0.5,
+        )
 
         kb_l = self.dim_arrow(np.array([sect_l.get_left()[0] - 0.35, base_y, 0]), np.array([sect_l.get_left()[0] - 0.35, base_y + wy / 2, 0]))
         kb_l_label = MathTex(r"KB", font_size=24, color=BLACK).next_to(kb_l, LEFT, buff=0.08)
@@ -363,6 +376,10 @@ class Vertikal_forflytning_av_oppdriftsenteret_B(PngSceneBase):
             wl_r_label,
             cl_l,
             cl_r,
+            cl_l_label,
+            cl_r_label,
+            b_l_line,
+            b_r_line,
             b_l,
             b_r,
             b_l_label,
@@ -394,7 +411,7 @@ class Langskips_BM_og_LCF_ved_usymmetrisk_skade(PngSceneBase):
         divider_2 = Line([d2, plan.get_bottom()[1], 0], [d2, plan.get_top()[1], 0], color=BLACK, stroke_width=2)
 
         cl = Line(start=plan.get_left() + LEFT * 0.2, end=plan.get_right() + RIGHT * 0.2, color=BLACK, stroke_width=2)
-        cl_label = Text("⅁", font_size=16, color=BLACK).next_to(cl.get_right(), RIGHT, buff=0.05)
+        cl_label = Tex(r"CL", font_size=16, color=BLACK).next_to(cl.get_right(), RIGHT, buff=0.05)
 
         lost_zone = Rectangle(width=spacing, height=plan.height, fill_color=BLACK, fill_opacity=0.12, stroke_opacity=0).move_to([left + 2.5 * spacing, plan.get_center()[1], 0])
         lost_cross = VGroup(
