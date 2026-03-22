@@ -168,239 +168,219 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      {   }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-    code span.at { color: #7d9029; } /* Attribute */
-    code span.bn { color: #40a070; } /* BaseN */
-    code span.bu { color: #008000; } /* BuiltIn */
-    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #4070a0; } /* Char */
-    code span.cn { color: #880000; } /* Constant */
-    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-    code span.dt { color: #902000; } /* DataType */
-    code span.dv { color: #40a070; } /* DecVal */
-    code span.er { color: #ff0000; font-weight: bold; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #40a070; } /* Float */
-    code span.fu { color: #06287e; } /* Function */
-    code span.im { color: #008000; font-weight: bold; } /* Import */
-    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-    code span.op { color: #666666; } /* Operator */
-    code span.ot { color: #007020; } /* Other */
-    code span.pp { color: #bc7a00; } /* Preprocessor */
-    code span.sc { color: #4070a0; } /* SpecialChar */
-    code span.ss { color: #bb6688; } /* SpecialString */
-    code span.st { color: #4070a0; } /* String */
-    code span.va { color: #19177c; } /* Variable */
-    code span.vs { color: #4070a0; } /* VerbatimString */
-    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
-  <script
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
-  type="text/javascript"></script>
 </head>
 <body>
-<h1 id="damage-stability-exercises-lost-buoyancy-method">Damage
-Stability Exercises (Lost Buoyancy Method)</h1>
-<h2 id="how-to-use">1. How to Use</h2>
+<h1 id="oppgaver-i-skadestabilitet-tapt-oppdrift-metoden">Oppgaver i
+skadestabilitet (Tapt oppdrift-metoden)</h1>
+<h2 id="instruksjoner">1. Instruksjoner</h2>
 <ul>
-<li>Solve each task with clear units and sign conventions.</li>
-<li>Show intermediate steps, not only final numbers.</li>
-<li>Verify final acceptance criteria when requested.</li>
-<li>For damage-length tasks, solve <span
-class="math inline">\(T_S\)</span> from <span class="math inline">\(LBT
-= (L-l_d)BT_S\)</span> and keep displacement conserved in this model
-(<span class="math inline">\(\nabla_S=\nabla\)</span>).</li>
+<li>Løs hver oppgave med tydelige enheter og konsekvent
+fortegnskonvensjon.</li>
+<li>Vis mellomregningene, ikke bare sluttsvaret.</li>
+<li>Kontroller akseptkriteriene til slutt</li>
+<li>For oppgaver med skadelengde skal <span
+class="math inline"><em>T</em><sub><em>S</em></sub></span> finnes fra
+<span
+class="math inline"><em>L</em><em>B</em><em>T</em> = (<em>L</em> − <em>l</em><sub><em>d</em></sub>)<em>B</em><em>T</em><sub><em>S</em></sub></span>,
+samtidig som deplasementet bevares i denne metoden (<span
+class="math inline">∇<sub><em>S</em></sub> = ∇</span>).</li>
 </ul>
-<h2 id="exercise-set-a-single-concept-drills">2. Exercise Set A:
-Single-Concept Drills</h2>
-<h3 id="a1.-symmetric-flooding-equilibrium">A1. Symmetric Flooding
-Equilibrium</h3>
+<h2 id="oppgavesett-a-enkeltkonsepter">2. Oppgavesett A:
+Enkeltkonsepter</h2>
+<h3 id="a1.-likevekt-ved-symmetrisk-skade">A1. Likevekt ved symmetrisk
+skade</h3>
+<p><strong>Last ned øvingsnotatbok:</strong> <a
+href="exports/Oppgave_A1.ipynb">Oppgave_A1.ipynb</a></p>
 <ul>
-<li>Task:
+<li>Oppgave:
 <ul>
-<li>Compute new equilibrium draft under symmetric flooding.</li>
+<li>Beregn ny likevektsdypgang ved symmetrisk fylling.</li>
 </ul></li>
-<li>Given:
+<li>Gitt:
 <ul>
-<li>Rectangular barge with <span class="math inline">\(L = 50.0\
-\mathrm{m}\)</span>, <span class="math inline">\(B = 10.0\
-\mathrm{m}\)</span>, <span class="math inline">\(D = 5.0\
-\mathrm{m}\)</span></li>
-<li>Initial draft <span class="math inline">\(T = 2.80\
-\mathrm{m}\)</span></li>
-<li>Damaged compartment length: <span class="math inline">\(l_d = 2.0\
-\mathrm{m}\)</span></li>
-<li>Assume full-loss compartment behavior and parallel sinkage for this
-drill</li>
+<li>Rektangulær lekter med <span
+class="math inline"><em>L</em> = 50.0 m</span>, <span
+class="math inline"><em>B</em> = 10.0 m</span>, <span
+class="math inline"><em>D</em> = 5.0 m</span></li>
+<li>Initial dypgang <span
+class="math inline"><em>T</em> = 2.80 m</span></li>
+<li>Lengde av skadet avdeling: <span
+class="math inline"><em>l</em><sub><em>d</em></sub> = 2.0 m</span></li>
+<li>Anta fullstendig tap av oppdrift i avdelingen og parallell
+nedsynking i denne oppgaven</li>
 </ul></li>
-<li>Deliverables:
+<li>Besvarelse:
 <ul>
-<li>Final draft</li>
-<li>Short method</li>
+<li>Endelig dypgang</li>
 </ul></li>
-<li>Final answer:
+<li>Fasit:
 <ul>
-<li><span class="math inline">\(T_S = 2.9167\ \mathrm{m}\)</span></li>
-</ul></li>
-</ul>
-<h3 id="a2.-three-compartment-drill-center-compartment-damaged">A2.
-Three-Compartment Drill (Center Compartment Damaged)</h3>
-<ul>
-<li>Task:
-<ul>
-<li>A barge is divided into 3 equal longitudinal compartments. The
-center compartment is damaged and fully flooded.</li>
-<li>Solve for <span class="math inline">\(T_S\)</span> first from
-compartment length.</li>
-</ul></li>
-<li>Given:
-<ul>
-<li>Rectangular barge with <span class="math inline">\(L = 60.0\
-\mathrm{m}\)</span>, <span class="math inline">\(B = 12.0\
-\mathrm{m}\)</span>, <span class="math inline">\(D = 6.0\
-\mathrm{m}\)</span></li>
-<li>Initial draft <span class="math inline">\(T = 3.00\
-\mathrm{m}\)</span></li>
-<li>3 equal compartments, so <span class="math inline">\(l_d =
-L/3\)</span></li>
-</ul></li>
-<li>Deliverables:
-<ul>
-<li>Damaged compartment length <span
-class="math inline">\(l_d\)</span></li>
-<li>Symmetric damaged draft <span
-class="math inline">\(T_S\)</span></li>
-<li>Check whether <span class="math inline">\(T_S &lt; D\)</span></li>
-</ul></li>
-<li>Final answer:
-<ul>
-<li>Use the hidden solution below for self-check</li>
+<li><span
+class="math inline"><em>T</em><sub><em>S</em></sub> = 2.9167 m</span></li>
 </ul></li>
 </ul>
-<h3 id="a3.-waterplane-inertia-reduction-and-bm">A3. Waterplane Inertia
-Reduction and <span class="math inline">\(BM\)</span></h3>
+<h3 id="a2.-skadelengde-og-dypgang-ved-symmetrisk-skade">A2. Skadelengde
+og dypgang ved symmetrisk skade</h3>
+<p><strong>Last ned øvingsnotatbok:</strong> <a
+href="exports/Oppgave_A2.ipynb">Oppgave_A2.ipynb</a></p>
+<figure>
+<img src="exports/Lekteren_har_3_vanntette_avdelinger.png"
+alt="Lekter med 3 avdelinger" />
+<figcaption aria-hidden="true">Lekter med 3 avdelinger</figcaption>
+</figure>
+<p><em>Figur: Rektangulær lekter med 3 like store langskips avdelinger -
+den midtre avdelingen er skadet.</em></p>
 <ul>
-<li>Task:
+<li>Oppgave:
 <ul>
-<li>Calculate reduced waterplane area after damage.</li>
-<li>Determine reduced waterplane inertia and updated $BM_{T_S}$.</li>
+<li>En lekter er delt inn i 3 like store avdelinger langskips. Den
+midtre avdelingen er skadet.</li>
 </ul></li>
-<li>Given:
+<li>Gitt:
 <ul>
-<li>Rectangular barge with <span class="math inline">\(L=72.0\
-\mathrm{m}\)</span>, <span class="math inline">\(B=11.0\
-\mathrm{m}\)</span>, <span class="math inline">\(T=2.80\
-\mathrm{m}\)</span></li>
-<li>Damaged compartment length <span class="math inline">\(l_d=6.0\
-\mathrm{m}\)</span></li>
-<li>Conserved displacement volume in this model: <span
-class="math inline">\(\nabla=LBT=2217.6\ \mathrm{m^3}\)</span></li>
-<li>For this drill, use box-waterplane formulas for both intact and
-damaged states</li>
+<li>Rektangulær lekter med <span
+class="math inline"><em>L</em> = 60.0 m</span>, <span
+class="math inline"><em>B</em> = 12.0 m</span>, <span
+class="math inline"><em>D</em> = 6.0 m</span></li>
+<li>Initial dypgang <span
+class="math inline"><em>T</em> = 3.00 m</span></li>
+<li>3 like store avdelinger, slik at <span
+class="math inline"><em>l</em><sub><em>d</em></sub> = <em>L</em>/3</span></li>
 </ul></li>
-<li>Deliverables:
+<li>Besvarelse:
 <ul>
-<li>Waterplane area before/after</li>
-<li><span class="math inline">\(I_{WL}\)</span> before/after</li>
-<li><span class="math inline">\(BM_T\)</span> before/after</li>
+<li>Skadelengde <span
+class="math inline"><em>l</em><sub><em>d</em></sub></span></li>
+<li>Symmetrisk skadet dypgang <span
+class="math inline"><em>T</em><sub><em>S</em></sub></span></li>
+<li>Sjekk om <span
+class="math inline"><em>T</em><sub><em>S</em></sub> &lt; <em>D</em></span></li>
 </ul></li>
-<li>Final answer:
+<li>Fasit:
 <ul>
-<li>Fill in</li>
-</ul></li>
-</ul>
-<h3 id="a4.-vertical-hydrostatics-update-kb-gm">A4. Vertical
-Hydrostatics Update (<span class="math inline">\(KB\)</span>, <span
-class="math inline">\(GM\)</span>)</h3>
-<ul>
-<li>Task:
-<ul>
-<li>Compute updated $KB_S$, $BM_{T_S}$, and $GM_S$ in damaged
-condition.</li>
-</ul></li>
-<li>Given:
-<ul>
-<li>Damaged-condition center of buoyancy: <span
-class="math inline">\(KB_S=1.62\ \mathrm{m}\)</span></li>
-<li>Damaged transverse waterplane second moment: <span
-class="math inline">\(I_{WL_S}=7600\ \mathrm{m^4}\)</span></li>
-<li>Conserved displacement volume: <span
-class="math inline">\(\nabla=2160\ \mathrm{m^3}\)</span></li>
-<li>Vertical center of gravity: <span class="math inline">\(KG=4.20\
-\mathrm{m}\)</span></li>
-</ul></li>
-<li>Deliverables:
-<ul>
-<li>Updated hydrostatic values</li>
-<li>Stability interpretation</li>
-</ul></li>
-<li>Final answer:
-<ul>
-<li>Fill in</li>
+<li>Bruk den skjulte løsningen nedenfor til egenkontroll</li>
 </ul></li>
 </ul>
-<h2 id="exercise-set-b-parameter-variation">3. Exercise Set B: Parameter
-Variation</h2>
-<h3 id="b1.-sensitivity-study">B1. Sensitivity Study</h3>
+<h3 id="a3.-reduksjon-i-vannlinjeareal-og-bm">A3. Reduksjon i
+Vannlinjeareal og <span
+class="math inline"><em>B</em><em>M</em></span></h3>
+<p><strong>Last ned øvingsnotatbok:</strong> <a
+href="exports/Oppgave_A3.ipynb">Oppgave_A3.ipynb</a></p>
 <ul>
-<li>Task:
+<li>Oppgave:
 <ul>
-<li>Use the table below.</li>
-<li>For each case, compute <span class="math inline">\(l_d=L/N\)</span>,
-then calculate <span class="math inline">\(T_S\)</span>, <span
-class="math inline">\(BM_{T_S}\)</span>, and <span
-class="math inline">\(GM_S\)</span>.</li>
-<li>Compare how the input changes affect <span
-class="math inline">\(T_S\)</span> and <span
-class="math inline">\(GM_S\)</span>.</li>
+<li>Beregn redusert vannlinjeareal etter skade.</li>
+<li>Finn redusert vannlinjetreghetsmoment og oppdatert <span
+class="math inline"><em>B</em><em>M</em><sub><em>T</em><sub><em>S</em></sub></sub></span>.</li>
 </ul></li>
-<li>Given:
+<li>Gitt:
 <ul>
-<li>Use <span class="math inline">\(KG=4.20\ \mathrm{m}\)</span> and
-<span class="math inline">\(\rho=1.0\ \mathrm{t/m^3}\)</span> for all
-cases.</li>
-<li>Assume one damaged compartment and use box-barge
-approximations.</li>
+<li>Rektangulær lekter med <span
+class="math inline"><em>L</em> = 72.0 m</span>, <span
+class="math inline"><em>B</em> = 11.0 m</span>, <span
+class="math inline"><em>T</em> = 2.80 m</span></li>
+<li>Lengde av skadet avdeling <span
+class="math inline"><em>l</em><sub><em>d</em></sub> = 6.0 m</span></li>
+<li>Volumdeplasement for lekteren: <span
+class="math inline">∇ = <em>L</em><em>B</em><em>T</em> = 2217.6 m<sup>3</sup></span></li>
+<li>Bruk formler for rektangulær lekter</li>
+</ul></li>
+<li>Leveranse:
+<ul>
+<li>Vannlinjeareal før/etter skade</li>
+<li><span
+class="math inline"><em>I</em><sub><em>W</em><em>L</em></sub></span>
+før/etter skade</li>
+<li><span
+class="math inline"><em>B</em><em>M</em><sub><em>T</em></sub></span>
+før/etter skade</li>
+</ul></li>
+<li>Fasit:
+<ul>
+<li>Vannlinjeareal: <span
+class="math inline">792 → 726 m<sup>2</sup></span></li>
+<li><span
+class="math inline"><em>I</em><sub><em>W</em><em>L</em></sub></span>:
+<span class="math inline">7986.0 → 7320.5 m<sup>4</sup></span></li>
+<li><span
+class="math inline"><em>B</em><em>M</em><sub><em>T</em></sub></span>:
+<span class="math inline">3.601 → 3.301 m</span></li>
+</ul></li>
+</ul>
+<h3 id="a4.-stabilitetskontroll-etter-skade">A4. Stabilitetskontroll
+etter skade</h3>
+<p><strong>Last ned øvingsnotatbok:</strong> <a
+href="exports/Oppgave_A4.ipynb">Oppgave_A4.ipynb</a></p>
+<ul>
+<li>Oppgave:
+<ul>
+<li>Beregn oppdatert <span
+class="math inline"><em>K</em><em>B</em><sub><em>S</em></sub></span>,
+<span
+class="math inline"><em>B</em><em>M</em><sub><em>T</em><sub><em>S</em></sub></sub></span>
+og <span
+class="math inline"><em>G</em><em>M</em><sub><em>S</em></sub></span> i
+skadet tilstand.</li>
+</ul></li>
+<li>Gitt:
+<ul>
+<li>Oppdriftssenter i skadet tilstand: <span
+class="math inline"><em>K</em><em>B</em><sub><em>S</em></sub> = 1.62 m</span></li>
+<li>Tverrskips vannlinjetreghetsmoment i skadet tilstand: <span
+class="math inline"><em>I</em><sub><em>W</em><em>L</em><sub><em>S</em></sub></sub> = 7600 m<sup>4</sup></span></li>
+<li>Volumdeplasement: <span
+class="math inline">∇ = 2160 m<sup>3</sup></span></li>
+<li>Vertikalt tyngdepunkt: <span
+class="math inline"><em>K</em><em>G</em> = 4.20 m</span></li>
+</ul></li>
+<li>Leveranse:
+<ul>
+<li>Oppdaterte hydrostatiske data etter skade</li>
+<li>Kort stabilitetstolkning</li>
+</ul></li>
+<li>Fasit:
+<ul>
+<li><span
+class="math inline"><em>K</em><em>B</em><sub><em>S</em></sub> = 1.62 m</span>,
+<span
+class="math inline"><em>B</em><em>M</em><sub><em>T</em><sub><em>S</em></sub></sub> = 3.519 m</span>,
+<span
+class="math inline"><em>G</em><em>M</em><sub><em>S</em></sub> = 0.939 m</span></li>
+<li><span
+class="math inline"><em>G</em><em>M</em><sub><em>S</em></sub> &gt; 0 m</span>:
+gjenværende initial stabilitet er positiv</li>
+</ul></li>
+</ul>
+<h2 id="oppgavesett-b-parameterstudie">3. Oppgavesett B:
+Parameterstudie</h2>
+<h3 id="b1.-sensitivitetsstudie">B1. Sensitivitetsstudie</h3>
+<p><strong>Last ned øvingsnotatbok:</strong> <a
+href="exports/Oppgave_B1.ipynb">Oppgave_B1.ipynb</a></p>
+<p>Et regnearkmal for oppgaven er tilgjengelig her: <a
+href="exports/B1_sensitivitetsstudie_mal.csv">B1_sensitivitetsstudie_mal.csv</a></p>
+<ul>
+<li>Oppgave:
+<ul>
+<li>Bruk tabellen nedenfor (eller last ned malen).</li>
+<li>For hvert tilfelle beregnes <span
+class="math inline"><em>l</em><sub><em>d</em></sub> = <em>L</em>/<em>N</em></span>,
+deretter <span
+class="math inline"><em>T</em><sub><em>S</em></sub></span>, <span
+class="math inline"><em>B</em><em>M</em><sub><em>T</em><sub><em>S</em></sub></sub></span>
+og <span
+class="math inline"><em>G</em><em>M</em><sub><em>S</em></sub></span>.</li>
+<li>Sammenlign hvordan endringene i inndata påvirker <span
+class="math inline"><em>T</em><sub><em>S</em></sub></span> og <span
+class="math inline"><em>G</em><em>M</em><sub><em>S</em></sub></span>.</li>
+</ul></li>
+<li>Gitt:
+<ul>
+<li>Bruk <span class="math inline"><em>K</em><em>G</em> = 4.20 m</span>
+og <span class="math inline"><em>ρ</em> = 1.0 t/m<sup>3</sup></span> for
+alle tilfeller.</li>
+<li>Anta en skadet avdeling og bruk box-barge-tilnærminger.</li>
 </ul></li>
 </ul>
 <table>
@@ -417,28 +397,31 @@ approximations.</li>
 </colgroup>
 <thead>
 <tr>
-<th>Case</th>
-<th style="text-align: right;"><span class="math inline">\(L\)</span>
-(m)</th>
-<th style="text-align: right;"><span class="math inline">\(B\)</span>
-(m)</th>
-<th style="text-align: right;"><span class="math inline">\(T\)</span>
-(m)</th>
-<th style="text-align: right;"><span class="math inline">\(N\)</span>
-compartments</th>
+<th>Tilfelle</th>
 <th style="text-align: right;"><span
-class="math inline">\(l_d=L/N\)</span> (m)</th>
-<th style="text-align: right;"><span class="math inline">\(T_S\)</span>
+class="math inline"><em>L</em></span> (m)</th>
+<th style="text-align: right;"><span
+class="math inline"><em>B</em></span> (m)</th>
+<th style="text-align: right;"><span
+class="math inline"><em>T</em></span> (m)</th>
+<th style="text-align: right;">Antall avdelinger <span
+class="math inline"><em>N</em></span></th>
+<th style="text-align: right;"><span
+class="math inline"><em>l</em><sub><em>d</em></sub> = <em>L</em>/<em>N</em></span>
 (m)</th>
 <th style="text-align: right;"><span
-class="math inline">\(BM_{T_S}\)</span> (m)</th>
-<th style="text-align: right;"><span class="math inline">\(GM_S\)</span>
+class="math inline"><em>T</em><sub><em>S</em></sub></span> (m)</th>
+<th style="text-align: right;"><span
+class="math inline"><em>B</em><em>M</em><sub><em>T</em><sub><em>S</em></sub></sub></span>
+(m)</th>
+<th style="text-align: right;"><span
+class="math inline"><em>G</em><em>M</em><sub><em>S</em></sub></span>
 (m)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Base</td>
+<td>Basis</td>
 <td style="text-align: right;">60.0</td>
 <td style="text-align: right;">12.0</td>
 <td style="text-align: right;">3.00</td>
@@ -449,7 +432,7 @@ class="math inline">\(BM_{T_S}\)</span> (m)</th>
 <td style="text-align: right;"></td>
 </tr>
 <tr>
-<td>Fewer compartments</td>
+<td>Færre avdelinger</td>
 <td style="text-align: right;">60.0</td>
 <td style="text-align: right;">12.0</td>
 <td style="text-align: right;">3.00</td>
@@ -460,7 +443,7 @@ class="math inline">\(BM_{T_S}\)</span> (m)</th>
 <td style="text-align: right;"></td>
 </tr>
 <tr>
-<td>Wider barge</td>
+<td>Bredere lekter</td>
 <td style="text-align: right;">60.0</td>
 <td style="text-align: right;">14.0</td>
 <td style="text-align: right;">3.00</td>
@@ -471,7 +454,7 @@ class="math inline">\(BM_{T_S}\)</span> (m)</th>
 <td style="text-align: right;"></td>
 </tr>
 <tr>
-<td>Higher initial draft</td>
+<td>Stor initial dypgang</td>
 <td style="text-align: right;">60.0</td>
 <td style="text-align: right;">12.0</td>
 <td style="text-align: right;">3.50</td>
@@ -484,726 +467,626 @@ class="math inline">\(BM_{T_S}\)</span> (m)</th>
 </tbody>
 </table>
 <ul>
-<li>Deliverables:
+<li>Leveranse:
 <ul>
-<li>Completed table (all blank cells filled)</li>
-<li>Short trend discussion</li>
+<li>Utfylt tabell</li>
+<li>Kort trenddiskusjon</li>
 </ul></li>
-<li>Final answer:
+<li>Fasit:
 <ul>
-<li>Fill in</li>
+<li>Fyll inn</li>
 </ul></li>
 </ul>
-<h2 id="exercise-set-c-trim-concepts">4. Exercise Set C: Trim
-Concepts</h2>
-<h3 id="c1.-trimming-moment-due-to-flooded-compartment">C1. Trimming
-Moment Due to Flooded Compartment</h3>
+<h2 id="oppgavesett-c-trim">4. Oppgavesett C: Trim</h2>
+<h3 id="c1.-trimmoment">C1. Trimmoment</h3>
+<p><strong>Last ned øvingsnotatbok:</strong> <a
+href="exports/Oppgave_C1.ipynb">Oppgave_C1.ipynb</a></p>
 <figure>
-<img src="../exports/Lekteren_har_5_vanntette_avdelinger.png"
+<img src="exports/Lekteren_har_5_vanntette_avdelinger.png"
 alt="Lekteren har 5 vanntette avdelinger" />
 <figcaption aria-hidden="true">Lekteren har 5 vanntette
 avdelinger</figcaption>
 </figure>
-<p><em>Figure: Five equal compartments; use this layout for
-flooded-compartment trim-moment setup.</em></p>
+<p><em>Figur: Fem like store avdelinger; bruk denne inndelingen i
+oppgaven</em></p>
 <ul>
-<li>Task:
+<li>Oppgave:
 <ul>
-<li>Determine trimming moment caused by flooding of compartment 4 (from
-AP) using AP-based coordinates.</li>
+<li>Bestem trimmomentet som oppstår når avdeling 4 (regnet fra AP) er
+skadet.</li>
 </ul></li>
-<li>Given:
+<li>Gitt:
 <ul>
-<li>Rectangular barge with <span class="math inline">\(L=100.0\
-\mathrm{m}\)</span>, <span class="math inline">\(B=20.0\
-\mathrm{m}\)</span>, <span class="math inline">\(T=3.50\
-\mathrm{m}\)</span></li>
-<li>5 equal longitudinal compartments, so each compartment length is
-<span class="math inline">\(20.0\ \mathrm{m}\)</span></li>
-<li>Compartment 4 damaged (spanning <span
-class="math inline">\(x=60\)</span> to <span class="math inline">\(x=80\
-\mathrm{m}\)</span>)</li>
-<li>Use <span class="math inline">\(\rho=1.025\ \mathrm{t/m^3}\)</span>
-and <span class="math inline">\(LCG=50.0\ \mathrm{m}\)</span> from
+<li>Rektangulær lekter med <span
+class="math inline"><em>L</em> = 100.0 m</span>, <span
+class="math inline"><em>B</em> = 20.0 m</span>, <span
+class="math inline"><em>T</em> = 3.50 m</span></li>
+<li>5 like store avdelinger langskips, slik at hver avdeling er <span
+class="math inline">20.0 m</span> lang</li>
+<li>Avdeling 4 er skadet (fra <span
+class="math inline"><em>x</em> = 60</span> til <span
+class="math inline"><em>x</em> = 80 m</span>)</li>
+<li>Bruk <span
+class="math inline"><em>ρ</em> = 1.025 t/m<sup>3</sup></span> og <span
+class="math inline"><em>L</em><em>C</em><em>G</em> = 50.0 m</span> fra
 AP</li>
-<li>For this drill, use <span class="math inline">\(LCB_S=45.0\
-\mathrm{m}\)</span> from AP</li>
+<li>I denne oppgaven brukes <span
+class="math inline"><em>L</em><em>C</em><em>B</em><sub><em>S</em></sub> = 45.0 m</span>
+fra AP</li>
 </ul></li>
-<li>Deliverables:
+<li>Leveranse:
 <ul>
-<li>Initial displacement mass <span
-class="math inline">\(\Delta\)</span></li>
-<li>Lever arm <span class="math inline">\(l_k=LCG-LCB_S\)</span></li>
-<li>Trimming moment <span
-class="math inline">\(M_{trim}=\Delta\,l_k\)</span></li>
+<li>Vektdeplasement <span class="math inline"><em>Δ</em></span></li>
+<li>Trimarm <span
+class="math inline"><em>l</em><sub><em>k</em></sub> = <em>L</em><em>C</em><em>G</em> − <em>L</em><em>C</em><em>B</em><sub><em>S</em></sub></span></li>
+<li>Trimmoment <span
+class="math inline"><em>M</em><sub><em>t</em><em>r</em><em>i</em><em>m</em></sub> = <em>Δ</em> <em>l</em><sub><em>k</em></sub></span></li>
 </ul></li>
-<li>Final answer:
+<li>Fasit:
 <ul>
-<li>Fill in</li>
-</ul></li>
-</ul>
-<h3 id="c2.-trim-from-given-m_trim-and-bm_l_s">C2. Trim from Given <span
-class="math inline">\(M_{trim}\)</span> and <span
-class="math inline">\(BM_{L_S}\)</span></h3>
-<ul>
-<li>Task:
-<ul>
-<li>Calculate <span class="math inline">\(MCT_{1cm_S}\)</span> and total
-trim.</li>
-</ul></li>
-<li>Given:
-<ul>
-<li><span class="math inline">\(\Delta=7175\ \mathrm{t}\)</span></li>
-<li><span class="math inline">\(L=100.0\ \mathrm{m}\)</span></li>
-<li><span class="math inline">\(BM_{L_S}=207.619\
-\mathrm{m}\)</span></li>
-<li><span class="math inline">\(M_{trim}=35{,}875\
-\mathrm{t\,m}\)</span></li>
-</ul></li>
-<li>Deliverables:
-<ul>
-<li><span class="math inline">\(MCT_{1cm_S}\)</span> in <span
-class="math inline">\(\mathrm{t\,m/cm}\)</span></li>
-<li><span class="math inline">\(trim_{cm}\)</span> and <span
-class="math inline">\(trim_m\)</span></li>
-</ul></li>
-<li>Final answer:
-<ul>
-<li>Fill in</li>
+<li>Fyll inn</li>
 </ul></li>
 </ul>
-<h3 id="c3.-distribution-of-trim-about-lcf_s">C3. Distribution of Trim
-About <span class="math inline">\(LCF_S\)</span></h3>
+<h3 id="c2.-trim-fra-gitt-m_t-og-bm_l_s">C2. Trim fra gitt <span
+class="math inline"><em>M</em><sub><em>T</em></sub></span> og <span
+class="math inline"><em>B</em><em>M</em><sub><em>L</em><sub><em>S</em></sub></sub></span></h3>
+<p><strong>Last ned øvingsnotatbok:</strong> <a
+href="exports/Oppgave_C2.ipynb">Oppgave_C2.ipynb</a></p>
 <ul>
-<li>Task:
+<li>Oppgave:
 <ul>
-<li>Distribute known trim to aft and forward components and compute
-final drafts.</li>
+<li>Beregn enhetstrimmomentet <span
+class="math inline"><em>M</em><em>C</em><em>T</em><sub>1<em>c</em><em>m</em><sub><em>S</em></sub></sub></span>
+og total trim.</li>
 </ul></li>
-<li>Given:
+<li>Gitt:
 <ul>
-<li><span class="math inline">\(trim_m=2.4083\ \mathrm{m}\)</span></li>
-<li><span class="math inline">\(LCF_S=45.0\ \mathrm{m}\)</span> from AP,
-<span class="math inline">\(L=100.0\ \mathrm{m}\)</span></li>
-<li>Symmetric damaged draft before trim: <span
-class="math inline">\(T_S=4.375\ \mathrm{m}\)</span></li>
+<li><span class="math inline"><em>Δ</em> = 7175 t</span></li>
+<li><span class="math inline"><em>L</em> = 100.0 m</span></li>
+<li><span
+class="math inline"><em>B</em><em>M</em><sub><em>L</em><sub><em>S</em></sub></sub> = 207.619 m</span></li>
+<li><span
+class="math inline"><em>M</em><sub><em>T</em></sub> = 35, 875 t m</span></li>
 </ul></li>
-<li>Deliverables:
+<li>Leveranse:
 <ul>
-<li><span class="math inline">\(t_a\)</span> and <span
-class="math inline">\(t_f\)</span></li>
-<li>Final drafts <span class="math inline">\(T_A\)</span> and <span
-class="math inline">\(T_F\)</span></li>
-<li>Critical draft <span
-class="math inline">\(T_{crit}=\max(T_A,T_F)\)</span></li>
+<li>Enhetstrimmomentet <span
+class="math inline"><em>M</em><em>C</em><em>T</em><sub>1<em>c</em><em>m</em><sub><em>S</em></sub></sub></span>
+i <span class="math inline">t m/cm</span></li>
+<li>Den totale trimmen <span class="math inline"><em>t</em></span></li>
 </ul></li>
-<li>Final answer:
+<li>Fasit:
 <ul>
-<li>Fill in</li>
+<li>Fyll inn</li>
 </ul></li>
 </ul>
-<h2 id="exercise-set-d-full-combined-problem">5. Exercise Set D: Full
-Combined Problem</h2>
-<h3 id="d1.-end-to-end-damage-equilibrium">D1. End-to-End Damage
-Equilibrium</h3>
+<h3 id="c3.-fordeling-av-total-trim-og-endelig-dypgang">C3. Fordeling av
+total trim og endelig dypgang</h3>
+<p><strong>Last ned øvingsnotatbok:</strong> <a
+href="exports/Oppgave_C3.ipynb">Oppgave_C3.ipynb</a></p>
 <ul>
-<li>Task:
+<li>Oppgave:
 <ul>
-<li>Solve full method from initial condition to final acceptance
-check.</li>
+<li>Fordel kjent trim i akterlig og forlig komponent og beregn endelige
+dypganger.</li>
 </ul></li>
-<li>Given:
+<li>Gitt:
 <ul>
-<li>Rectangular barge: <span class="math inline">\(L = 60.0\
-\mathrm{m}\)</span>, <span class="math inline">\(B = 12.0\
-\mathrm{m}\)</span>, <span class="math inline">\(D = 6.0\
-\mathrm{m}\)</span></li>
-<li>Initial draft: <span class="math inline">\(T = 3.00\
-\mathrm{m}\)</span></li>
-<li>Center of gravity: <span class="math inline">\(KG = 4.20\
-\mathrm{m}\)</span></li>
-<li>Damaged compartment length: <span class="math inline">\(l_d = 3.5\
-\mathrm{m}\)</span></li>
-<li>Updated hydrostatic model outputs at damaged condition:
+<li><span class="math inline"><em>t</em> = 240.83 cm</span></li>
+<li><span
+class="math inline"><em>L</em><em>C</em><em>F</em><sub><em>S</em></sub> = 45.0 m</span>
+fra AP, <span class="math inline"><em>L</em> = 100.0 m</span></li>
+<li>Symmetrisk skadet dypgang før trim: <span
+class="math inline"><em>T</em><sub><em>S</em></sub> = 4.375 m</span></li>
+</ul></li>
+<li>Leveranse:
 <ul>
-<li><span class="math inline">\(KB_S = 1.62\ \mathrm{m}\)</span></li>
-<li><span class="math inline">\(I_{WL_S} = 7600\
-\mathrm{m^4}\)</span></li>
-<li><span class="math inline">\(I_{F_S} = 2.10 \times 10^6\
-\mathrm{m^4}\)</span></li>
-<li><span class="math inline">\(LCB_S = 29.75\ \mathrm{m}\)</span> from
+<li><span class="math inline"><em>t</em><sub><em>a</em></sub></span> og
+<span class="math inline"><em>t</em><sub><em>f</em></sub></span></li>
+<li>Endelige dypganger <span
+class="math inline"><em>T</em><sub><em>A</em></sub></span> og <span
+class="math inline"><em>T</em><sub><em>F</em></sub></span></li>
+</ul></li>
+<li>Fasit:
+<ul>
+<li>Fyll inn</li>
+</ul></li>
+</ul>
+<h2 id="oppgavesett-d-fullstendig-forløp-ved-skade">5. Oppgavesett D:
+Fullstendig forløp ved skade</h2>
+<h3 id="d1.-full-skadet-likevekt-fra-start-til-slutt">D1. Full Skadet
+Likevekt Fra Start Til Slutt</h3>
+<p><strong>Last ned øvingsnotatbok:</strong> <a
+href="exports/Oppgave_D1.ipynb">Oppgave_D1.ipynb</a></p>
+<ul>
+<li>Oppgave:
+<ul>
+<li>Lekteren skal beregnes fra initial tilstand til endelig
+akseptkontroll ved skade.</li>
+</ul></li>
+<li>Gitt:
+<ul>
+<li>Rektangulær lekter: <span
+class="math inline"><em>L</em> = 60.0 m</span>, <span
+class="math inline"><em>B</em> = 12.0 m</span>, <span
+class="math inline"><em>D</em> = 6.0 m</span></li>
+<li>Initial dypgang: <span
+class="math inline"><em>T</em> = 3.00 m</span></li>
+<li>Tyngdepunkt: <span
+class="math inline"><em>K</em><em>G</em> = 4.20 m</span></li>
+<li>Lengde av skadet avdeling: <span
+class="math inline"><em>l</em><sub><em>d</em></sub> = 3.5 m</span></li>
+<li>Oppdaterte hydrostatiske verdier i skadet tilstand:
+<ul>
+<li><span
+class="math inline"><em>K</em><em>B</em><sub><em>S</em></sub> = 1.62 m</span></li>
+<li><span
+class="math inline"><em>I</em><sub><em>W</em><em>L</em><sub><em>S</em></sub></sub> = 7600 m<sup>4</sup></span></li>
+<li><span
+class="math inline"><em>I</em><sub><em>F</em><sub><em>S</em></sub></sub> = 2.10 × 10<sup>6</sup> m<sup>4</sup></span></li>
+<li><span
+class="math inline"><em>L</em><em>C</em><em>B</em><sub><em>S</em></sub> = 29.75 m</span>
+fra AP</li>
+<li><span
+class="math inline"><em>L</em><em>C</em><em>F</em><sub><em>S</em></sub> = 30.00 m</span>
+fra AP</li>
+<li><span
+class="math inline"><em>L</em><em>C</em><em>G</em> = 30.00 m</span> fra
 AP</li>
-<li><span class="math inline">\(LCF_S = 30.00\ \mathrm{m}\)</span> from
-AP</li>
 </ul></li>
-<li>Use <span class="math inline">\(\rho = 1.0\
-\mathrm{t/m^3}\)</span></li>
+<li>Bruk <span
+class="math inline"><em>ρ</em> = 1.0 t/m<sup>3</sup></span></li>
 </ul></li>
-<li>Required steps:
+<li>Leveranse:
 <ul>
-<li>Setup and assumptions</li>
-<li>Parallel submergence</li>
-<li>Updated hydrostatics</li>
-<li>Trim: compute components <span class="math inline">\(t_a\)</span>
-and <span class="math inline">\(t_f\)</span>, then determine <span
-class="math inline">\(T_A\)</span> and <span
-class="math inline">\(T_F\)</span></li>
-<li>Acceptance checks (<span class="math inline">\(GM_S &gt; 0\
-\mathrm{m}\)</span>, <span class="math inline">\(\max(T_A,T_F) &lt;
-D\)</span>)</li>
+<li>Endelige dypganger <span
+class="math inline"><em>T</em><sub><em>A</em></sub></span> og <span
+class="math inline"><em>T</em><sub><em>F</em></sub></span></li>
+<li>Akseptkontroller (<span
+class="math inline"><em>G</em><em>M</em><sub><em>S</em></sub> &gt; 0 m</span>,
+<span
+class="math inline">max (<em>T</em><sub><em>A</em></sub>, <em>T</em><sub><em>F</em></sub>) &lt; <em>D</em></span>)</li>
 </ul></li>
-<li>Final answer:
+<li>Fasit:
 <ul>
-<li><span class="math inline">\(T_S = 3.1858\ \mathrm{m}\)</span>, <span
-class="math inline">\(T_A = 3.1781\ \mathrm{m}\)</span>, <span
-class="math inline">\(T_F = 3.1935\ \mathrm{m}\)</span>, <span
-class="math inline">\(GM_S = 0.939\ \mathrm{m}\)</span>, PASS</li>
-</ul></li>
-</ul>
-<h2 id="exercise-set-e-concept-comparison">6. Exercise Set E: Concept
-Comparison</h2>
-<h3
-id="e1.-slack-tank-fse-vs-damaged-flooded-tank-symmetric-centerline-case">E1.
-Slack Tank FSE vs Damaged Flooded Tank (Symmetric Centerline Case)</h3>
-<ul>
-<li>Task:
-<ul>
-<li>Compare <span class="math inline">\(GM_S\)</span> reduction for:
-<ul>
-<li>Slack tank free-surface effect</li>
-<li>Damaged flooded compartment</li>
-</ul></li>
-</ul></li>
-<li>Given:
-<ul>
-<li>Same barge and geometric location assumptions</li>
-</ul></li>
-<li>Deliverables:
-<ul>
-<li>Short derivation or argument</li>
-<li>Quantitative comparison (if data provided)</li>
-<li>Physical interpretation</li>
-</ul></li>
-<li>Final answer:
-<ul>
-<li>Fill in</li>
+<li><span
+class="math inline"><em>T</em><sub><em>S</em></sub> = 3.1858 m</span>,
+<span
+class="math inline"><em>T</em><sub><em>A</em></sub> = 3.1781 m</span>,
+<span
+class="math inline"><em>T</em><sub><em>F</em></sub> = 3.1935 m</span>,
+<span
+class="math inline"><em>G</em><em>M</em><sub><em>S</em></sub> = 0.939 m</span>,
+PASS</li>
 </ul></li>
 </ul>
-<h2 id="solution-section">7. Solution Section</h2>
-<h3 id="a1-solution">A1 Solution</h3>
-<p>Given:</p>
+<h2
+id="oppgavesett-e-intakt-tank-med-fri-væskeoverflate-vs-skadet-tank">6.
+Oppgavesett E: Intakt tank med fri væskeoverflate vs skadet tank</h2>
+<p><strong>Last ned øvingsnotatbok:</strong> <a
+href="exports/Oppgave_E1.ipynb">Oppgave_E1.ipynb</a></p>
 <ul>
-<li><span class="math inline">\(L = 50.0\ \mathrm{m}\)</span></li>
-<li><span class="math inline">\(B = 10.0\ \mathrm{m}\)</span></li>
-<li><span class="math inline">\(T = 2.80\ \mathrm{m}\)</span></li>
-<li><span class="math inline">\(l_d = 2.0\ \mathrm{m}\)</span></li>
+<li>Oppgave:
+<ul>
+<li>En lekter har en tank som går fra side til side og med lengde gitt
+under. Sammenlign:
+<ul>
+<li>korrigert <span class="math inline"><em>G</em><em>M</em></span> for
+fri væskeoverflate i slakk tank, og der tettheten til innholdet er det
+samme</li>
+<li><span
+class="math inline"><em>G</em><em>M</em><sub><em>S</em></sub></span> for
+skadet tank</li>
+</ul></li>
+</ul></li>
+<li>Gitt:
+<ul>
+<li>Samme lekter og samme geometriske forutsetninger</li>
+<li><span class="math inline"><em>L</em> = 50.0 m</span></li>
+<li><span class="math inline"><em>B</em> = 10.0 m</span></li>
+<li><span class="math inline"><em>T</em> = 2.80 m</span></li>
+<li><span
+class="math inline"><em>T</em><sub><em>S</em></sub> = <em>T</em></span></li>
+<li><span
+class="math inline"><em>l</em><sub><em>t</em></sub><em>a</em><em>n</em><em>k</em> = 5.0 m</span></li>
+<li><span
+class="math inline"><em>l</em><sub><em>d</em></sub> = <em>l</em><sub><em>t</em><em>a</em><em>n</em><em>k</em></sub></span></li>
+<li>Anta <span
+class="math inline"><em>T</em><sub><em>S</em></sub> = <em>T</em></span>
+(parallell nedsynking neglisjeres for sammenligningen)</li>
+</ul></li>
+<li>Leveranse:
+<ul>
+<li>Kort utledning eller forklaring</li>
+<li>Kvantitativ sammenligning</li>
+<li>Fysisk tolkning</li>
+</ul></li>
+<li>Fasit:
+<ul>
+<li><span
+class="math inline"><em>Δ</em><em>G</em><em>M</em><sub><em>F</em><em>S</em><em>E</em></sub> = <em>Δ</em><em>B</em><em>M</em><sub><em>T</em></sub> = 0.298 m</span>
+- begge metoder gir identisk GM-reduksjon</li>
+</ul></li>
 </ul>
-<p>Solve directly for damaged equilibrium draft <span
-class="math inline">\(T_S\)</span>:</p>
-<p><span class="math display">\[
-LBT = (L-l_d)BT_S
-\]</span></p>
-<p><span class="math display">\[
+<h2 id="løsningsdel">7. Løsningsdel</h2>
+<h3 id="a1-løsning">A1 Løsning</h3>
+<p>Gitt: - <span class="math inline"><em>L</em> = 50.0 m</span> - <span
+class="math inline"><em>B</em> = 10.0 m</span> - <span
+class="math inline"><em>D</em> = 5.0 m</span> - <span
+class="math inline"><em>T</em> = 2.80 m</span> - <span
+class="math inline"><em>l</em><sub><em>d</em></sub> = 2.0 m</span></p>
+<p>Løs direkte for skadet likevektsdypgang <span
+class="math inline"><em>T</em><sub><em>S</em></sub></span>:</p>
+<p><span
+class="math display"><em>L</em><em>B</em><em>T</em> = (<em>L</em> − <em>l</em><sub><em>d</em></sub>)<em>B</em><em>T</em><sub><em>S</em></sub></span></p>
+<p><span class="math display">$$
 T_S = \frac{L}{L-l_d}T = \frac{50}{50-2.0}\cdot 2.80 = 2.9167\
 \mathrm{m}
-\]</span></p>
-<p>Quick check against depth:</p>
-<p><span class="math display">\[
-T_S = 2.9167\ \mathrm{m} &lt; D = 5.0\ \mathrm{m}\ \Rightarrow\
-\text{draft criterion satisfied}
-\]</span></p>
-<h3 id="a2-solution">A2 Solution</h3>
+$$</span></p>
+<p>Rask kontroll mot dybden:</p>
+<p><span
+class="math display"><em>T</em><sub><em>S</em></sub> = 2.9167 m &lt; <em>D</em> = 5.0 m ⇒ dypgangskrav
+oppfylt</span></p>
+<h3 id="a2-løsning">A2 Løsning</h3>
 <details>
 <summary>
-Show solution
+Vis løsning
 </summary>
-<p>Given:</p>
+<p>Gitt:</p>
 <ul>
-<li><span class="math inline">\(L = 60.0\ \mathrm{m}\)</span></li>
-<li><span class="math inline">\(B = 12.0\ \mathrm{m}\)</span></li>
-<li><span class="math inline">\(D = 6.0\ \mathrm{m}\)</span></li>
-<li><span class="math inline">\(T = 3.00\ \mathrm{m}\)</span></li>
-<li><span class="math inline">\(l_d = L/3 = 20.0\
-\mathrm{m}\)</span></li>
+<li><span class="math inline"><em>L</em> = 60.0 m</span></li>
+<li><span class="math inline"><em>B</em> = 12.0 m</span></li>
+<li><span class="math inline"><em>D</em> = 6.0 m</span></li>
+<li><span class="math inline"><em>T</em> = 3.00 m</span></li>
+<li><span
+class="math inline"><em>l</em><sub><em>d</em></sub> = <em>L</em>/3 = 20.0 m</span></li>
 </ul>
-<p>Solve for <span class="math inline">\(T_S\)</span>:</p>
-<p><span class="math display">\[
-LBT = (L-l_d)BT_S
-\]</span></p>
-<p><span class="math display">\[
+<p>Løs for <span
+class="math inline"><em>T</em><sub><em>S</em></sub></span>:</p>
+<p><span
+class="math display"><em>L</em><em>B</em><em>T</em> = (<em>L</em> − <em>l</em><sub><em>d</em></sub>)<em>B</em><em>T</em><sub><em>S</em></sub></span></p>
+<p><span class="math display">$$
 T_S = \frac{L}{L-l_d}T = \frac{60}{60-20}\cdot 3.00 = 4.50\ \mathrm{m}
-\]</span></p>
-<p>Depth check:</p>
-<p><span class="math display">\[
-T_S = 4.50\ \mathrm{m} &lt; D = 6.0\ \mathrm{m}\ \Rightarrow\
-\text{draft criterion satisfied}
-\]</span></p>
+$$</span></p>
+<p>Kontroll mot dybden:</p>
+<p><span
+class="math display"><em>T</em><sub><em>S</em></sub> = 4.50 m &lt; <em>D</em> = 6.0 m ⇒ dypgangskrav
+oppfylt</span></p>
 </details>
-<h3 id="a3-solution">A3 Solution</h3>
-<p>Use the A2 input set:</p>
+<h3 id="a3-løsning">A3 Løsning</h3>
+<p>Bruk inndataene fra A2:</p>
 <ul>
-<li><span class="math inline">\(L=72.0\ \mathrm{m}\)</span>, <span
-class="math inline">\(B=11.0\ \mathrm{m}\)</span>, <span
-class="math inline">\(T=2.80\ \mathrm{m}\)</span></li>
-<li><span class="math inline">\(l_d=6.0\ \mathrm{m}\)</span></li>
-<li><span class="math inline">\(\nabla=LBT=72\cdot 11\cdot 2.8=2217.6\
-\mathrm{m^3}\)</span></li>
+<li><span class="math inline"><em>L</em> = 72.0 m</span>, <span
+class="math inline"><em>B</em> = 11.0 m</span>, <span
+class="math inline"><em>T</em> = 2.80 m</span></li>
+<li><span
+class="math inline"><em>l</em><sub><em>d</em></sub> = 6.0 m</span></li>
+<li><span
+class="math inline">∇ = <em>L</em><em>B</em><em>T</em> = 72 ⋅ 11 ⋅ 2.8 = 2217.6 m<sup>3</sup></span></li>
 </ul>
-<p>Waterplane area before and after damage:</p>
-<p><span class="math display">\[
-A_{WL}=LB=72\cdot 11=792\ \mathrm{m^2}
-\]</span></p>
-<p><span class="math display">\[
-A_{WL_S}=(L-l_d)B=(72-6)\cdot 11=726\ \mathrm{m^2}
-\]</span></p>
-<p><span class="math display">\[
-\Delta A_{WL}=792-726=66\ \mathrm{m^2}
-\]</span></p>
-<p>Intact transverse waterplane inertia for a box waterplane:</p>
-<p><span class="math display">\[
+<p>Vannlinjeareal for og etter skade:</p>
+<p><span
+class="math display"><em>A</em><sub><em>W</em><em>L</em></sub> = <em>L</em><em>B</em> = 72 ⋅ 11 = 792 m<sup>2</sup></span></p>
+<p><span
+class="math display"><em>A</em><sub><em>W</em><em>L</em><sub><em>S</em></sub></sub> = (<em>L</em> − <em>l</em><sub><em>d</em></sub>)<em>B</em> = (72 − 6) ⋅ 11 = 726 m<sup>2</sup></span></p>
+<p><span
+class="math display"><em>Δ</em><em>A</em><sub><em>W</em><em>L</em></sub> = 792 − 726 = 66 m<sup>2</sup></span></p>
+<p>Intakt tverrskips vannlinjetreghetsmoment for en
+box-barge-vannlinje:</p>
+<p><span class="math display">$$
 I_{WL}=\frac{LB^3}{12}=\frac{72\cdot 11^3}{12}=7986.0\ \mathrm{m^4}
-\]</span></p>
-<p>Damaged transverse waterplane inertia:</p>
-<p><span class="math display">\[
+$$</span></p>
+<p>Skadet tverrskips vannlinjetreghetsmoment:</p>
+<p><span class="math display">$$
 I_{WL_S}=\frac{(L-l_d)B^3}{12}=\frac{66\cdot 11^3}{12}=7320.5\
 \mathrm{m^4}
-\]</span></p>
-<p>Intact and damaged transverse metacentric radii:</p>
-<p><span class="math display">\[
+$$</span></p>
+<p>Intakt og skadet tverrskips metasenterradius:</p>
+<p><span class="math display">$$
 BM_T=\frac{I_{WL}}{\nabla}=\frac{7986.0}{2217.6}=3.601\ \mathrm{m}
-\]</span></p>
-<p><span class="math display">\[
+$$</span></p>
+<p><span class="math display">$$
 BM_{T_S}=\frac{I_{WL_S}}{\nabla}=\frac{7320.5}{2217.6}=3.301\ \mathrm{m}
-\]</span></p>
-<p>Reduction:</p>
-<p><span class="math display">\[
-\Delta I_{WL}=7986.0-7320.5=665.5\ \mathrm{m^4}
-\]</span></p>
-<p><span class="math display">\[
-\Delta BM_T=3.601-3.301=0.300\ \mathrm{m}
-\]</span></p>
-<p>Final answer:</p>
+$$</span></p>
+<p>Reduksjon:</p>
+<p><span
+class="math display"><em>Δ</em><em>I</em><sub><em>W</em><em>L</em></sub> = 7986.0 − 7320.5 = 665.5 m<sup>4</sup></span></p>
+<p><span
+class="math display"><em>Δ</em><em>B</em><em>M</em><sub><em>T</em></sub> = 3.601 − 3.301 = 0.300 m</span></p>
+<p>Fasit:</p>
 <ul>
-<li>Waterplane area before/after: <span class="math inline">\(792\
-\rightarrow\ 726\ \mathrm{m^2}\)</span></li>
-<li><span class="math inline">\(I_{WL}\)</span> before/after: <span
-class="math inline">\(7986.0\ \rightarrow\ 7320.5\
-\mathrm{m^4}\)</span></li>
-<li><span class="math inline">\(BM_T\)</span> before/after: <span
-class="math inline">\(3.601\ \rightarrow\ 3.301\
-\mathrm{m}\)</span></li>
-<li>Interpretation: damaged waterplane has lower inertia, so $BM_T$
-decreases.</li>
+<li>Vannlinjeareal for/etter skade: <span
+class="math inline">792 → 726 m<sup>2</sup></span></li>
+<li><span
+class="math inline"><em>I</em><sub><em>W</em><em>L</em></sub></span>
+for/etter skade: <span
+class="math inline">7986.0 → 7320.5 m<sup>4</sup></span></li>
+<li><span
+class="math inline"><em>B</em><em>M</em><sub><em>T</em></sub></span>
+for/etter skade: <span class="math inline">3.601 → 3.301 m</span></li>
+<li>Tolkning: skadet vannlinje har lavere treghet, derfor avtar <span
+class="math inline"><em>B</em><em>M</em><sub><em>T</em></sub></span>.</li>
 </ul>
-<h3 id="a4-solution">A4 Solution</h3>
-<p>Use the D1 damaged-condition inputs:</p>
+<h3 id="a4-løsning">A4 Løsning</h3>
+<p>Bruk skadet-tilstand-inndataene fra D1:</p>
 <ul>
-<li><span class="math inline">\(KB_S=1.62\ \mathrm{m}\)</span></li>
-<li><span class="math inline">\(I_{WL_S}=7600\
-\mathrm{m^4}\)</span></li>
-<li><span class="math inline">\(\nabla=2160\ \mathrm{m^3}\)</span></li>
-<li><span class="math inline">\(KG=4.20\ \mathrm{m}\)</span></li>
+<li><span
+class="math inline"><em>K</em><em>B</em><sub><em>S</em></sub> = 1.62 m</span></li>
+<li><span
+class="math inline"><em>I</em><sub><em>W</em><em>L</em><sub><em>S</em></sub></sub> = 7600 m<sup>4</sup></span></li>
+<li><span class="math inline">∇ = 2160 m<sup>3</sup></span></li>
+<li><span class="math inline"><em>K</em><em>G</em> = 4.20 m</span></li>
 </ul>
-<p>Compute damaged transverse metacentric radius:</p>
-<p><span class="math display">\[
+<p>Beregn skadet tverrskips metasenterradius:</p>
+<p><span class="math display">$$
 BM_{T_S}=\frac{I_{WL_S}}{\nabla}=\frac{7600}{2160}=3.519\ \mathrm{m}
-\]</span></p>
-<p>Then compute damaged metacentric height:</p>
-<p><span class="math display">\[
-GM_S=KB_S+BM_{T_S}-KG=1.62+3.519-4.20=0.939\ \mathrm{m}
-\]</span></p>
-<p>Final answer:</p>
+$$</span></p>
+<p>Beregn deretter skadet metasentrisk høyde:</p>
+<p><span
+class="math display"><em>G</em><em>M</em><sub><em>S</em></sub> = <em>K</em><em>B</em><sub><em>S</em></sub> + <em>B</em><em>M</em><sub><em>T</em><sub><em>S</em></sub></sub> − <em>K</em><em>G</em> = 1.62 + 3.519 − 4.20 = 0.939 m</span></p>
+<p>Fasit:</p>
 <ul>
-<li><span class="math inline">\(KB_S=1.62\ \mathrm{m}\)</span></li>
-<li><span class="math inline">\(BM_{T_S}=3.519\ \mathrm{m}\)</span></li>
-<li><span class="math inline">\(GM_S=0.939\ \mathrm{m}\)</span></li>
-<li>Stability interpretation: <span
-class="math inline">\(GM_S&gt;0\)</span>, so residual initial transverse
-stability remains positive.</li>
+<li><span
+class="math inline"><em>K</em><em>B</em><sub><em>S</em></sub> = 1.62 m</span></li>
+<li><span
+class="math inline"><em>B</em><em>M</em><sub><em>T</em><sub><em>S</em></sub></sub> = 3.519 m</span></li>
+<li><span
+class="math inline"><em>G</em><em>M</em><sub><em>S</em></sub> = 0.939 m</span></li>
+<li>Stabilitetstolkning: <span
+class="math inline"><em>G</em><em>M</em><sub><em>S</em></sub> &gt; 0</span>,
+slik at gjenværende initial tverrskips stabilitet fortsatt er
+positiv.</li>
 </ul>
-<h3 id="b1-solution">B1 Solution</h3>
-<p>Assumptions for a quick sensitivity sweep:</p>
+<h3 id="b1-løsning">B1 Løsning</h3>
+<p>Forutsetninger for en rask sensitivitetsstudie:</p>
 <ul>
-<li>One compartment damaged, with equal-length compartments: <span
-class="math inline">\(l_d=L/N\)</span></li>
-<li>Symmetric draft only (no trim in this drill): <span
-class="math display">\[T_S=\frac{L}{L-l_d}T\]</span></li>
-<li>Box-barge vertical approximation: <span
-class="math inline">\(KB_S\approx T_S/2\)</span></li>
-<li>Damaged transverse inertia approximation: <span
-class="math inline">\(I_{WL_S}\approx (L-l_d)B^3/12\)</span></li>
-<li>Conserved displacement volume in this model: <span
-class="math inline">\(\nabla=LBT\)</span></li>
-<li>Compare <span class="math inline">\(GM_S\)</span> with constant
-<span class="math inline">\(KG=4.20\ \mathrm{m}\)</span>: <span
-class="math display">\[BM_{T_S}=\frac{I_{WL_S}}{\nabla},\qquad
-GM_S\approx KB_S+BM_{T_S}-KG\]</span></li>
+<li>En skadet avdeling, med like lange avdelinger: <span
+class="math inline"><em>l</em><sub><em>d</em></sub> = <em>L</em>/<em>N</em></span></li>
+<li>Bare symmetrisk dypgang (ingen trim i denne oppgaven): <span
+class="math display">$$T_S=\frac{L}{L-l_d}T$$</span></li>
+<li>Box-barge-tilnærming vertikalt: <span
+class="math inline"><em>K</em><em>B</em><sub><em>S</em></sub> ≈ <em>T</em><sub><em>S</em></sub>/2</span></li>
+<li>Tilnærmet skadet tverrskips vannlinjetreghet: <span
+class="math inline"><em>I</em><sub><em>W</em><em>L</em><sub><em>S</em></sub></sub> ≈ (<em>L</em> − <em>l</em><sub><em>d</em></sub>)<em>B</em><sup>3</sup>/12</span></li>
+<li>Bevart volumdeplasement i denne modellen: <span
+class="math inline">∇ = <em>L</em><em>B</em><em>T</em></span></li>
+<li>Sammenlign <span
+class="math inline"><em>G</em><em>M</em><sub><em>S</em></sub></span> med
+konstant <span class="math inline"><em>K</em><em>G</em> = 4.20 m</span>:
+<span class="math display">$$BM_{T_S}=\frac{I_{WL_S}}{\nabla},\qquad
+GM_S\approx KB_S+BM_{T_S}-KG$$</span></li>
 </ul>
-<p>Example comparison:</p>
+<p>Eksempeloversikt:</p>
 <table>
 <colgroup>
-<col style="width: 9%" />
-<col style="width: 12%" />
-<col style="width: 12%" />
-<col style="width: 12%" />
-<col style="width: 12%" />
-<col style="width: 12%" />
-<col style="width: 12%" />
-<col style="width: 12%" />
+<col style="width: 8%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
 </colgroup>
 <thead>
 <tr>
-<th>Case</th>
-<th style="text-align: right;"><span class="math inline">\(L\)</span>
-(m)</th>
-<th style="text-align: right;"><span class="math inline">\(B\)</span>
-(m)</th>
-<th style="text-align: right;"><span class="math inline">\(T\)</span>
+<th>Tilfelle</th>
+<th style="text-align: right;"><span
+class="math inline"><em>L</em></span> (m)</th>
+<th style="text-align: right;"><span
+class="math inline"><em>B</em></span> (m)</th>
+<th style="text-align: right;"><span
+class="math inline"><em>T</em></span> (m)</th>
+<th style="text-align: right;"><span
+class="math inline"><em>N</em></span></th>
+<th style="text-align: right;"><span
+class="math inline"><em>l</em><sub><em>d</em></sub></span> (m)</th>
+<th style="text-align: right;"><span
+class="math inline"><em>T</em><sub><em>S</em></sub></span> (m)</th>
+<th style="text-align: right;"><span
+class="math inline"><em>B</em><em>M</em><sub><em>T</em><sub><em>S</em></sub></sub></span>
 (m)</th>
 <th style="text-align: right;"><span
-class="math inline">\(N\)</span></th>
-<th style="text-align: right;"><span class="math inline">\(l_d\)</span>
-(m)</th>
-<th style="text-align: right;"><span class="math inline">\(T_S\)</span>
-(m)</th>
-<th style="text-align: right;"><span class="math inline">\(GM_S\)</span>
+class="math inline"><em>G</em><em>M</em><sub><em>S</em></sub></span>
 (m)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Base</td>
+<td>Basis</td>
 <td style="text-align: right;">60</td>
 <td style="text-align: right;">12</td>
 <td style="text-align: right;">3.0</td>
 <td style="text-align: right;">5</td>
 <td style="text-align: right;">12.0</td>
 <td style="text-align: right;">3.750</td>
+<td style="text-align: right;">3.200</td>
 <td style="text-align: right;">0.875</td>
 </tr>
 <tr>
-<td>Fewer compartments (larger damage length)</td>
+<td>Færre avdelinger (stor skadelengde)</td>
 <td style="text-align: right;">60</td>
 <td style="text-align: right;">12</td>
 <td style="text-align: right;">3.0</td>
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">20.0</td>
 <td style="text-align: right;">4.500</td>
+<td style="text-align: right;">2.667</td>
 <td style="text-align: right;">0.717</td>
 </tr>
 <tr>
-<td>Wider barge</td>
+<td>Bredere lekter</td>
 <td style="text-align: right;">60</td>
 <td style="text-align: right;">14</td>
 <td style="text-align: right;">3.0</td>
 <td style="text-align: right;">5</td>
 <td style="text-align: right;">12.0</td>
 <td style="text-align: right;">3.750</td>
+<td style="text-align: right;">4.356</td>
 <td style="text-align: right;">2.031</td>
 </tr>
 <tr>
-<td>Higher intact draft</td>
+<td>Stor initial dypgang</td>
 <td style="text-align: right;">60</td>
 <td style="text-align: right;">12</td>
 <td style="text-align: right;">3.5</td>
 <td style="text-align: right;">5</td>
 <td style="text-align: right;">12.0</td>
 <td style="text-align: right;">4.375</td>
+<td style="text-align: right;">2.743</td>
 <td style="text-align: right;">0.731</td>
 </tr>
 </tbody>
 </table>
-<p>Trend summary:</p>
+<p>Trendoppsummering:</p>
 <ul>
-<li>Larger damage length (<span class="math inline">\(N\)</span>
-smaller) increases <span class="math inline">\(T_S\)</span> and tends to
-reduce <span class="math inline">\(GM_S\)</span>.</li>
-<li>Increasing breadth strongly increases <span
-class="math inline">\(I_{WL_S}\)</span> and <span
-class="math inline">\(BM_{T_S}\)</span>, so <span
-class="math inline">\(GM_S\)</span> improves.</li>
-<li>Increasing intact draft raises <span
-class="math inline">\(KB_S\)</span> but also increases displacement; in
-this setup, net <span class="math inline">\(GM_S\)</span> can
-decrease.</li>
+<li>Stor skadelengde (<span class="math inline"><em>N</em></span>
+mindre) gir større <span
+class="math inline"><em>T</em><sub><em>S</em></sub></span> og vil ofte
+redusere <span
+class="math inline"><em>G</em><em>M</em><sub><em>S</em></sub></span>.</li>
+<li>Økt bredde gir klart større <span
+class="math inline"><em>I</em><sub><em>W</em><em>L</em><sub><em>S</em></sub></sub></span>
+og <span
+class="math inline"><em>B</em><em>M</em><sub><em>T</em><sub><em>S</em></sub></sub></span>,
+slik at <span
+class="math inline"><em>G</em><em>M</em><sub><em>S</em></sub></span>
+bedres.</li>
+<li>Større intakt dypgang gir høyere <span
+class="math inline"><em>K</em><em>B</em><sub><em>S</em></sub></span>,
+men også større deplasement; i dette oppsettet kan nettoeffekten bli
+lavere <span
+class="math inline"><em>G</em><em>M</em><sub><em>S</em></sub></span>.</li>
 </ul>
-<h3 id="d1-solution">D1 Solution</h3>
-<p>Step 1: Initial displacement</p>
-<p><span class="math display">\[
-\nabla = LBT = 60 \cdot 12 \cdot 3.00 = 2160\ \mathrm{m^3}
-\]</span></p>
-<p>With <span class="math inline">\(\rho = 1.0\
-\mathrm{t/m^3}\)</span>:</p>
-<p><span class="math display">\[
-\Delta = 2160\ \mathrm{t}
-\]</span></p>
-<p>Step 2: Parallel submergence due to lost buoyancy</p>
-<p><span class="math display">\[
-LBT = (L-l_d)BT_S
-\]</span></p>
-<p><span class="math display">\[
+<h3 id="d1-løsning">D1 Løsning</h3>
+<p>Steg 1: Initialt deplasement</p>
+<p><span
+class="math display">∇ = <em>L</em><em>B</em><em>T</em> = 60 ⋅ 12 ⋅ 3.00 = 2160 m<sup>3</sup></span></p>
+<p>Med <span
+class="math inline"><em>ρ</em> = 1.0 t/m<sup>3</sup></span>:</p>
+<p><span class="math display"><em>Δ</em> = 2160 t</span></p>
+<p>Steg 2: Parallell nedsynking på grunn av tapt oppdrift</p>
+<p><span
+class="math display"><em>L</em><em>B</em><em>T</em> = (<em>L</em> − <em>l</em><sub><em>d</em></sub>)<em>B</em><em>T</em><sub><em>S</em></sub></span></p>
+<p><span class="math display">$$
 T_S = \frac{L}{L-l_d}T = \frac{60}{60-3.5}\cdot 3.00 = 3.1858\
 \mathrm{m}
-\]</span></p>
-<p><span class="math display">\[
-\nabla_S = \nabla = 2160\ \mathrm{m^3}
-\]</span></p>
-<p><span class="math display">\[
-\Delta_S = \Delta = 2160\ \mathrm{t}
-\]</span></p>
-<p>Step 3: Updated hydrostatics</p>
-<p><span class="math display">\[
+$$</span></p>
+<p><span
+class="math display">∇<sub><em>S</em></sub> = ∇ = 2160 m<sup>3</sup></span></p>
+<p><span
+class="math display"><em>Δ</em><sub><em>S</em></sub> = <em>Δ</em> = 2160 t</span></p>
+<p>Steg 3: Oppdatert hydrostatikk</p>
+<p><span class="math display">$$
 BM_{T_S} = \frac{I_{WL_S}}{\nabla} = \frac{7600}{2160} = 3.519\
 \mathrm{m}
-\]</span></p>
-<p><span class="math display">\[
+$$</span></p>
+<p><span class="math display">$$
 BM_{L_S} = \frac{I_{F_S}}{\nabla} = \frac{2.10 \times 10^6}{2160} =
 972.2\ \mathrm{m}
-\]</span></p>
-<p><span class="math display">\[
-GM_S = KB_S + BM_{T_S} - KG = 1.62 + 3.519 - 4.20 = 0.939\ \mathrm{m}
-\]</span></p>
-<p>Step 4: Trim and draft distribution</p>
-<p>Using AP-based coordinates, take <span class="math inline">\(LCG =
-30.00\ \mathrm{m}\)</span> and <span class="math inline">\(LCB_S =
-29.75\ \mathrm{m}\)</span>:</p>
-<p><span class="math display">\[
-M_{trim} = \Delta \times (LCG - LCB_S) = 2160(30.00 - 29.75) = 540.0\
-\mathrm{t\,m}
-\]</span></p>
-<p>Approximate moment-to-change-trim 1 cm:</p>
-<p><span class="math display">\[
+$$</span></p>
+<p><span
+class="math display"><em>G</em><em>M</em><sub><em>S</em></sub> = <em>K</em><em>B</em><sub><em>S</em></sub> + <em>B</em><em>M</em><sub><em>T</em><sub><em>S</em></sub></sub> − <em>K</em><em>G</em> = 1.62 + 3.519 − 4.20 = 0.939 m</span></p>
+<p>Steg 4: Trim og fordeling av dypgang</p>
+<p>Med AP-baserte koordinater brukes <span
+class="math inline"><em>L</em><em>C</em><em>G</em> = 30.00 m</span> og
+<span
+class="math inline"><em>L</em><em>C</em><em>B</em><sub><em>S</em></sub> = 29.75 m</span>:</p>
+<p><span
+class="math display"><em>M</em><sub><em>t</em><em>r</em><em>i</em><em>m</em></sub> = <em>Δ</em> × (<em>L</em><em>C</em><em>G</em> − <em>L</em><em>C</em><em>B</em><sub><em>S</em></sub>) = 2160(30.00 − 29.75) = 540.0 t m</span></p>
+<p>Tilnærmet moment til trimendring på 1 cm:</p>
+<p><span class="math display">$$
 MCT_{1cm_S} = \frac{\Delta \times BM_{L_S}}{100 \times L} = \frac{2160
 \cdot 972.2}{100 \cdot 60} = 350.0\ \mathrm{t\,m/cm}
-\]</span></p>
-<p><span class="math display">\[
+$$</span></p>
+<p><span class="math display">$$
 trim = \frac{M_{trim}}{MCT_{1cm_S}} = \frac{540.0}{350.0} = 1.543\
 \mathrm{cm} = 0.01543\ \mathrm{m}
-\]</span></p>
-<p>With <span class="math inline">\(LCF_S = 30.00\ \mathrm{m}\)</span>
-from AP (midship), trim components <span
-class="math inline">\(t_a\)</span> and <span
-class="math inline">\(t_f\)</span> are each half the total:</p>
-<p><span class="math display">\[
-t_f = 0.00771\ \mathrm{m},\qquad t_a = 0.00771\ \mathrm{m}
-\]</span></p>
-<p><span class="math display">\[
-T_F = T_S + t_f = 3.1935\ \mathrm{m}
-\]</span></p>
-<p><span class="math display">\[
-T_A = T_S - t_a = 3.1781\ \mathrm{m}
-\]</span></p>
-<p>Step 5: Acceptance checks</p>
-<p><span class="math display">\[
-GM_S = 0.939\ \mathrm{m} &gt; 0\ \mathrm{m}\ \Rightarrow\ \text{OK}
-\]</span></p>
-<p><span class="math display">\[
-T_{S,\max} \approx \max(T_A, T_F) = 3.1935\ \mathrm{m} &lt; D = 6.0\
-\mathrm{m}\ \Rightarrow\ \text{OK}
-\]</span></p>
-<p>Final statement:</p>
+$$</span></p>
+<p>Med <span
+class="math inline"><em>L</em><em>C</em><em>F</em><sub><em>S</em></sub> = 30.00 m</span>
+fra AP (midskips), blir AP-baserte trimandeler like store:</p>
+<p><span class="math display">$$
+a_{akter}=\frac{LCF_S}{L}=0.50,\qquad a_{for}=\frac{L-LCF_S}{L}=0.50
+$$</span></p>
+<p><span
+class="math display"><em>t</em><sub><em>a</em></sub> = <em>t</em><em>r</em><em>i</em><em>m</em> ⋅ <em>a</em><sub><em>a</em><em>k</em><em>t</em><em>e</em><em>r</em></sub> = 0.00771 m,   <em>t</em><sub><em>f</em></sub> = <em>t</em><em>r</em><em>i</em><em>m</em> ⋅ <em>a</em><sub><em>f</em><em>o</em><em>r</em></sub> = 0.00771 m</span></p>
+<p><span
+class="math display"><em>T</em><sub><em>F</em></sub> = <em>T</em><sub><em>S</em></sub> + <em>t</em><sub><em>f</em></sub> = 3.1935 m</span></p>
+<p><span
+class="math display"><em>T</em><sub><em>A</em></sub> = <em>T</em><sub><em>S</em></sub> − <em>t</em><sub><em>a</em></sub> = 3.1781 m</span></p>
+<p>Steg 5: Akseptkontroller</p>
+<p><span
+class="math display"><em>G</em><em>M</em><sub><em>S</em></sub> = 0.939 m &gt; 0 m ⇒ OK</span></p>
+<p><span
+class="math display"><em>T</em><sub><em>c</em><em>r</em><em>i</em><em>t</em></sub> = max (<em>T</em><sub><em>A</em></sub>, <em>T</em><sub><em>F</em></sub>) = 3.1935 m &lt; <em>D</em> = 6.0 m ⇒ OK</span></p>
+<p>Sluttvurdering:</p>
 <ul>
-<li>Residual stability criterion passed.</li>
-<li>Draft/depth criterion passed.</li>
-<li>Solved symmetric damaged draft: <span class="math inline">\(T_S =
-3.1858\ \mathrm{m}\)</span>.</li>
-<li>Final damaged drafts: <span class="math inline">\(T_A = 3.1781\
-\mathrm{m}\)</span> and <span class="math inline">\(T_F = 3.1935\
-\mathrm{m}\)</span>.</li>
+<li>Kravet til gjenværende stabilitet er oppfylt.</li>
+<li>Kravet til dypgang mot dybde er oppfylt.</li>
+<li>Beregnet symmetrisk skadet dypgang: <span
+class="math inline"><em>T</em><sub><em>S</em></sub> = 3.1858 m</span>.</li>
+<li>Endelige skadede dypganger: <span
+class="math inline"><em>T</em><sub><em>A</em></sub> = 3.1781 m</span> og
+<span
+class="math inline"><em>T</em><sub><em>F</em></sub> = 3.1935 m</span>.</li>
 </ul>
-<h3 id="e1-solution">E1 Solution</h3>
-<p>Use the same barge and D1 values for a like-for-like comparison.</p>
-<p>Reference damaged-flooding result from D1:</p>
+<h3 id="e1-løsning">E1 Løsning</h3>
+<p>Bruk inndataene fra E1:</p>
 <ul>
-<li><span class="math inline">\(GM_S=0.939\ \mathrm{m}\)</span></li>
+<li><span class="math inline"><em>L</em> = 50.0 m</span>, <span
+class="math inline"><em>B</em> = 10.0 m</span>, <span
+class="math inline"><em>T</em> = 2.80 m</span></li>
+<li><span
+class="math inline"><em>l</em><sub><em>t</em><em>a</em><em>n</em><em>k</em></sub> = <em>l</em><sub><em>d</em></sub> = 5.0 m</span></li>
+<li><span
+class="math inline">∇ = <em>L</em><em>B</em><em>T</em> = 50 ⋅ 10 ⋅ 2.80 = 1400 m<sup>3</sup></span></li>
 </ul>
-<p>Estimate intact <span class="math inline">\(GM\)</span> for the same
-box barge before damage:</p>
-<p><span class="math display">\[
-KB\approx T/2=1.50\ \mathrm{m},\qquad I_{WL}=\frac{LB^3}{12}=8640\
+<p><strong>Metode 1 - Fri væskeoverflate-korreksjon (intakt slakk
+tank):</strong></p>
+<p>Tverrskips treghetsmoment for tankens fri overflate:</p>
+<p><span class="math display">$$
+i_{tank} = \frac{l_{tank}\,B^3}{12} = \frac{5.0\cdot 10^3}{12} = 416.7\
 \mathrm{m^4}
-\]</span></p>
-<p><span class="math display">\[
-BM_T=\frac{I_{WL}}{\nabla}=\frac{8640}{2160}=4.000\ \mathrm{m}
-\]</span></p>
-<p><span class="math display">\[
-GM_{intact}\approx KB+BM_T-KG=1.50+4.000-4.20=1.300\ \mathrm{m}
-\]</span></p>
-<p>So the damaged flooded compartment reduces metacentric height by
-approximately:</p>
-<p><span class="math display">\[
-\Delta GM_{damage}\approx 1.300-0.939=0.361\ \mathrm{m}
-\]</span></p>
-<p>For a slack tank, the usual idealized correction is a virtual rise of
-<span class="math inline">\(G\)</span>:</p>
-<p><span class="math display">\[
-\Delta GM_{FSE}=\frac{i_{fs}}{\nabla}
-\]</span></p>
-<p>If an example slack tank has <span class="math inline">\(i_{fs}=250\
-\mathrm{m^4}\)</span>, then:</p>
-<p><span class="math display">\[
-\Delta GM_{FSE}=\frac{250}{2160}=0.116\ \mathrm{m}
-\]</span></p>
-<p>Comparison and interpretation:</p>
+$$</span></p>
+<p>Korreksjon (samme tetthet som sjøvann, <span
+class="math inline"><em>ρ</em><sub><em>c</em><em>o</em><em>n</em><em>t</em><em>e</em><em>n</em><em>t</em></sub> = <em>ρ</em></span>):</p>
+<p><span class="math display">$$
+\Delta GM_{FSE} = \frac{i_{tank}}{\nabla} = \frac{416.7}{1400} = 0.298\
+\mathrm{m}
+$$</span></p>
+<p><strong>Metode 2 - Tapt oppdrift (skadet avdeling, <span
+class="math inline"><em>l</em><sub><em>d</em></sub> = <em>l</em><sub><em>t</em><em>a</em><em>n</em><em>k</em></sub></span>):</strong></p>
+<p>Reduksjon i tverrskips vannlinjetreghetsmoment:</p>
+<p><span class="math display">$$
+\Delta I_{WL} = \frac{l_d\,B^3}{12} = \frac{5.0\cdot 10^3}{12} = 416.7\
+\mathrm{m^4}
+$$</span></p>
+<p>Tilsvarende reduksjon i tverrskips metasenterradius:</p>
+<p><span class="math display">$$
+\Delta BM_T = \frac{\Delta I_{WL}}{\nabla} = \frac{416.7}{1400} = 0.298\
+\mathrm{m}
+$$</span></p>
+<p><strong>Sammenligning:</strong></p>
+<p><span
+class="math display"><em>Δ</em><em>G</em><em>M</em><sub><em>F</em><em>S</em><em>E</em></sub> = <em>Δ</em><em>B</em><em>M</em><sub><em>T</em></sub> = 0.298 m</span></p>
+<p>Resultatet er identisk fordi brøken <span
+class="math inline">$\frac{l\,B^3/12}{\nabla}$</span> er den samme i
+begge metoder når tanken og den skadede avdelingen har lik geometri og
+lik tetthet.</p>
+<p><strong>Fysisk tolkning:</strong></p>
 <ul>
-<li>In this example, damaged flooding (<span
-class="math inline">\(0.361\ \mathrm{m}\)</span> GM loss) is about 3.1
-times the slack-tank FSE loss (<span class="math inline">\(0.116\
-\mathrm{m}\)</span>).</li>
-<li>FSE mainly acts through a virtual rise in <span
-class="math inline">\(G\)</span>, while damaged flooding changes
-buoyancy geometry (<span class="math inline">\(KB\)</span>, <span
-class="math inline">\(BM\)</span>, <span
-class="math inline">\(LCB/LCF\)</span>) and can also induce trim.</li>
-<li>Therefore, a fully flooded damaged compartment is typically a
-broader and often more severe stability perturbation than a single slack
-tank.</li>
+<li>Begge korreksjonene stammer fra det samme matematiske uttrykket -
+tverrskips treghetsmoment delt på deplasementet.</li>
+<li>For den slakke tanken virker dette som en virtuell stigning av <span
+class="math inline"><em>G</em></span> (frioverflateeffekt).</li>
+<li>For den skadede avdelingen er det en reell reduksjon i <span
+class="math inline"><em>B</em><em>M</em><sub><em>T</em></sub></span>
+(redusert vannlinjeareal).</li>
+<li>Gitt nøyaktig lik geometri og tetthet gir de to metodene identisk
+GM-tap.</li>
 </ul>
-<h2 id="optional-notebook-mapping">8. Optional Notebook Mapping</h2>
-<p>Map each exercise to notebook cells:</p>
-<ul>
-<li>Markdown cell: task statement</li>
-<li>Code cell: starter template (â€œYour code goes hereâ€)</li>
-<li>Code cell: result checks</li>
-<li>Separate solution notebook</li>
-</ul>
-<h2 id="notebook-ready-cells-a2">9. Notebook-Ready Cells (A2)</h2>
-<p>Copy these directly into a notebook.</p>
-<h3 id="markdown-task-cell">9.1 Markdown Task Cell</h3>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## A2 - Three-Compartment Drill (Center Compartment Damaged)</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>A rectangular barge has:</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Length: $L=60.0\ \mathrm{m}$</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Breadth: $B=12.0\ \mathrm{m}$</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Depth: $D=6.0\ \mathrm{m}$</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Initial draft: $T=3.00\ \mathrm{m}$</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>3 equal longitudinal compartments, where the center compartment is fully damaged.</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>Tasks:</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Compute damaged compartment length $l_d$.</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Solve for symmetric damaged draft $T_S$ from</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  $$LBT=(L-l_d)BT_S$$</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Check if $T_S&lt;D$.</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>Use the code cell below and print each result with units.</span></code></pre></div>
-<h3 id="python-solution-cell">9.2 Python Solution Cell</h3>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A2 reference solution</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="fl">60.0</span>   <span class="co"># m</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> <span class="fl">12.0</span>   <span class="co"># m</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fl">6.0</span>    <span class="co"># m</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>T0 <span class="op">=</span> <span class="fl">3.00</span>  <span class="co"># m</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3 equal longitudinal compartments</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>ld <span class="op">=</span> L <span class="op">/</span> <span class="fl">3.0</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Solve T_S first</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>TS <span class="op">=</span> (L <span class="op">/</span> (L <span class="op">-</span> ld)) <span class="op">*</span> T0</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Check criterion</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>draft_ok <span class="op">=</span> TS <span class="op">&lt;</span> D</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Damaged compartment length l_d = </span><span class="sc">{</span>ld<span class="sc">:.2f}</span><span class="ss"> m&quot;</span>)</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Symmetric damaged draft T_S = </span><span class="sc">{</span>TS<span class="sc">:.4f}</span><span class="ss"> m&quot;</span>)</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Check T_S &lt; D: </span><span class="sc">{</span>TS<span class="sc">:.4f}</span><span class="ss"> &lt; </span><span class="sc">{</span>D<span class="sc">:.2f}</span><span class="ss"> -&gt; </span><span class="sc">{</span>draft_ok<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
-<h2 id="notebook-ready-cells-d1">10. Notebook-Ready Cells (D1)</h2>
-<p>Copy these directly into a notebook.</p>
-<h3 id="markdown-task-cell-1">10.1 Markdown Task Cell</h3>
-<div class="sourceCode" id="cb3"><pre
-class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## D1 - End-to-End Damage Equilibrium</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>Given a rectangular barge:</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$L=60.0\ \mathrm{m}$</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$B=12.0\ \mathrm{m}$</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$D=6.0\ \mathrm{m}$</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$T=3.00\ \mathrm{m}$</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$KG=4.20\ \mathrm{m}$</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Damaged compartment length $l_d=3.5\ \mathrm{m}$</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>Updated hydrostatic inputs at damaged condition:</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$KB_S=1.62\ \mathrm{m}$</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$I_{WL_S}=7600\ \mathrm{m^4}$</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$I_{F_S}=2.10\times 10^6\ \mathrm{m^4}$</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$LCB_S=29.75\ \mathrm{m}$ from AP</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$LCF_S=30.00\ \mathrm{m}$ from AP</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Use $\rho=1.0\ \mathrm{t/m^3}$</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>Tasks:</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Solve $T_S$ first from</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  $$LBT=(L-l_d)BT_S$$</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Set damaged displacement state with $\nabla_S=\nabla$ and $\Delta_S=\Delta$.</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Compute $BM_{T_S}$, $BM_{L_S}$, and $GM_S$.</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Compute trim and distribute into components $t_a$ and $t_f$, then determine $T_A$ and $T_F$.</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Check acceptance criteria: $GM_S&gt;0$ and $T_{S,max}&lt;D$.</span></code></pre></div>
-<h3 id="python-solution-cell-1">10.2 Python Solution Cell</h3>
-<div class="sourceCode" id="cb4"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># D1 reference solution</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="fl">60.0</span>          <span class="co"># m</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> <span class="fl">12.0</span>          <span class="co"># m</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fl">6.0</span>           <span class="co"># m</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> <span class="fl">3.00</span>          <span class="co"># m</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>KG <span class="op">=</span> <span class="fl">4.20</span>         <span class="co"># m</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>ld <span class="op">=</span> <span class="fl">3.5</span>          <span class="co"># m</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span> <span class="fl">1.0</span>         <span class="co"># t/m^3</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>KB_S <span class="op">=</span> <span class="fl">1.62</span>        <span class="co"># m</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>I_WL_S <span class="op">=</span> <span class="fl">7600.0</span>    <span class="co"># m^4</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>I_F_S <span class="op">=</span> <span class="fl">2.10e6</span>     <span class="co"># m^4</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>LCB_S <span class="op">=</span> <span class="fl">29.75</span>      <span class="co"># m from AP</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>LCF_S <span class="op">=</span> <span class="fl">30.0</span>       <span class="co"># m from AP</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Solve T_S from compartment length</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>TS <span class="op">=</span> (L <span class="op">/</span> (L <span class="op">-</span> ld)) <span class="op">*</span> T</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Displacement is conserved in this lost-buoyancy setup</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>nabla <span class="op">=</span> L <span class="op">*</span> B <span class="op">*</span> T</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>nabla_S <span class="op">=</span> nabla</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>Delta <span class="op">=</span> rho <span class="op">*</span> nabla</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>Delta_S <span class="op">=</span> Delta</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Hydrostatics</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>BM_TS <span class="op">=</span> I_WL_S <span class="op">/</span> nabla</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>BM_LS <span class="op">=</span> I_F_S <span class="op">/</span> nabla</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>GM_S <span class="op">=</span> KB_S <span class="op">+</span> BM_TS <span class="op">-</span> KG</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 4: Trim and final drafts</span></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>LCG <span class="op">=</span> <span class="fl">30.0</span></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>M_trim <span class="op">=</span> Delta_S <span class="op">*</span> (LCG <span class="op">-</span> LCB_S)             <span class="co"># t*m</span></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>MCT_1cm_S <span class="op">=</span> (Delta_S <span class="op">*</span> BM_LS) <span class="op">/</span> (<span class="fl">100.0</span> <span class="op">*</span> L)  <span class="co"># t*m/cm</span></span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>trim_cm <span class="op">=</span> M_trim <span class="op">/</span> MCT_1cm_S                <span class="co"># cm</span></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>trim_m <span class="op">=</span> trim_cm <span class="op">/</span> <span class="fl">100.0</span>                    <span class="co"># m</span></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>dTF <span class="op">=</span> <span class="op">+</span>trim_m <span class="op">/</span> <span class="fl">2.0</span></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>dTA <span class="op">=</span> <span class="op">-</span>trim_m <span class="op">/</span> <span class="fl">2.0</span></span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>TF <span class="op">=</span> TS <span class="op">+</span> dTF</span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>TA <span class="op">=</span> TS <span class="op">+</span> dTA</span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 5: Acceptance checks</span></span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>draft_ok <span class="op">=</span> <span class="bu">max</span>(TA, TF) <span class="op">&lt;</span> D</span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>gm_ok <span class="op">=</span> GM_S <span class="op">&gt;</span> <span class="fl">0.0</span></span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;--- D1 Results ---&quot;</span>)</span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;T_S = </span><span class="sc">{</span>TS<span class="sc">:.4f}</span><span class="ss"> m&quot;</span>)</span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;nabla_S = </span><span class="sc">{</span>nabla_S<span class="sc">:.2f}</span><span class="ss"> m^3&quot;</span>)</span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Delta_S = </span><span class="sc">{</span>Delta_S<span class="sc">:.2f}</span><span class="ss"> t&quot;</span>)</span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;BM_T_S = </span><span class="sc">{</span>BM_TS<span class="sc">:.3f}</span><span class="ss"> m&quot;</span>)</span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;BM_L_S = </span><span class="sc">{</span>BM_LS<span class="sc">:.1f}</span><span class="ss"> m&quot;</span>)</span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;GM_S = </span><span class="sc">{</span>GM_S<span class="sc">:.3f}</span><span class="ss"> m&quot;</span>)</span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;M_trim = </span><span class="sc">{</span>M_trim<span class="sc">:.1f}</span><span class="ss"> t*m&quot;</span>)</span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;MCT_1cm_S = </span><span class="sc">{</span>MCT_1cm_S<span class="sc">:.1f}</span><span class="ss"> t*m/cm&quot;</span>)</span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;trim = </span><span class="sc">{</span>trim_cm<span class="sc">:.3f}</span><span class="ss"> cm (</span><span class="sc">{</span>trim_m<span class="sc">:.5f}</span><span class="ss"> m)&quot;</span>)</span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;T_A = </span><span class="sc">{</span>TA<span class="sc">:.4f}</span><span class="ss"> m&quot;</span>)</span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;T_F = </span><span class="sc">{</span>TF<span class="sc">:.4f}</span><span class="ss"> m&quot;</span>)</span>
-<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Check GM_S &gt; 0: </span><span class="sc">{</span>GM_S<span class="sc">:.3f}</span><span class="ss"> &gt; 0 -&gt; </span><span class="sc">{</span>gm_ok<span class="sc">}</span><span class="ss">&quot;</span>)</span>
-<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Check T_S,max &lt; D: </span><span class="sc">{</span><span class="bu">max</span>(TA, TF)<span class="sc">:.4f}</span><span class="ss"> &lt; </span><span class="sc">{</span>D<span class="sc">:.2f}</span><span class="ss"> -&gt; </span><span class="sc">{</span>draft_ok<span class="sc">}</span><span class="ss">&quot;</span>)</span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Overall PASS: </span><span class="sc">{</span>gm_ok <span class="kw">and</span> draft_ok<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
 </body>
 </html>
 

@@ -554,3 +554,4 @@ Resultatet er identisk fordi brøken $\frac{l\,B^3/12}{\nabla}$ er den samme i b
 
 
 
+

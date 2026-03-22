@@ -1,9 +1,9 @@
-# Obligatorisk Oppgave: Usymmetrisk skade
+﻿# Obligatorisk Oppgave: Usymmetrisk skade
 
 
 **Last ned oppgavenotatbok:** [Oppgave_obligatorisk.ipynb](exports/Oppgave_obligatorisk.ipynb)
 
-En rektangulær lekter har 5 like store vanntette avdelinger langskips. Avdeling 2 (regnet fra AP) er fullstendig skadet.
+En rektangulÃ¦r lekter har 5 like store vanntette avdelinger langskips. Avdeling 2 (regnet fra AP) er fullstendig skadet.
 
 ![Lekteren har 5 vanntette avdelinger](exports/Lekteren_har_5_vanntette_avdelinger.png)
 
@@ -18,11 +18,12 @@ Beregn ny likevekt og endelige dypganger.
 - $D = 10.0\ \mathrm{m}$
 - Initial dypgang: $T = 3.20\ \mathrm{m}$
 - $KG = 3.80\ \mathrm{m}$
-- Sjøvannstetthet: $\rho = 1.025\ \mathrm{t/m^3}$
+- SjÃ¸vannstetthet: $\rho = 1.025\ \mathrm{t/m^3}$
 - $LCG = 40.0\ \mathrm{m}$ fra AP (midskips)
 - 5 like store avdelinger, slik at hver avdeling har lengde $L/5=16.0\ \mathrm{m}$
 - Skadet avdeling: nr. 2 fra AP, fra $x=16$ til $x=32\ \mathrm{m}$
 
 ## Merknader
 
-- Forventet resultat: dypgang akter blir større enn dypgang forut ($T_A > T_F$).
+- Forventet resultat: dypgang akter blir stÃ¸rre enn dypgang forut ($T_A > T_F$).
+
