@@ -1,0 +1,1218 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>skadestabilitet_teori</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<h1 id="modul-i-skadestabilitet-tapt-oppdrift-metoden">Modul i
+Skadestabilitet (Tapt oppdrift-metoden)</h1>
+<h2 id="lÃ¦ringsmÃ¥l">1. LÃ¦ringsmÃ¥l</h2>
+<p>Etter denne modulen skal studenten kunne:</p>
+<ul>
+<li>Beskrive forutsetningene i tapt oppdrift-metoden.</li>
+<li>Beregne ny likevekt etter skade ved symmetrisk oppfylling.</li>
+<li>Beregne og evaluere hydrostatiske endringer etter skade.</li>
+<li>Beregne trimvirkninger ved usymmetrisk skade og bestemme likevekt og
+dypgang forut og akter.</li>
+<li>Vurdere akseptabel flytetilstand og stabilitet ved skade</li>
+</ul>
+<h2 id="forutsetninger-symboler-og-enheter">2. Forutsetninger, Symboler
+og Enheter</h2>
+<h3 id="forutsetninger">2.1 Forutsetninger</h3>
+<ul>
+<li>Geometrien antas prismatisk (rektangulÃ¦r lekter) dersom ikke annet
+er oppgitt.</li>
+<li>Det skadede avdelingmet antas helt Ã¥pent mot sjÃ¸en og bidrar ikke
+med oppdrift.</li>
+<li>vanninntregningen i skadet avdeling vil ha samme tetthet.</li>
+<li>Statisk likevekt antas (ingen dynamiske fyllingseffekter).</li>
+<li>SmÃ¥ vinkel-antakelser for trim brukes.</li>
+<li>Fortegnskonvensjon:
+<ul>
+<li>Positiv dypgangsendring betyr stÃ¸rre neddykking.</li>
+<li>Positiv trim betyr forlig trim; <span class="math inline">\(T_F &gt;
+T_A\)</span>.</li>
+<li>Alle mÃ¥l er gitt fra aktreperpendikulÃ¦r og baseline, med <span
+class="math inline">\(x=0\)</span> i AP og <span
+class="math inline">\(x=L\)</span> i FP.</li>
+</ul></li>
+</ul>
+<h3 id="symboler">2.2 Symboler</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Betydning</th>
+<th>Enhet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math inline">\(L\)</span></td>
+<td>Lengde</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(B\)</span></td>
+<td>Bredde</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(D\)</span></td>
+<td>Dybde</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(T\)</span></td>
+<td>Intakt dypgang</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(T_S\)</span></td>
+<td>Symmetrisk skadet dypgang</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(\nabla\)</span></td>
+<td>Intakt volumdeplasement</td>
+<td>mÂ³</td>
+</tr>
+<tr>
+<td><span class="math inline">\(\nabla_S\)</span></td>
+<td>Skadet volumdeplasement</td>
+<td>mÂ³</td>
+</tr>
+<tr>
+<td><span class="math inline">\(I_{WL}\)</span></td>
+<td>Annet arealmoment for vannlinjearealet (intakt)</td>
+<td>mâ´</td>
+</tr>
+<tr>
+<td><span class="math inline">\(I_{WL_S}\)</span></td>
+<td>Annet arealmoment for vannlinjearealet (skadet)</td>
+<td>mâ´</td>
+</tr>
+<tr>
+<td><span class="math inline">\(I_F\)</span></td>
+<td>Annet arealmoment for vannlinjearealet om <span
+class="math inline">\(LCF\)</span> (intakt)</td>
+<td>mâ´</td>
+</tr>
+<tr>
+<td><span class="math inline">\(I_{F_S}\)</span></td>
+<td>Annet arealmoment for vannlinjearealet om <span
+class="math inline">\(LCF\)</span> (skadet)</td>
+<td>mâ´</td>
+</tr>
+<tr>
+<td><span class="math inline">\(KB\)</span></td>
+<td>Baseline til oppdriftssenter</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(BM\)</span></td>
+<td>Metasentrisk radius</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(GM\)</span></td>
+<td>Metasentrisk hÃ¸yde</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(LCB\)</span></td>
+<td>Langskips oppdriftssenter</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(LCF\)</span></td>
+<td>Langskips flotasjonssenter</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(t_a\)</span></td>
+<td>Akterlig trimendring</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(t_f\)</span></td>
+<td>Forlig trimendring</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(T_A\)</span></td>
+<td>Dypgang ved AP</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(T_F\)</span></td>
+<td>Dypgang ved FP</td>
+<td>m</td>
+</tr>
+</tbody>
+</table>
+<h2 id="framgangsmÃ¥te">3. FramgangsmÃ¥te</h2>
+<h3 id="oppsummering-av-geometri-og-hydrostatikk">3.1 Oppsummering av
+geometri og hydrostatikk</h3>
+<figure>
+<img src="exports/BargeGeometryScene_ManimCE_v0.20.1_mid.gif"
+alt="BargeGeometryScene animasjon" />
+<figcaption aria-hidden="true">BargeGeometryScene animasjon</figcaption>
+</figure>
+<p><em>Animasjon: Oppbygging av lekterens hoveddimensjoner.</em></p>
+<p>Inndata:</p>
+<ul>
+<li>Hoveddimensjoner: <span class="math inline">\(L\)</span>, <span
+class="math inline">\(B\)</span>, <span
+class="math inline">\(D\)</span></li>
+<li>Intakt tilstand: <span class="math inline">\(T\)</span>, <span
+class="math inline">\(KG\)</span></li>
+<li>Tetthet til vannet: <span class="math inline">\(\rho\)</span></li>
+</ul>
+<figure>
+<img src="exports/BargeHydrostaticsScene_ManimCE_v0.20.1_mid.gif"
+alt="BargeHydrostaticsScene animasjon" />
+<figcaption aria-hidden="true">BargeHydrostaticsScene
+animasjon</figcaption>
+</figure>
+<p><em>Animasjon: Intakt hydrostatikk - deplasementsvolum og
+metasentriske radier.</em></p>
+<p>Likninger:</p>
+<ul>
+<li>Volumdeplasement:</li>
+</ul>
+<p><span class="math display">\[
+\nabla = L \times B \times T
+\]</span></p>
+<ul>
+<li>Vektdeplasement:</li>
+</ul>
+<p><span class="math display">\[
+\Delta = \rho \times \nabla
+\]</span></p>
+<ul>
+<li>Vannlinjearealets â€œtreghetsmomentâ€:</li>
+</ul>
+<p><span class="math display">\[
+BM_T = \frac{I_{WL}}{\nabla},\qquad BM_L = \frac{I_F}{\nabla}
+\]</span></p>
+<p>Mini-sjekk:</p>
+<ul>
+<li>Hvis <span class="math inline">\(L=60\ \mathrm{m}\)</span>, <span
+class="math inline">\(B=12\ \mathrm{m}\)</span>, <span
+class="math inline">\(T=3.0\ \mathrm{m}\)</span>, er <span
+class="math inline">\(\nabla=2160\ \mathrm{m^3}\)</span>.</li>
+</ul>
+<h3 id="parallell-nedsynking">3.3 Parallell nedsynking</h3>
+<figure>
+<img src="exports/BargeDamageSubmergenceScene_ManimCE_v0.20.1_mid.gif"
+alt="BargeDamageSubmergenceScene animasjon" />
+<figcaption aria-hidden="true">BargeDamageSubmergenceScene
+animasjon</figcaption>
+</figure>
+<p><em>Animasjon: Parallell nedsynking til symmetrisk skadet dypgang
+<span class="math inline">\(T_S\)</span>.</em></p>
+<p>Denne fasen fastsetter ny symmetrisk skadet dypgang fÃ¸r trimeffekter
+legges til.</p>
+<p>NÃ¸dvendige inndata:</p>
+<ul>
+<li>Intakt dypgang <span class="math inline">\(T\)</span></li>
+<li>Lekterens lengde <span class="math inline">\(L\)</span> og bredde
+<span class="math inline">\(B\)</span></li>
+<li>Lengde pÃ¥ skadet avdeling <span
+class="math inline">\(l_d\)</span></li>
+</ul>
+<p>For en rektangulÃ¦r lekter med en skadet avdeling blir effektiv
+oppdriftsgivende lengde <span class="math inline">\((L-l_d)\)</span>.
+Volumdeplasementet er uendret:</p>
+<p><span class="math display">\[
+L \times B \times T = (L-l_d) \times B \times T_S
+\]</span></p>
+<p>Ny dypgang i skadet tilstand:</p>
+<p><span class="math display">\[
+T_S = \frac{L}{L-l_d}T
+\]</span></p>
+<p>Kontroller deretter:</p>
+<p><span class="math display">\[
+\nabla_S = \nabla
+\]</span></p>
+<p>Eksempel: lekter med 3 like store avdelinger (midtre avdeling
+skadet)</p>
+<ul>
+<li>Gitt: <span class="math inline">\(L=60\ \mathrm{m}\)</span>, <span
+class="math inline">\(B=12\ \mathrm{m}\)</span>, <span
+class="math inline">\(T=3.00\ \mathrm{m}\)</span>, 3 like
+avdelinger</li>
+<li>Lengde pÃ¥ skadet avdeling: <span class="math inline">\(l_d=L/3=20\
+\mathrm{m}\)</span></li>
+</ul>
+<p><span class="math display">\[
+T_S = \frac{L}{L-l_d}T = \frac{60}{60-20}\cdot 3.00 = 4.50\ \mathrm{m}
+\]</span></p>
+<p><span class="math display">\[
+\nabla_S = \nabla = L \times B \times T = 60\cdot 12\cdot 3.00 = 2160\
+\mathrm{m^3}
+\]</span></p>
+<p>Kontroll:</p>
+<ul>
+<li><span class="math inline">\(T_S &gt; T\)</span> (som forventet etter
+skade).</li>
+<li>Flytekriteriet i dette eksempelet er oppfylt hvis <span
+class="math inline">\(D &gt; 4.50\ \mathrm{m}\)</span>.
+<ul>
+<li>Hva skjer om <span class="math inline">\(T_S &gt; D\)</span> ?</li>
+</ul></li>
+</ul>
+<h3 id="endring-av-hydrostatikken-ved-skade">3.4 Endring av
+hydrostatikken ved skade</h3>
+<p>Vi skal her se pÃ¥ hva som skjer med de hydrostatiske verdiene <span
+class="math inline">\(KB\)</span>, <span
+class="math inline">\(A_WL\)</span> og <span
+class="math inline">\(BM_T\)</span> etter skade</p>
+<h4 id="vertikal-forskyvning-av-oppdriftssenter-kb">3.4.1 Vertikal
+forskyvning av oppdriftssenter <span
+class="math inline">\(KB\)</span></h4>
+<figure>
+<img src="exports/BargeDamageKBScene_ManimCE_v0.20.1_mid.gif"
+alt="BargeDamageKBScene animasjon" />
+<figcaption aria-hidden="true">BargeDamageKBScene animasjon</figcaption>
+</figure>
+<p><em>Animasjon: Vertikal forskyvning av oppdriftssenteret - <span
+class="math inline">\(KB_S\)</span> etter skade.</em></p>
+<p>Likninger:</p>
+<p>For en rektangulÃ¦r lekter i denne forenklede modellen er
+oppdriftssenteret i skadet tilstand:</p>
+<p><span class="math display">\[
+KB_S = \frac{T_S}{2}
+\]</span></p>
+<h4
+id="reduksjon-av-vannlinjearealet-a_wl-og-dets-treghetsmoment-bm_t">3.4.2
+Reduksjon av vannlinjearealet, $ A_{WL}$ og dets treghetsmoment $ BM_T
+$</h4>
+<figure>
+<img src="exports/BargeDamageBMScene_ManimCE_v0.20.1_mid.gif"
+alt="BargeDamageBMScene animasjon" />
+<figcaption aria-hidden="true">BargeDamageBMScene animasjon</figcaption>
+</figure>
+<p><em>Animasjon: Reduksjon av tverrskips metasenterradius <span
+class="math inline">\(BM_{T_S}\)</span> pÃ¥ grunn av redusert
+vannlinjeareal.</em></p>
+<p>Likninger:</p>
+<p>Skadet vannlinjeareal uttrykt ved skadet lengde <span
+class="math inline">\(l_d\)</span>:</p>
+<p><span class="math display">\[
+A_{WL_S} = (L-l_d)B
+\]</span></p>
+<p>For en rektangulÃ¦r vannlinje blir tilhÃ¸rende annet arealmoment:</p>
+<p><span class="math display">\[
+I_{WL_S} = \frac{(L-l_d)B^3}{12}
+\]</span></p>
+<p><span class="math display">\[
+BM_{T_S} = \frac{I_{WL_S}}{\nabla},\qquad BM_{L_S} =
+\frac{I_{F_S}}{\nabla}
+\]</span></p>
+<h4 id="initialstabilitet-ved-skade-gm_s">3.5 Initialstabilitet ved
+skade <span class="math inline">\(GM_S\)</span></h4>
+<p>Likninger:</p>
+<p><span class="math display">\[
+GM_S = KB_S + BM_{T_S} - KG
+\]</span></p>
+<p>Mini-sjekk:</p>
+<ul>
+<li>Hvis <span class="math inline">\(KB_S=1.62\ \mathrm{m}\)</span>,
+<span class="math inline">\(I_{WL_S}=7600\ \mathrm{m^4}\)</span>, <span
+class="math inline">\(\nabla=2160\ \mathrm{m^3}\)</span> og <span
+class="math inline">\(KG=4.20\ \mathrm{m}\)</span>, er <span
+class="math inline">\(GM_S=0.939\ \mathrm{m}\)</span>.</li>
+</ul>
+<h3 id="endring-av-hydrostatikken-ved-usymmetrisk-skade">3.6 Endring av
+hydrostatikken ved usymmetrisk skade</h3>
+<p>Vi skal her se pÃ¥ hva som skjer med de hydrostatiske verdiene <span
+class="math inline">\(LCB\)</span>, <span
+class="math inline">\(LCF\)</span> og <span
+class="math inline">\(BM_L\)</span> ved usymmetrisk skade. Med
+usymmetrisk mener vi at avdelingen som fylles ikke ligger i senter.</p>
+<figure>
+<img
+src="exports/BargeDamageLongitudinalBMScene_ManimCE_v0.20.1_mid.gif"
+alt="BargeDamageLongitudinalBMScene animasjon" />
+<figcaption aria-hidden="true">BargeDamageLongitudinalBMScene
+animasjon</figcaption>
+</figure>
+<p><em>Animasjon: Hydrostatikk ved usymmetrisk skade - <span
+class="math inline">\(LCB_S\)</span>, <span
+class="math inline">\(LCF_S\)</span> og <span
+class="math inline">\(BM_{L_S}\)</span>.</em></p>
+<ul>
+<li><span class="math inline">\(LCB_S\)</span> fra resterende intakte
+volumer i skadet tilstand.</li>
+<li><span class="math inline">\(LCF_S\)</span> fra vannlinjearealets
+arealsenter i skadet tilstand.</li>
+</ul>
+<p>Likninger:</p>
+<ul>
+<li>Langskips metasenterradius om flotasjonssenter, <span
+class="math inline">\(LCF_S\)</span> i skadet tilstand:</li>
+</ul>
+<p><span class="math display">\[
+BM_{L_S} = \frac{I_{F_S}}{\nabla}
+\]</span></p>
+<p>FremgangsmÃ¥te:</p>
+<ol type="1">
+<li>Bestem <span class="math inline">\(LCB_S\)</span> fra resterende
+oppdriftsgivende volum i skadet tilstand.</li>
+<li>Bestem <span class="math inline">\(LCF_S\)</span> fra
+vannlinjearealets arealsenter i skadet tilstand.</li>
+<li>Beregn <span class="math inline">\(BM_{L_S}\)</span>.</li>
+<li>Beregn <span class="math inline">\(M_{trim}\)</span> som inndata til
+Seksjon 3.7.</li>
+</ol>
+<p>Mini-sjekk:</p>
+<ul>
+<li>Hvis <span class="math inline">\(\Delta=2160\ \mathrm{t}\)</span>,
+<span class="math inline">\(LCB_S=29.75\ \mathrm{m}\)</span> fra AP, og
+<span class="math inline">\(LCG=30.00\ \mathrm{m}\)</span> fra AP, blir
+<span class="math inline">\(M_{trim}=540.0\ \mathrm{t\,m}\)</span>.</li>
+</ul>
+<h3 id="trimmoment-og-trimfordeling-t_a-t_f-t_a-t_f">3.7 Trimmoment og
+Trimfordeling (<span class="math inline">\(t_a\)</span>, <span
+class="math inline">\(t_f\)</span>, <span
+class="math inline">\(T_A\)</span>, <span
+class="math inline">\(T_F\)</span>)</h3>
+<figure>
+<img src="exports/BargeDamageTrimScene_ManimCE_v0.20.1_mid.gif"
+alt="BargeDamageTrimScene animasjon" />
+<figcaption aria-hidden="true">BargeDamageTrimScene
+animasjon</figcaption>
+</figure>
+<p><em>Animasjon: Beregning av trimmoment og fordeling i trim <span
+class="math inline">\(t_a\)</span> (akter) og <span
+class="math inline">\(t_f\)</span> (for).</em></p>
+<ul>
+<li>Trimarm:</li>
+</ul>
+<p><span class="math display">\[
+l_k = LCG-LCB_S
+\]</span></p>
+<ul>
+<li>Trimmoment:</li>
+</ul>
+<p><span class="math display">\[
+M_{T} = \Delta \times l_k
+\]</span></p>
+<ul>
+<li>Moment for Ã¥ endre trim 1 cm (box-barge-tilnÃ¦rming):</li>
+</ul>
+<p><span class="math display">\[
+MCT_{1cm_S} = \frac{\Delta \times BM_{L_S}}{100 \times L}
+\]</span></p>
+<p>Denne fasen omregner trimmomentet til for- og akterdypgang.</p>
+<p>Trinnvis fremgangsmÃ¥te:</p>
+<figure>
+<img src="exports/Trimoppsett.png" alt="Trimoppsett" />
+<figcaption aria-hidden="true">Trimoppsett</figcaption>
+</figure>
+<p><em>Figur: Trimoppsett og tegnkonvensjon for akter- og
+fordypgangsendringer.</em></p>
+<ol type="1">
+<li>Beregn arm</li>
+</ol>
+<p><span class="math display">\[
+l_k= LCG-LCB_S
+\]</span></p>
+<ol start="2" type="1">
+<li>Beregn trimmoment:</li>
+</ol>
+<p><span class="math display">\[
+M_{T}=\Delta \times l_k
+\]</span></p>
+<ol start="2" type="1">
+<li>Beregn moment for Ã¥ endre trim med 1 cm:</li>
+</ol>
+<p><span class="math display">\[
+MCT_{1cm_S}=\frac{\Delta \times BM_{L_S}}{100 \times L}
+\]</span></p>
+<ol start="3" type="1">
+<li>Beregn total trimendring:</li>
+</ol>
+<p><span class="math display">\[
+t_{cm} = \frac{M_{T}}{MCT_{1cm_S}}
+\]</span></p>
+<ol start="4" type="1">
+<li><p>Konverter til meter: <span
+class="math inline">\(t_m=t_{cm}/100\)</span>.</p></li>
+<li><p>Fordel <span class="math inline">\(t_m\)</span> rundt <span
+class="math inline">\(LCF_S\)</span> i trimkomponentene <span
+class="math inline">\(t_a\)</span> (akter) og <span
+class="math inline">\(t_f\)</span> (for) ved bruk av
+AP/FP-vektfaktorer.</p></li>
+</ol>
+<p>Generelle AP-baserte fordelingsfaktorer:</p>
+<p><span class="math display">\[
+    aft =\frac{LCF_S}{L},
+\qquad
+    fore =\frac{L-LCF_S}{L}
+\]</span></p>
+<figure>
+<img src="exports/Fordeling_av_trim.png" alt="Fordeling av trim" />
+<figcaption aria-hidden="true">Fordeling av trim</figcaption>
+</figure>
+<p><em>Figur: Fordeling av total trim mellom akter- og fordypgang om
+<span class="math inline">\(LCF_S\)</span>.</em></p>
+<p>Deretter beregnes trimkomponentene <span
+class="math inline">\(t_a\)</span> og <span
+class="math inline">\(t_f\)</span>:</p>
+<p><span class="math display">\[
+t_a = t_m\left(\frac{LCF_S}{L}\right),
+\qquad
+t_f = t_m\left(\frac{L-LCF_S}{L}\right)
+\]</span></p>
+<p>Spesialtilfelle (hvis <span class="math inline">\(LCF_S=L/2\)</span>,
+dvs. midskips):</p>
+<p><span class="math display">\[
+t_a = \frac{t_m}{2},\qquad t_f = \frac{t_m}{2}
+\]</span></p>
+<ol start="6" type="1">
+<li>Anvend trimkomponentene pÃ¥ <span class="math inline">\(T_S\)</span>
+for Ã¥ fÃ¥ endelige dypganger: MERK: Hvis trimmomentet er mot klokken,
+reverseres fortegnene i likningene under. <span class="math display">\[
+T_A= T_S - t_a,\qquad T_F= T_S + t_f
+\]</span></li>
+</ol>
+<p>Mini-eksempel:</p>
+<ul>
+<li>Hvis <span class="math inline">\(trim=1.543\ \mathrm{cm}\)</span>,
+er <span class="math inline">\(trim_m=0.01543\ \mathrm{m}\)</span>.</li>
+<li>Hvis <span class="math inline">\(LCF_S=L/2\)</span>, er
+trimkomponentene <span class="math inline">\(t_a = t_f = 0.00771\
+\mathrm{m}\)</span>.</li>
+</ul>
+<h3 id="endelig-likevekt-og-akseptkontroll">3.8 Endelig Likevekt og
+Akseptkontroll</h3>
+<figure>
+<img src="exports/BargeDamageHydrostaticsScene_ManimCE_v0.20.1_mid.gif"
+alt="BargeDamageHydrostaticsScene animasjon" />
+<figcaption aria-hidden="true">BargeDamageHydrostaticsScene
+animasjon</figcaption>
+</figure>
+<p><em>Animasjon: Kombinert skadet likevektstilstand - endelige
+dypganger <span class="math inline">\(T_A\)</span>, <span
+class="math inline">\(T_F\)</span> og rest <span
+class="math inline">\(GM_S\)</span>.</em></p>
+<p>Inndata:</p>
+<ul>
+<li>Endelige dypganger <span class="math inline">\(T_A\)</span>, <span
+class="math inline">\(T_F\)</span></li>
+<li>Rest metasentrisk hÃ¸yde <span
+class="math inline">\(GM_S\)</span></li>
+<li>FartÃ¸ydybde <span class="math inline">\(D\)</span></li>
+</ul>
+<p>Likninger:</p>
+<p><span class="math display">\[
+GM_S &gt; 0\ \mathrm{m}
+\]</span></p>
+<ul>
+<li>Kritisk dypgangskriterium:</li>
+</ul>
+<p><span class="math display">\[
+T_{crit}=\max(T_A,T_F) &lt; D
+\]</span></p>
+<p>FremgangsmÃ¥te:</p>
+<ol type="1">
+<li>Samle endelig skadet tilstand (<span
+class="math inline">\(T_S\)</span>, <span
+class="math inline">\(T_A\)</span>, <span
+class="math inline">\(T_F\)</span>, <span
+class="math inline">\(GM_S\)</span>).</li>
+<li>Sjekk reststabilitet (<span
+class="math inline">\(GM_S&gt;0\)</span>).</li>
+<li>Sjekk neddykingsgrense ved bruk av <span
+class="math inline">\(T_{crit}\)</span>.</li>
+<li>Klassifiser tilfellet som bestatt/ikke bestatt.</li>
+</ol>
+<p>Mini-sjekk:</p>
+<ul>
+<li>Hvis begge kriteriene er oppfylt, er den forenklede skadede
+tilstanden akseptabel.</li>
+<li>Hvis ett av kriteriene ikke er oppfylt, mÃ¥ last, inndeling eller
+tillatte skadeforutsetninger revurderes.</li>
+</ul>
+<h2 id="fullstendig-regneeksempel-fra-start-til-slutt">4. Fullstendig
+Regneeksempel (fra start til slutt)</h2>
+<h3 id="gitte-data">4.1 Gitte Data</h3>
+<ul>
+<li>FartÃ¸y (rektangulÃ¦r lekter):
+<ul>
+<li><span class="math inline">\(L = 60.0\ \mathrm{m}\)</span></li>
+<li><span class="math inline">\(B = 12.0\ \mathrm{m}\)</span></li>
+<li><span class="math inline">\(D = 6.0\ \mathrm{m}\)</span></li>
+<li>Initial middeldypgang <span class="math inline">\(T = 3.00\
+\mathrm{m}\)</span></li>
+<li>Vertikalt tyngdepunkt <span class="math inline">\(KG = 4.20\
+\mathrm{m}\)</span></li>
+<li>TilnÃ¦rmet sjÃ¸vannstetthet: <span class="math inline">\(\rho = 1.0\
+\mathrm{t/m^3}\)</span></li>
+</ul></li>
+<li>Skadetilfelle:
+<ul>
+<li>Lengde pÃ¥ skadet avdeling <span class="math inline">\(l_d = 3.5\
+\mathrm{m}\)</span></li>
+<li>Langskips oppdriftssenter etter skade: <span
+class="math inline">\(LCB_S = 29.75\ \mathrm{m}\)</span> fra AP</li>
+<li>Langskips flotasjonssenter etter skade: <span
+class="math inline">\(LCF_S = 30.00\ \mathrm{m}\)</span> fra AP</li>
+</ul></li>
+<li>Oppdaterte hydrostatiske inndata fra geometrimodellen etter skade:
+<ul>
+<li><span class="math inline">\(KB_S = 1.62\ \mathrm{m}\)</span></li>
+<li><span class="math inline">\(I_{WL_S} = 7600\
+\mathrm{m^4}\)</span></li>
+<li><span class="math inline">\(I_{F_S} = 2.10 \times 10^6\
+\mathrm{m^4}\)</span></li>
+</ul></li>
+</ul>
+<h3 id="lÃ¸sningssteg">4.2 LÃ¸sningssteg</h3>
+<p>Steg 1: Initialt deplasement og oppsett</p>
+<p><span class="math display">\[
+\nabla = L \times B \times T = 60 \cdot 12 \cdot 3.00 = 2160\
+\mathrm{m^3}
+\]</span></p>
+<p>Med <span class="math inline">\(\rho = 1.0\ \mathrm{t/m^3}\)</span>
+er initialt deplasement <span class="math inline">\(\Delta = 2160\
+\mathrm{t}\)</span>.</p>
+<p>Steg 2: Parallell nedsynking lÃ¸st fra avdelingslengden</p>
+<p>For en rektangulÃ¦r lekter med en fullt skadet langskips avdeling er
+oppdriftsgivende lengde <span class="math inline">\((L-l_d)\)</span>.
+Likevekt gir:</p>
+<p><span class="math display">\[
+L \times B \times T = (L-l_d) \times B \times T_S
+\]</span></p>
+<p><span class="math display">\[
+T_S = \frac{L}{L-l_d}T = \frac{60}{60-3.5}\cdot 3.00 = 3.1858\
+\mathrm{m}
+\]</span></p>
+<p>Anvend bevaring av deplasement for dette oppsettet med tapt
+oppdrift:</p>
+<p><span class="math display">\[
+\nabla_S = \nabla = 2160\ \mathrm{m^3}
+\]</span></p>
+<p>Dermed forblir deplasementet:</p>
+<p><span class="math display">\[
+\Delta_S = \Delta = 2160\ \mathrm{t}
+\]</span></p>
+<p>Steg 3: Oppdatert hydrostatikk (<span
+class="math inline">\(BM_{T_S}\)</span>, <span
+class="math inline">\(BM_{L_S}\)</span>, <span
+class="math inline">\(GM_S\)</span>)</p>
+<p><span class="math display">\[
+BM_{T_S} = \frac{I_{WL_S}}{\nabla} = \frac{7600}{2160} = 3.519\
+\mathrm{m}
+\]</span></p>
+<p><span class="math display">\[
+BM_{L_S} = \frac{I_{F_S}}{\nabla} = \frac{2.10 \times 10^6}{2160} =
+972.2\ \mathrm{m}
+\]</span></p>
+<p><span class="math display">\[
+GM_S = KB_S + BM_{T_S} - KG = 1.62 + 3.519 - 4.20 = 0.939\ \mathrm{m}
+\]</span></p>
+<p>Steg 4: Trim og endelige dypganger</p>
+<p>Bruk AP-baserte koordinater med <span class="math inline">\(LCG =
+30.00\ \mathrm{m}\)</span> og <span class="math inline">\(LCB_S = 29.75\
+\mathrm{m}\)</span>:</p>
+<p><span class="math display">\[
+M_{trim} = \Delta \times (LCG - LCB_S) = 2160\,(30.00 - 29.75) = 540.0\
+\mathrm{t\,m}
+\]</span></p>
+<p>Bruk en box-barge-tilnÃ¦rming for moment til Ã¥ endre trim 1 cm:</p>
+<p><span class="math display">\[
+MCT_{1cm_S} = \frac{\Delta \times BM_{L_S}}{100 \times L} = \frac{2160
+\cdot 972.2}{100 \cdot 60} = 350.0\ \mathrm{t\,m/cm}
+\]</span></p>
+<p><span class="math display">\[
+trim = \frac{M_{trim}}{MCT_{1cm_S}} = \frac{540.0}{350.0} = 1.543\
+\mathrm{cm} = 0.01543\ \mathrm{m}
+\]</span></p>
+<p>Anta trim om <span class="math inline">\(LCF_S = 30.00\
+\mathrm{m}\)</span> fra AP (midskips i dette tilfellet), slik at
+trimkomponentene <span class="math inline">\(t_a\)</span> og <span
+class="math inline">\(t_f\)</span> hver blir halvparten av total
+trim:</p>
+<p><span class="math display">\[
+t_a = \frac{trim_m}{2} = 0.00771\ \mathrm{m},\qquad t_f =
+\frac{trim_m}{2} = 0.00771\ \mathrm{m}
+\]</span></p>
+<p>Endelige dypganger:</p>
+<p><span class="math display">\[
+T_F = T_S + t_f = 3.1858 + 0.00771 = 3.1935\ \mathrm{m}
+\]</span></p>
+<p><span class="math display">\[
+T_A = T_S - t_a = 3.1858 - 0.00771 = 3.1781\ \mathrm{m}
+\]</span></p>
+<p>Steg 5: Akseptkontroll</p>
+<ul>
+<li>Reststabilitet:</li>
+</ul>
+<p><span class="math display">\[
+GM_S = 0.939\ \mathrm{m} &gt; 0\ \mathrm{m}\ \checkmark
+\]</span></p>
+<ul>
+<li>Kontroll av dypgang mot dybde (bruk stÃ¸rste dypgang i dette enkle
+tilfellet):</li>
+</ul>
+<p><span class="math display">\[
+T_{S,\max} \approx T_F = 3.1935\ \mathrm{m} &lt; D = 6.0\ \mathrm{m}\
+\checkmark
+\]</span></p>
+<h3 id="endelige-resultater">4.3 Endelige Resultater</h3>
+<table>
+<thead>
+<tr>
+<th>StÃ¸rrelse</th>
+<th style="text-align: right;">Verdi</th>
+<th>Enhet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Initialt deplasementsvolum <span
+class="math inline">\(\nabla\)</span></td>
+<td style="text-align: right;">2160</td>
+<td>m^3</td>
+</tr>
+<tr>
+<td>Lengde pÃ¥ skadet avdeling <span
+class="math inline">\(l_d\)</span></td>
+<td style="text-align: right;">3.5</td>
+<td>m</td>
+</tr>
+<tr>
+<td>Beregnet symmetrisk dypgang <span
+class="math inline">\(T_S\)</span></td>
+<td style="text-align: right;">3.1858</td>
+<td>m</td>
+</tr>
+<tr>
+<td>Skadet deplasementsvolum <span
+class="math inline">\(\nabla_S\)</span></td>
+<td style="text-align: right;">2160</td>
+<td>m^3</td>
+</tr>
+<tr>
+<td><span class="math inline">\(BM_{T_S}\)</span></td>
+<td style="text-align: right;">3.519</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(GM_S\)</span></td>
+<td style="text-align: right;">0.939</td>
+<td>m</td>
+</tr>
+<tr>
+<td>Total trim</td>
+<td style="text-align: right;">0.0154</td>
+<td>m</td>
+</tr>
+<tr>
+<td>Dypgang ved AP <span class="math inline">\(T_A\)</span></td>
+<td style="text-align: right;">3.1781</td>
+<td>m</td>
+</tr>
+<tr>
+<td>Dypgang ved FP <span class="math inline">\(T_F\)</span></td>
+<td style="text-align: right;">3.1935</td>
+<td>m</td>
+</tr>
+<tr>
+<td>Akseptstatus</td>
+<td style="text-align: right;">PASS</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Merk: - Dette regneeksemplet er bevisst enkelt og bruker
+box-barge-tilnÃ¦rminger for Ã¥ tydeliggjÃ¸re framgangsmÃ¥ten. - I praktiske
+beregninger mÃ¥ forenklede uttrykk erstattes med hydrostatiske
+modellresultater for hver mellomliggende dypgang.</p>
+<h3
+id="ekstra-fullstendig-regneeksempel-5-like-store-avdelinger-avdeling-4-skadet">4.4
+Ekstra Fullstendig Regneeksempel: 5 like store avdelinger, avdeling 4
+skadet</h3>
+<p>Gitt:</p>
+<ul>
+<li>Lekterdimensjoner: <span class="math inline">\(L=100.0\
+\mathrm{m}\)</span>, <span class="math inline">\(B=20.0\
+\mathrm{m}\)</span>, <span class="math inline">\(D=12.0\
+\mathrm{m}\)</span></li>
+<li>Initial dypgang: <span class="math inline">\(T=3.50\
+\mathrm{m}\)</span></li>
+<li>5 like store langskips avdelinger, slik at hver avdeling har lengde
+<span class="math inline">\(L/5=20.0\ \mathrm{m}\)</span></li>
+<li>Skadet avdeling: nr. 4 (fra AP), som strekker seg fra <span
+class="math inline">\(x=60\)</span> til <span
+class="math inline">\(x=80\ \mathrm{m}\)</span></li>
+<li>I dette regneeksemplet brukes <span
+class="math inline">\(\rho=1.025\ \mathrm{t/m^3}\)</span> (sjÃ¸vann), og
+vi antar <span class="math inline">\(LCG=50.0\ \mathrm{m}\)</span>
+(midskips)</li>
+<li>Box-barge-tilnÃ¦rming vertikalt i skadet likevekt: <span
+class="math inline">\(KB_S \approx T_S/2\)</span></li>
+</ul>
+<figure>
+<img src="exports/Lekteren_har_5_vanntette_avdelinger.png"
+alt="Lekteren har 5 vanntette avdelinger" />
+<figcaption aria-hidden="true">Lekteren har 5 vanntette
+avdelinger</figcaption>
+</figure>
+<p><em>Figur: Fem like store vanntette langskips avdelinger, der Ã©n
+avdeling er skadet i regneeksemplet.</em></p>
+<p>Steg 1: Initialt deplasement</p>
+<p><span class="math display">\[
+\nabla = L \times B \times T = 100 \cdot 20 \cdot 3.50 = 7000\
+\mathrm{m^3}
+\]</span></p>
+<p><span class="math display">\[
+\Delta = \rho \times \nabla = 1.025\times 7000 = 7175\ \mathrm{t}
+\]</span></p>
+<p>Steg 2: Symmetrisk skadet dypgang fra tapt oppdriftsgivende
+lengde</p>
+<p>Lengde pÃ¥ skadet avdeling:</p>
+<p><span class="math display">\[
+l_d = 20.0\ \mathrm{m},\qquad L_S=L-l_d=80.0\ \mathrm{m}
+\]</span></p>
+<p>LÃ¸s likevekt:</p>
+<p><span class="math display">\[
+L \times B \times T = (L-l_d) \times B \times T_S
+\]</span></p>
+<p><span class="math display">\[
+T_S = \frac{L}{L-l_d}T = \frac{100}{80}\cdot 3.50 = 4.375\ \mathrm{m}
+\]</span></p>
+<p>Bevaring av deplasement:</p>
+<p><span class="math display">\[
+\nabla_S = \nabla = 7000\ \mathrm{m^3},\qquad \Delta_S = \Delta = 7175\
+\mathrm{t}
+\]</span></p>
+<p>Steg 3: Hydrostatiske inndata i skadet tilstand fra
+avdelingsgeometrien</p>
+<p>GjenvÃ¦rende oppdrifts- og vannplanomrÃ¥der er intervallene <span
+class="math inline">\([0,60]\)</span> og <span
+class="math inline">\([80,100]\)</span> m fra AP.</p>
+<p>Langskips tyngdepunkter:</p>
+<p><span class="math display">\[
+LCB_S = LCF_S = \frac{60\cdot 30 + 20\cdot 90}{60+20} = 45.0\ \mathrm{m}
+\]</span></p>
+<p>Skadet annet arealmoment for vannlinjearealet om tverrakse:</p>
+<p><span class="math display">\[
+I_{WL_S}=\frac{1}{12}(80)B^3 = \frac{1}{12}(80)(20^3)=53{,}333.3\
+\mathrm{m^4}
+\]</span></p>
+<p>Skadet annet arealmoment for vannlinjearealet om <span
+class="math inline">\(LCF_S\)</span>:</p>
+<p><span class="math display">\[
+I_{F_S}=\left[\frac{B\,60^3}{12}+A_1(30-45)^2\right]+\left[\frac{B\,20^3}{12}+A_2(90-45)^2\right]
+\]</span></p>
+<p>med <span class="math inline">\(A_1=60\cdot 20=1200\
+\mathrm{m^2}\)</span> og <span class="math inline">\(A_2=20\cdot 20=400\
+\mathrm{m^2}\)</span>, som gir</p>
+<p><span class="math display">\[
+I_{F_S}=1{,}453{,}333.3\ \mathrm{m^4}
+\]</span></p>
+<p>Bruk <span class="math inline">\(KB_S \approx T_S/2 = 2.1875\
+\mathrm{m}\)</span>.</p>
+<p>Steg 4: Oppdaterte stabilitetsstÃ¸rrelser</p>
+<p><span class="math display">\[
+BM_{T_S}=\frac{I_{WL_S}}{\nabla}=\frac{53{,}333.3}{7000}=7.619\
+\mathrm{m}
+\]</span></p>
+<p><span class="math display">\[
+BM_{L_S}=\frac{I_{F_S}}{\nabla}=\frac{1{,}453{,}333.3}{7000}=207.619\
+\mathrm{m}
+\]</span></p>
+<p><span class="math display">\[
+GM_S=KB_S+BM_{T_S}-KG=2.1875+7.619-4.20=5.607\ \mathrm{m}
+\]</span></p>
+<p>Steg 5: Trim og endelige dypganger</p>
+<p><span class="math display">\[
+M_{trim}=\Delta \times (LCG-LCB_S)=7175\times(50.0-45.0)=35{,}875\
+\mathrm{t\,m}
+\]</span></p>
+<p><span class="math display">\[
+MCT_{1cm_S}=\frac{\Delta \times BM_{L_S}}{100\times L}=\frac{7175\times
+207.619}{100\times 100}=148.967\ \mathrm{t\,m/cm}
+\]</span></p>
+<p><span class="math display">\[
+trim_{cm}=\frac{M_{trim}}{MCT_{1cm_S}}=240.83\ \mathrm{cm},\qquad
+trim_m=2.4083\ \mathrm{m}
+\]</span></p>
+<p>Beregne trimkomponentene <span class="math inline">\(t_a\)</span> og
+<span class="math inline">\(t_f\)</span> ved bruk av AP-baserte
+fordelingsfaktorer (<span class="math inline">\(LCF_S=45.0\
+\mathrm{m}\)</span>):</p>
+<p><span class="math display">\[
+  ext{akterandel}=\frac{LCF_S}{L}=0.45,\qquad
+\text{forandel}=\frac{L-LCF_S}{L}=0.55
+\]</span></p>
+<p><span class="math display">\[
+t_a=trim_m\left(\frac{LCF_S}{L}\right)=2.4083\times 0.45=1.084\
+\mathrm{m}
+\]</span></p>
+<p><span class="math display">\[
+t_f=trim_m\left(\frac{L-LCF_S}{L}\right)=2.4083\times 0.55=1.3246\
+\mathrm{m}
+\]</span></p>
+<p>Endelige dypganger:</p>
+<p><span class="math display">\[
+T_A=T_S-t_a=4.375-1.084=3.291\ \mathrm{m}
+\]</span></p>
+<p><span class="math display">\[
+T_F=T_S+t_f=4.375+1.3246=5.700\ \mathrm{m}
+\]</span></p>
+<p>Steg 6: Akseptkontroll</p>
+<p><span class="math display">\[
+GM_S=5.607\ \mathrm{m}&gt;0\ \mathrm{m}\ \checkmark
+\]</span></p>
+<p><span class="math display">\[
+T_{crit}=\max(T_A,T_F)=5.700\ \mathrm{m}&lt;D=12.0\ \mathrm{m}\
+\checkmark
+\]</span></p>
+<h3 id="endelige-resultater-ekstra-eksempel">4.5 Endelige Resultater
+(ekstra eksempel)</h3>
+<table>
+<thead>
+<tr>
+<th>StÃ¸rrelse</th>
+<th style="text-align: right;">Verdi</th>
+<th>Enhet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Initialt deplasementsvolum <span
+class="math inline">\(\nabla\)</span></td>
+<td style="text-align: right;">7000</td>
+<td>m^3</td>
+</tr>
+<tr>
+<td>Lengde pÃ¥ skadet avdeling <span
+class="math inline">\(l_d\)</span></td>
+<td style="text-align: right;">20.0</td>
+<td>m</td>
+</tr>
+<tr>
+<td>Beregnet symmetrisk dypgang <span
+class="math inline">\(T_S\)</span></td>
+<td style="text-align: right;">4.375</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(LCB_S=LCF_S\)</span></td>
+<td style="text-align: right;">45.0</td>
+<td>m fra AP</td>
+</tr>
+<tr>
+<td><span class="math inline">\(I_{WL_S}\)</span></td>
+<td style="text-align: right;">53,333.3</td>
+<td>m^4</td>
+</tr>
+<tr>
+<td><span class="math inline">\(I_{F_S}\)</span></td>
+<td style="text-align: right;">1,453,333.3</td>
+<td>m^4</td>
+</tr>
+<tr>
+<td><span class="math inline">\(BM_{T_S}\)</span></td>
+<td style="text-align: right;">7.619</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(GM_S\)</span></td>
+<td style="text-align: right;">5.607</td>
+<td>m</td>
+</tr>
+<tr>
+<td>Total trim</td>
+<td style="text-align: right;">2.408</td>
+<td>m</td>
+</tr>
+<tr>
+<td>Dypgang ved AP <span class="math inline">\(T_A\)</span></td>
+<td style="text-align: right;">3.291</td>
+<td>m</td>
+</tr>
+<tr>
+<td>Dypgang ved FP <span class="math inline">\(T_F\)</span></td>
+<td style="text-align: right;">5.700</td>
+<td>m</td>
+</tr>
+<tr>
+<td>Akseptstatus</td>
+<td style="text-align: right;">PASS</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h2 id="vanlige-feil-og-rimelighetskontroller">5. Vanlige Feil og
+Rimelighetskontroller</h2>
+<ul>
+<li>Enhetsblanding mellom <span
+class="math inline">\(\mathrm{m}\)</span>, <span
+class="math inline">\(\mathrm{m^2}\)</span>, <span
+class="math inline">\(\mathrm{m^3}\)</span> og tonn.</li>
+<li>Ã… behandle deplasementet som endret etter oppfylling i denne
+modellen (<span class="math inline">\(\nabla_S\neq\nabla\)</span>).</li>
+<li>Ã… blande tverrskips og langskips treghetsmomenter (<span
+class="math inline">\(I_{WL_S}\)</span> versus <span
+class="math inline">\(I_{F_S}\)</span>).</li>
+<li>Ã… bruke motsatt fortegnskonvensjon for trim underveis i
+beregningen.</li>
+<li>Ã… glemme at akseptkontrollen bruker kritisk dypgang <span
+class="math inline">\(\max(T_A,T_F)\)</span>.</li>
+</ul>
+<p>Rimelighetskontroller:</p>
+<ul>
+<li><span class="math inline">\(T_S\)</span> bÃ¸r normalt vÃ¦re stÃ¸rre enn
+<span class="math inline">\(T\)</span>.</li>
+<li>Kontroller at deplasementet bevares i oppsettet: <span
+class="math inline">\(\nabla_S=\nabla\)</span> og <span
+class="math inline">\(\Delta_S=\Delta\)</span>.</li>
+<li><span class="math inline">\(GM_S\)</span> bÃ¸r i de fleste
+skadetilfeller vÃ¦re lavere enn i intakt tilstand.</li>
+</ul>
+<h2 id="kort-referansealgoritme">6. Kort Referansealgoritme</h2>
+<ol type="1">
+<li>Samle inndata: <span class="math inline">\(L\)</span>, <span
+class="math inline">\(B\)</span>, <span
+class="math inline">\(D\)</span>, <span
+class="math inline">\(T\)</span>, <span
+class="math inline">\(KG\)</span>, <span
+class="math inline">\(l_d\)</span>, <span
+class="math inline">\(I_{WL_S}\)</span>, <span
+class="math inline">\(I_{F_S}\)</span>, <span
+class="math inline">\(KB_S\)</span>, <span
+class="math inline">\(LCB_S\)</span>, <span
+class="math inline">\(LCF_S\)</span>.</li>
+<li>LÃ¸s symmetrisk skadet dypgang:</li>
+</ol>
+<p><span class="math display">\[
+T_S = \frac{L}{L-l_d}T
+\]</span></p>
+<ol start="3" type="1">
+<li>Sett deplasementstilstanden i skadet likevekt:</li>
+</ol>
+<p><span class="math display">\[
+\nabla_S=\nabla,\quad \Delta_S=\Delta
+\]</span></p>
+<ol start="4" type="1">
+<li>Beregn hydrostatikk:</li>
+</ol>
+<p><span class="math display">\[
+BM_{T_S}=\frac{I_{WL_S}}{\nabla},\quad
+BM_{L_S}=\frac{I_{F_S}}{\nabla},\quad GM_S=KB_S+BM_{T_S}-KG
+\]</span></p>
+<ol start="5" type="1">
+<li>Beregn trim:</li>
+</ol>
+<p><span class="math display">\[
+M_{trim}=\Delta \times (LCG-LCB_S),\quad MCT_{1cm_S}=\frac{\Delta \times
+BM_{L_S}}{100 \times L},\quad trim_{cm}=\frac{M_{trim}}{MCT_{1cm_S}}
+\]</span></p>
+<ol start="6" type="1">
+<li>Fordel trim for Ã¥ fÃ¥ <span class="math inline">\(T_A\)</span> og
+<span class="math inline">\(T_F\)</span>.</li>
+<li>Akseptkontroll: <span class="math inline">\(GM_S&gt;0\)</span> og
+<span class="math inline">\(\max(T_A,T_F)&lt;D\)</span>.</li>
+</ol>
+<h2 id="referanser-og-figurplassholdere">7. Referanser og
+Figurplassholdere</h2>
+<p>Forslag til referanser:</p>
+<ul>
+<li>Forelesningsnotater i hydrostatikk og skadestabilitet.</li>
+<li>Standard lÃ¦rebÃ¸ker i skipskonstruksjon om tapt oppdrift og
+trim.</li>
+</ul>
+<p>Figurplassholdere (eksisterende eksporter):</p>
+<ul>
+<li>Figur for symmetrisk skadet likevekt.</li>
+<li>Figur for reduksjon i tverrskips <span
+class="math inline">\(BM\)</span>.</li>
+<li>Figur for langskips <span class="math inline">\(BM\)</span> og
+forskyvning av <span class="math inline">\(LCF\)</span>.</li>
+<li>Figur for trimoppsett og trimfordeling.</li>
+</ul>
+</body>
+</html>
+

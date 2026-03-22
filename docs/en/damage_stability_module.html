@@ -1,0 +1,1319 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>damage_stability_module</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<h1 id="damage-stability-module-lost-buoyancy-method">Damage Stability
+Module (Lost Buoyancy Method)</h1>
+<h2 id="learning-objectives">1. Learning Objectives</h2>
+<p>By the end of this module, students should be able to:</p>
+<ul>
+<li>Describe the lost buoyancy method assumptions.</li>
+<li>Compute new equilibrium after damage with symmetric flooding.</li>
+<li>Evaluate hydrostatic changes (<code>KB</code>, <code>BM</code>,
+<code>GM</code>) after damage.</li>
+<li>Compute trim effects for unsymmetric damage and determine
+<code>T_A</code> and <code>T_F</code>.</li>
+<li>Verify acceptance criteria: <code>GM_S &gt; 0 m</code> and
+<code>T_S &lt; D</code>.</li>
+</ul>
+<h2 id="assumptions-symbols-and-units">2. Assumptions, Symbols, and
+Units</h2>
+<h3 id="assumptions">2.1 Assumptions</h3>
+<ul>
+<li>Geometry is approximated as prismatic (rectangular barge) unless
+otherwise stated.</li>
+<li>The damaged compartment is assumed fully open to sea and contributes
+no buoyancy.</li>
+<li>Floodwater inside the damaged compartment has the same density as
+outside water (no net weight gain term is added in the lost-buoyancy
+formulation).</li>
+<li>Static equilibrium is assumed (no dynamic flooding transients).</li>
+<li>Small-angle trim assumptions are used for linear trim
+relations.</li>
+<li>Sign convention used in this note:
+<ul>
+<li>Positive draft change means deeper immersion.</li>
+<li>Positive trim means bow down when <span class="math inline">\(T_F
+&gt; T_A\)</span>.</li>
+<li>Longitudinal positions are measured from AP (aft perpendicular),
+with <span class="math inline">\(x=0\)</span> at AP and <span
+class="math inline">\(x=L\)</span> at FP.</li>
+</ul></li>
+</ul>
+<h3 id="symbols">2.2 Symbols</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Meaning</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math inline">\(L\)</span></td>
+<td>Length</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(B\)</span></td>
+<td>Breadth</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(D\)</span></td>
+<td>Depth</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(T\)</span></td>
+<td>Intact draft</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(T_S\)</span></td>
+<td>Damaged symmetric draft</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(\nabla\)</span></td>
+<td>Intact displacement volume</td>
+<td>mÂ³</td>
+</tr>
+<tr>
+<td><span class="math inline">\(\nabla_S\)</span></td>
+<td>Damaged displacement volume</td>
+<td>mÂ³</td>
+</tr>
+<tr>
+<td><span class="math inline">\(I_{WL}\)</span></td>
+<td>Transverse waterplane second moment (intact)</td>
+<td>mâ´</td>
+</tr>
+<tr>
+<td><span class="math inline">\(I_{WL_S}\)</span></td>
+<td>Transverse waterplane second moment (damaged waterplane)</td>
+<td>mâ´</td>
+</tr>
+<tr>
+<td><span class="math inline">\(I_F\)</span></td>
+<td>Longitudinal flotation-plane second moment (intact)</td>
+<td>mâ´</td>
+</tr>
+<tr>
+<td><span class="math inline">\(I_{F_S}\)</span></td>
+<td>Longitudinal flotation-plane second moment (damaged waterplane)</td>
+<td>mâ´</td>
+</tr>
+<tr>
+<td><span class="math inline">\(KB\)</span></td>
+<td>Keel to buoyancy center</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(BM\)</span></td>
+<td>Metacentric radius</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(GM\)</span></td>
+<td>Metacentric height</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(LCB\)</span></td>
+<td>Longitudinal center of buoyancy</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(LCF\)</span></td>
+<td>Longitudinal center of flotation</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(t_a\)</span></td>
+<td>Aft trim component</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(t_f\)</span></td>
+<td>Forward trim component</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(T_A\)</span></td>
+<td>Final aft draft</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(T_F\)</span></td>
+<td>Final forward draft</td>
+<td>m</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sequential-method-aligned-with-scene-flow">3. Sequential Method
+(Aligned with Scene Flow)</h2>
+<h3 id="baseline-geometry-and-hydrostatics-recap">3.1 Baseline Geometry
+and Hydrostatics Recap</h3>
+<figure>
+<img src="../../exports/BargeGeometryScene_ManimCE_v0.20.1_mid.gif"
+alt="BargeGeometryScene animation" />
+<figcaption aria-hidden="true">BargeGeometryScene animation</figcaption>
+</figure>
+<p><em>Animation: Build-up of barge principal dimensions.</em></p>
+<p>Inputs:</p>
+<ul>
+<li>Main particulars: <span class="math inline">\(L\)</span>, <span
+class="math inline">\(B\)</span>, <span
+class="math inline">\(D\)</span></li>
+<li>Intact condition: <span class="math inline">\(T\)</span>, <span
+class="math inline">\(KG\)</span></li>
+<li>Water density <span class="math inline">\(\rho\)</span></li>
+</ul>
+<figure>
+<img src="../../exports/BargeHydrostaticsScene_ManimCE_v0.20.1_mid.gif"
+alt="BargeHydrostaticsScene animation" />
+<figcaption aria-hidden="true">BargeHydrostaticsScene
+animation</figcaption>
+</figure>
+<p><em>Animation: Intact hydrostatics â€” displacement volume and
+metacentric radii.</em></p>
+<p>Equations:</p>
+<ul>
+<li>Initial displacement volume: <img
+src="../../exports/Volumdeplasement_for_rektangulaer_lekter.png"
+alt="Volumdeplasement for rektangulaer lekter" /></li>
+</ul>
+<p><em>Figure: Intact waterline and geometric inputs used for initial
+displacement volume.</em> <span class="math display">\[
+\nabla = L \times B \times T
+\]</span></p>
+<ul>
+<li>Initial displacement mass:</li>
+</ul>
+<p><span class="math display">\[
+\Delta = \rho \times \nabla
+\]</span></p>
+<ul>
+<li>Hydrostatic radii form (used later after each update):</li>
+</ul>
+<p><span class="math display">\[
+BM_T = \frac{I_{WL}}{\nabla},\qquad BM_L = \frac{I_F}{\nabla}
+\]</span></p>
+<p>Procedure:</p>
+<ol type="1">
+<li>Compute intact displacement volume <span
+class="math inline">\(\nabla\)</span>.</li>
+<li>Compute intact displacement <span
+class="math inline">\(\Delta\)</span>.</li>
+<li>Record these as the baseline for damage comparison.</li>
+</ol>
+<p>Mini-check:</p>
+<ul>
+<li>If <span class="math inline">\(L=60\ \mathrm{m}\)</span>, <span
+class="math inline">\(B=12\ \mathrm{m}\)</span>, <span
+class="math inline">\(T=3.0\ \mathrm{m}\)</span>, then <span
+class="math inline">\(\nabla=2160\ \mathrm{m^3}\)</span>.</li>
+</ul>
+<h3 id="damage-setup-and-symmetric-flooding">3.2 Damage Setup and
+Symmetric Flooding</h3>
+<figure>
+<img src="../../exports/BargeCompartmentsScene_ManimCE_v0.20.1_mid.gif"
+alt="BargeCompartmentsScene animation" />
+<figcaption aria-hidden="true">BargeCompartmentsScene
+animation</figcaption>
+</figure>
+<p><em>Animation: Barge compartment layout and designation of the
+damaged compartment.</em></p>
+<p>Inputs:</p>
+<ul>
+<li>Damaged compartment length <span
+class="math inline">\(l_d\)</span></li>
+<li>Compartment location along the vessel</li>
+<li>Flooding mode (this section: symmetric flooding)</li>
+</ul>
+<p>Equations:</p>
+<ul>
+<li>Effective buoyant length for one fully damaged longitudinal
+compartment:</li>
+</ul>
+<p><span class="math display">\[
+L_S = L-l_d
+\]</span></p>
+<ul>
+<li>Symmetric equilibrium relation (pre-trim):</li>
+</ul>
+<p><span class="math display">\[
+L \times B \times T = L_S \times B \times T_S
+\]</span></p>
+<p>Procedure:</p>
+<ol type="1">
+<li>Define the damaged compartment geometry.</li>
+<li>Compute <span class="math inline">\(L_S\)</span>.</li>
+<li>Write the symmetric equilibrium equation to be solved in Section
+3.3.</li>
+</ol>
+<p>Mini-check:</p>
+<ul>
+<li>With <span class="math inline">\(L=60\ \mathrm{m}\)</span> and <span
+class="math inline">\(l_d=3.5\ \mathrm{m}\)</span>, <span
+class="math inline">\(L_S=56.5\ \mathrm{m}\)</span>.</li>
+</ul>
+<h3 id="parallel-submergence-and-new-displacement">3.3 Parallel
+Submergence and New Displacement</h3>
+<figure>
+<img src="../../exports/BargeDamageSubmergenceScene_ManimCE_v0.20.1_mid.gif"
+alt="BargeDamageSubmergenceScene animation" />
+<figcaption aria-hidden="true">BargeDamageSubmergenceScene
+animation</figcaption>
+</figure>
+<p><em>Animation: Parallel sinkage to the symmetric damage draft <span
+class="math inline">\(T_S\)</span>.</em></p>
+<p>This phase establishes the new symmetric damage draft before trim
+effects are added.</p>
+<p>Required inputs:</p>
+<ul>
+<li>Intact draft <span class="math inline">\(T\)</span></li>
+<li>Barge length <span class="math inline">\(L\)</span> and breadth
+<span class="math inline">\(B\)</span></li>
+<li>Damaged compartment length <span
+class="math inline">\(l_d\)</span></li>
+</ul>
+<p>For a rectangular barge with one fully flooded longitudinal
+compartment, the effective buoyant length becomes <span
+class="math inline">\((L-l_d)\)</span>. Conservation of displacement
+volume gives:</p>
+<p><span class="math display">\[
+L \times B \times T = (L-l_d) \times B \times T_S
+\]</span></p>
+<figure>
+<img src="../../exports/Flytestilling_ved_symmetrisk_skade.png"
+alt="Flytestilling ved symmetrisk skade" />
+<figcaption aria-hidden="true">Flytestilling ved symmetrisk
+skade</figcaption>
+</figure>
+<p><em>Figure: Symmetric damage sinkage with reduced effective buoyant
+length.</em></p>
+<p>Solve directly for damaged symmetric draft:</p>
+<p><span class="math display">\[
+T_S = \frac{L}{L-l_d}T
+\]</span></p>
+<p>Then enforce displacement conservation in the damaged equilibrium
+state:</p>
+<p><span class="math display">\[
+\nabla_S = \nabla
+\]</span></p>
+<p>Use this sequence every time:</p>
+<ol type="1">
+<li>Solve for <span class="math inline">\(T_S\)</span> from compartment
+length.</li>
+<li>Set <span class="math inline">\(\nabla_S=\nabla\)</span>
+(displacement unchanged after flooding in this model).</li>
+<li>Set <span class="math inline">\(\Delta_S=\Delta\)</span> (same
+reason).</li>
+<li>Continue with hydrostatics and trim.</li>
+</ol>
+<p>Why this order matters:</p>
+<ul>
+<li>In the lost-buoyancy equilibrium used in the scenes, flooding
+removes buoyancy from one region while the vessel sinks until total
+buoyancy again equals vessel weight.</li>
+<li>That means displacement is conserved: <span
+class="math inline">\(\nabla_S=\nabla\)</span>.</li>
+</ul>
+<p>Mini-example: barge with 3 equal compartments (center compartment
+damaged)</p>
+<ul>
+<li>Given: <span class="math inline">\(L=60\ \mathrm{m}\)</span>, <span
+class="math inline">\(B=12\ \mathrm{m}\)</span>, <span
+class="math inline">\(T=3.00\ \mathrm{m}\)</span>, 3 equal
+compartments</li>
+<li>Damaged compartment length: <span class="math inline">\(l_d=L/3=20\
+\mathrm{m}\)</span></li>
+</ul>
+<p><span class="math display">\[
+T_S = \frac{L}{L-l_d}T = \frac{60}{60-20}\cdot 3.00 = 4.50\ \mathrm{m}
+\]</span></p>
+<p><span class="math display">\[
+\nabla_S = \nabla = L \times B \times T = 60\cdot 12\cdot 3.00 = 2160\
+\mathrm{m^3}
+\]</span></p>
+<p>Checks:</p>
+<ul>
+<li><span class="math inline">\(T_S &gt; T\)</span> (as expected after
+damage).</li>
+<li>Draft criterion in this example is satisfied if <span
+class="math inline">\(D &gt; 4.50\ \mathrm{m}\)</span>.</li>
+</ul>
+<h3 id="updated-hydrostatics-after-damage-kb-bm-gm">3.4 Updated
+Hydrostatics After Damage (<code>KB</code>, <code>BM</code>,
+<code>GM</code>)</h3>
+<figure>
+<img src="../../exports/BargeDamageKBScene_ManimCE_v0.20.1_mid.gif"
+alt="BargeDamageKBScene animation" />
+<figcaption aria-hidden="true">BargeDamageKBScene animation</figcaption>
+</figure>
+<p><em>Animation: Vertical shift of the centre of buoyancy â€” <span
+class="math inline">\(KB_S\)</span> after damage.</em></p>
+<figure>
+<img src="../../exports/BargeDamageBMScene_ManimCE_v0.20.1_mid.gif"
+alt="BargeDamageBMScene animation" />
+<figcaption aria-hidden="true">BargeDamageBMScene animation</figcaption>
+</figure>
+<p><em>Animation: Reduction of transverse metacentric radius <span
+class="math inline">\(BM_{T_S}\)</span> due to lost waterplane
+area.</em></p>
+<p>Inputs:</p>
+<ul>
+<li>Damaged draft estimate <span class="math inline">\(T_S\)</span> (or
+final trimmed drafts in iteration)</li>
+<li>Damaged-condition hydrostatic inputs: <span
+class="math inline">\(KB_S\)</span>, <span
+class="math inline">\(I_{WL_S}\)</span>, <span
+class="math inline">\(I_{F_S}\)</span></li>
+<li>Vertical center of gravity <span
+class="math inline">\(KG\)</span></li>
+</ul>
+<p>Equations:</p>
+<ul>
+<li>Damaged hydrostatic radii:</li>
+</ul>
+<figure>
+<img src="../../exports/Reduksjon_av_tverrskips_BM.png"
+alt="Reduksjon av tverrskips BM" />
+<figcaption aria-hidden="true">Reduksjon av tverrskips BM</figcaption>
+</figure>
+<p><em>Figure: Reduction in transverse metacentric radius after
+damage.</em></p>
+<p><span class="math display">\[
+BM_{T_S} = \frac{I_{WL_S}}{\nabla},\qquad BM_{L_S} =
+\frac{I_{F_S}}{\nabla}
+\]</span></p>
+<ul>
+<li>Residual transverse metacentric height:</li>
+</ul>
+<p><span class="math display">\[
+GM_S = KB_S + \frac{I_{WL_S}}{\nabla} - KG
+\]</span></p>
+<p>Procedure:</p>
+<ol type="1">
+<li>Set <span class="math inline">\(\nabla_S=\nabla\)</span> from
+Section 3.3.</li>
+<li>Compute <span class="math inline">\(BM_{T_S}\)</span> and <span
+class="math inline">\(BM_{L_S}\)</span>.</li>
+<li>Compute <span class="math inline">\(GM_S\)</span>.</li>
+<li>Pass <span class="math inline">\(BM_{L_S}\)</span>, <span
+class="math inline">\(LCB_S\)</span>, and <span
+class="math inline">\(LCF_S\)</span> to trim calculations.</li>
+</ol>
+<p>Mini-check:</p>
+<ul>
+<li>If <span class="math inline">\(KB_S=1.62\ \mathrm{m}\)</span>, <span
+class="math inline">\(I_{WL_S}=7600\ \mathrm{m^4}\)</span>, <span
+class="math inline">\(\nabla=2160\ \mathrm{m^3}\)</span>, <span
+class="math inline">\(KG=4.20\ \mathrm{m}\)</span>, then <span
+class="math inline">\(GM_S=0.939\ \mathrm{m}\)</span>.</li>
+</ul>
+<h3 id="unsymmetric-damage-lcb-lcf-and-bm_l">3.5 Unsymmetric Damage:
+<span class="math inline">\(LCB\)</span>, <span
+class="math inline">\(LCF\)</span> and <span
+class="math inline">\(BM_L\)</span></h3>
+<figure>
+<img
+src="../../exports/BargeDamageLongitudinalBMScene_ManimCE_v0.20.1_mid.gif"
+alt="BargeDamageLongitudinalBMScene animation" />
+<figcaption aria-hidden="true">BargeDamageLongitudinalBMScene
+animation</figcaption>
+</figure>
+<p><em>Animation: Longitudinal geometry after unsymmetric damage â€” <span
+class="math inline">\(LCB_S\)</span>, <span
+class="math inline">\(LCF_S\)</span>, and <span
+class="math inline">\(BM_{L_S}\)</span>.</em></p>
+<p>Inputs:</p>
+<ul>
+<li>Displacement <span class="math inline">\(\Delta\)</span> (unchanged
+in this model)</li>
+<li>AP-referenced longitudinal coordinates: <span
+class="math inline">\(LCG\)</span>, <span
+class="math inline">\(LCB_S\)</span>, <span
+class="math inline">\(LCF_S\)</span></li>
+<li>Longitudinal inertia <span class="math inline">\(I_{F_S}\)</span>
+and displacement volume <span class="math inline">\(\nabla\)</span></li>
+</ul>
+<p>Equations:</p>
+<figure>
+<img src="../../exports/Langskips_BM_og_LCF_ved_usymmetrisk_skade.png"
+alt="Langskips BM og LCF ved usymmetrisk skade" />
+<figcaption aria-hidden="true">Langskips BM og LCF ved usymmetrisk
+skade</figcaption>
+</figure>
+<p><em>Figure: Unsymmetric damage geometry showing longitudinal BM
+context and damaged-state LCF.</em></p>
+<ul>
+<li>Longitudinal metacentric radius:</li>
+</ul>
+<p><span class="math display">\[
+BM_{L_S} = \frac{I_{F_S}}{\nabla}
+\]</span></p>
+<ul>
+<li>Trim moment (AP-based):</li>
+</ul>
+<p><span class="math display">\[
+M_{trim} = \Delta \times (LCG-LCB_S)
+\]</span></p>
+<ul>
+<li>Moment to change trim 1 cm (box-barge approximation):</li>
+</ul>
+<p><span class="math display">\[
+MCT_{1cm_S} = \frac{\Delta \times BM_{L_S}}{100 \times L}
+\]</span></p>
+<p>Procedure:</p>
+<ol type="1">
+<li>Determine <span class="math inline">\(LCB_S\)</span> from damaged
+buoyancy geometry.</li>
+<li>Determine <span class="math inline">\(LCF_S\)</span> from damaged
+waterplane geometry.</li>
+<li>Compute <span class="math inline">\(BM_{L_S}\)</span>.</li>
+<li>Compute <span class="math inline">\(M_{trim}\)</span> as input to
+Section 3.6.</li>
+</ol>
+<p>Mini-check:</p>
+<ul>
+<li>If <span class="math inline">\(\Delta=2160\ \mathrm{t}\)</span>,
+<span class="math inline">\(LCB_S=29.75\ \mathrm{m}\)</span> from AP,
+and <span class="math inline">\(LCG=30.00\ \mathrm{m}\)</span> from AP,
+then <span class="math inline">\(M_{trim}=540.0\
+\mathrm{t\,m}\)</span>.</li>
+</ul>
+<h3 id="trimming-moment-and-trim-distribution-t_a-t_f-t_a-t_f">3.6
+Trimming Moment and Trim Distribution (<span
+class="math inline">\(t_a\)</span>, <span
+class="math inline">\(t_f\)</span>, <span
+class="math inline">\(T_A\)</span>, <span
+class="math inline">\(T_F\)</span>)</h3>
+<figure>
+<img src="../../exports/BargeDamageTrimScene_ManimCE_v0.20.1_mid.gif"
+alt="BargeDamageTrimScene animation" />
+<figcaption aria-hidden="true">BargeDamageTrimScene
+animation</figcaption>
+</figure>
+<p><em>Animation: Trim moment calculation and distribution into trim
+components <span class="math inline">\(t_a\)</span> (aft) and <span
+class="math inline">\(t_f\)</span> (forward).</em></p>
+<p>This phase converts the trimming moment into forward and aft
+drafts.</p>
+<p>Required inputs:</p>
+<ul>
+<li>Displacement <span class="math inline">\(\Delta\)</span> (unchanged
+in this model)</li>
+<li>Longitudinal positions <span class="math inline">\(LCG\)</span>,
+<span class="math inline">\(LCB_S\)</span>, and <span
+class="math inline">\(LCF_S\)</span> (measured from AP)</li>
+<li>Longitudinal metacentric radius <span
+class="math inline">\(BM_{L_S}\)</span> and vessel length <span
+class="math inline">\(L\)</span></li>
+<li>Symmetric damaged draft <span
+class="math inline">\(T_S\)</span></li>
+</ul>
+<p>Step-by-step procedure:</p>
+<figure>
+<img src="../../exports/Trimoppsett.png" alt="Trimoppsett" />
+<figcaption aria-hidden="true">Trimoppsett</figcaption>
+</figure>
+<p><em>Figure: Trim setup and sign convention for aft and forward draft
+changes.</em></p>
+<ol type="1">
+<li>Compute lever arm</li>
+</ol>
+<p><span class="math display">\[
+l_k= LCG-LCB_S
+\]</span></p>
+<ol start="2" type="1">
+<li>Compute trim moment:</li>
+</ol>
+<p><span class="math display">\[
+M_{T}=\Delta \times l_k
+\]</span></p>
+<ol start="2" type="1">
+<li>Compute moment to change trim by 1 cm:</li>
+</ol>
+<p><span class="math display">\[
+MCT_{1cm_S}=\frac{\Delta \times BM_{L_S}}{100 \times L}
+\]</span></p>
+<ol start="3" type="1">
+<li>Compute total trim change:</li>
+</ol>
+<p><span class="math display">\[
+t_{cm} = \frac{M_{T}}{MCT_{1cm_S}}
+\]</span></p>
+<ol start="4" type="1">
+<li><p>Convert to meters: <span
+class="math inline">\(t_m=t_{cm}/100\)</span>.</p></li>
+<li><p>Distribute <span class="math inline">\(t_m\)</span> around <span
+class="math inline">\(LCF_S\)</span> into trim components <span
+class="math inline">\(t_a\)</span> (aft) and <span
+class="math inline">\(t_f\)</span> (forward) using AP/FP weighting
+factors.</p></li>
+</ol>
+<p>General AP-based distribution factors:</p>
+<p><span class="math display">\[
+    aft =\frac{LCF_S}{L},
+\qquad
+    fore =\frac{L-LCF_S}{L}
+\]</span></p>
+<figure>
+<img src="../../exports/Fordeling_av_trim.png" alt="Fordeling av trim" />
+<figcaption aria-hidden="true">Fordeling av trim</figcaption>
+</figure>
+<p><em>Figure: Distribution of total trim between aft and forward drafts
+about <span class="math inline">\(LCF_S\)</span>.</em></p>
+<p>Then compute trim components <span class="math inline">\(t_a\)</span>
+and <span class="math inline">\(t_f\)</span>:</p>
+<p><span class="math display">\[
+t_a = t_m\left(\frac{LCF_S}{L}\right),
+\qquad
+t_f = t_m\left(\frac{L-LCF_S}{L}\right)
+\]</span></p>
+<p>Special case (if <span class="math inline">\(LCF_S=L/2\)</span>,
+i.e., midship):</p>
+<p><span class="math display">\[
+t_a = \frac{t_m}{2},\qquad t_f = \frac{t_m}{2}
+\]</span></p>
+<ol start="6" type="1">
+<li>Apply trim components to <span class="math inline">\(T_S\)</span> to
+get final drafts: NOTE: If trim moment is counterclockwise, the signs in
+the equations below reverse. <span class="math display">\[
+T_A= T_S - t_a,\qquad T_F= T_S + t_f
+\]</span></li>
+</ol>
+<p>Mini example:</p>
+<ul>
+<li>If <span class="math inline">\(trim=1.543\ \mathrm{cm}\)</span>,
+then <span class="math inline">\(trim_m=0.01543\
+\mathrm{m}\)</span>.</li>
+<li>If <span class="math inline">\(LCF_S=L/2\)</span>, trim components
+are <span class="math inline">\(t_a = t_f = 0.00771\
+\mathrm{m}\)</span>.</li>
+</ul>
+<h3 id="final-equilibrium-and-acceptance-check">3.7 Final Equilibrium
+and Acceptance Check</h3>
+<figure>
+<img src="../../exports/BargeDamageHydrostaticsScene_ManimCE_v0.20.1_mid.gif"
+alt="BargeDamageHydrostaticsScene animation" />
+<figcaption aria-hidden="true">BargeDamageHydrostaticsScene
+animation</figcaption>
+</figure>
+<p><em>Animation: Combined damaged equilibrium state â€” final drafts
+<span class="math inline">\(T_A\)</span>, <span
+class="math inline">\(T_F\)</span> and residual <span
+class="math inline">\(GM_S\)</span>.</em></p>
+<p>Inputs:</p>
+<ul>
+<li>Final drafts <span class="math inline">\(T_A\)</span>, <span
+class="math inline">\(T_F\)</span></li>
+<li>Residual metacentric height <span
+class="math inline">\(GM_S\)</span></li>
+<li>Vessel depth <span class="math inline">\(D\)</span></li>
+</ul>
+<p>Equations:</p>
+<p><span class="math display">\[
+GM_S &gt; 0\ \mathrm{m}
+\]</span></p>
+<ul>
+<li>Critical draft criterion:</li>
+</ul>
+<p><span class="math display">\[
+T_{crit}=\max(T_A,T_F) &lt; D
+\]</span></p>
+<p>Procedure:</p>
+<ol type="1">
+<li>Collect final damaged state (<span
+class="math inline">\(T_S\)</span>, <span
+class="math inline">\(T_A\)</span>, <span
+class="math inline">\(T_F\)</span>, <span
+class="math inline">\(GM_S\)</span>).</li>
+<li>Check residual stability (<span
+class="math inline">\(GM_S&gt;0\)</span>).</li>
+<li>Check immersion limit using <span
+class="math inline">\(T_{crit}\)</span>.</li>
+<li>Classify the case as pass/fail.</li>
+</ol>
+<p>Mini-check:</p>
+<ul>
+<li>If both criteria pass, the simplified damaged condition is
+acceptable.</li>
+<li>If either criterion fails, revise loading, subdivision, or allowable
+damage assumptions.</li>
+</ul>
+<h2 id="full-worked-example-end-to-end">4. Full Worked Example
+(End-to-End)</h2>
+<h3 id="given-data">4.1 Given Data</h3>
+<ul>
+<li>Vessel (rectangular barge):
+<ul>
+<li><span class="math inline">\(L = 60.0\ \mathrm{m}\)</span></li>
+<li><span class="math inline">\(B = 12.0\ \mathrm{m}\)</span></li>
+<li><span class="math inline">\(D = 6.0\ \mathrm{m}\)</span></li>
+<li>Initial mean draft <span class="math inline">\(T = 3.00\
+\mathrm{m}\)</span></li>
+<li>Vertical center of gravity <span class="math inline">\(KG = 4.20\
+\mathrm{m}\)</span></li>
+<li>Seawater density approximation: <span class="math inline">\(\rho =
+1.0\ \mathrm{t/m^3}\)</span></li>
+</ul></li>
+<li>Damage case:
+<ul>
+<li>Damaged compartment length <span class="math inline">\(l_d = 3.5\
+\mathrm{m}\)</span></li>
+<li>Longitudinal buoyancy center after damage: <span
+class="math inline">\(LCB_S = 29.75\ \mathrm{m}\)</span> from AP</li>
+<li>Longitudinal flotation center after damage: <span
+class="math inline">\(LCF_S = 30.00\ \mathrm{m}\)</span> from AP</li>
+</ul></li>
+<li>Updated hydrostatic inputs from geometry model after damage:
+<ul>
+<li><span class="math inline">\(KB_S = 1.62\ \mathrm{m}\)</span></li>
+<li><span class="math inline">\(I_{WL_S} = 7600\
+\mathrm{m^4}\)</span></li>
+<li><span class="math inline">\(I_{F_S} = 2.10 \times 10^6\
+\mathrm{m^4}\)</span></li>
+</ul></li>
+</ul>
+<h3 id="solution-steps">4.2 Solution Steps</h3>
+<p>Step 1: Initial displacement and setup</p>
+<p><span class="math display">\[
+\nabla = L \times B \times T = 60 \cdot 12 \cdot 3.00 = 2160\
+\mathrm{m^3}
+\]</span></p>
+<p>With <span class="math inline">\(\rho = 1.0\ \mathrm{t/m^3}\)</span>,
+initial displacement is <span class="math inline">\(\Delta = 2160\
+\mathrm{t}\)</span>.</p>
+<p>Step 2: Parallel submergence solved from compartment length</p>
+<p>For a rectangular barge with one fully damaged longitudinal
+compartment, the damaged buoyant length is <span
+class="math inline">\((L-l_d)\)</span>. Equilibrium gives:</p>
+<p><span class="math display">\[
+L \times B \times T = (L-l_d) \times B \times T_S
+\]</span></p>
+<p><span class="math display">\[
+T_S = \frac{L}{L-l_d}T = \frac{60}{60-3.5}\cdot 3.00 = 3.1858\
+\mathrm{m}
+\]</span></p>
+<p>Apply displacement conservation for this lost-buoyancy setup:</p>
+<p><span class="math display">\[
+\nabla_S = \nabla = 2160\ \mathrm{m^3}
+\]</span></p>
+<p>So displacement remains:</p>
+<p><span class="math display">\[
+\Delta_S = \Delta = 2160\ \mathrm{t}
+\]</span></p>
+<p>Step 3: Updated hydrostatics (<span
+class="math inline">\(BM_{T_S}\)</span>, <span
+class="math inline">\(BM_{L_S}\)</span>, <span
+class="math inline">\(GM_S\)</span>)</p>
+<p><span class="math display">\[
+BM_{T_S} = \frac{I_{WL_S}}{\nabla} = \frac{7600}{2160} = 3.519\
+\mathrm{m}
+\]</span></p>
+<p><span class="math display">\[
+BM_{L_S} = \frac{I_{F_S}}{\nabla} = \frac{2.10 \times 10^6}{2160} =
+972.2\ \mathrm{m}
+\]</span></p>
+<p><span class="math display">\[
+GM_S = KB_S + BM_{T_S} - KG = 1.62 + 3.519 - 4.20 = 0.939\ \mathrm{m}
+\]</span></p>
+<p>Step 4: Trim and final drafts</p>
+<p>Using AP-based coordinates, take <span class="math inline">\(LCG =
+30.00\ \mathrm{m}\)</span> and <span class="math inline">\(LCB_S =
+29.75\ \mathrm{m}\)</span>:</p>
+<p><span class="math display">\[
+M_{trim} = \Delta \times (LCG - LCB_S) = 2160\,(30.00 - 29.75) = 540.0\
+\mathrm{t\,m}
+\]</span></p>
+<p>Use a box-barge approximation for moment-to-change-trim 1 cm:</p>
+<p><span class="math display">\[
+MCT_{1cm_S} = \frac{\Delta \times BM_{L_S}}{100 \times L} = \frac{2160
+\cdot 972.2}{100 \cdot 60} = 350.0\ \mathrm{t\,m/cm}
+\]</span></p>
+<p><span class="math display">\[
+trim = \frac{M_{trim}}{MCT_{1cm_S}} = \frac{540.0}{350.0} = 1.543\
+\mathrm{cm} = 0.01543\ \mathrm{m}
+\]</span></p>
+<p>Assume trim about <span class="math inline">\(LCF_S = 30.00\
+\mathrm{m}\)</span> from AP (midship in this case), so trim components
+<span class="math inline">\(t_a\)</span> and <span
+class="math inline">\(t_f\)</span> are each half the total trim:</p>
+<p><span class="math display">\[
+t_a = \frac{trim_m}{2} = 0.00771\ \mathrm{m},\qquad t_f =
+\frac{trim_m}{2} = 0.00771\ \mathrm{m}
+\]</span></p>
+<p>Final drafts:</p>
+<p><span class="math display">\[
+T_F = T_S + t_f = 3.1858 + 0.00771 = 3.1935\ \mathrm{m}
+\]</span></p>
+<p><span class="math display">\[
+T_A = T_S - t_a = 3.1858 - 0.00771 = 3.1781\ \mathrm{m}
+\]</span></p>
+<p>Step 5: Acceptance checks</p>
+<ul>
+<li>Residual stability:</li>
+</ul>
+<p><span class="math display">\[
+GM_S = 0.939\ \mathrm{m} &gt; 0\ \mathrm{m}\ \checkmark
+\]</span></p>
+<ul>
+<li>Draft/depth check (use max draft in this simple case):</li>
+</ul>
+<p><span class="math display">\[
+T_{S,\max} \approx T_F = 3.1935\ \mathrm{m} &lt; D = 6.0\ \mathrm{m}\
+\checkmark
+\]</span></p>
+<h3 id="final-results">4.3 Final Results</h3>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th style="text-align: right;">Value</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Initial displacement volume <span
+class="math inline">\(\nabla\)</span></td>
+<td style="text-align: right;">2160</td>
+<td>m^3</td>
+</tr>
+<tr>
+<td>Damaged compartment length <span
+class="math inline">\(l_d\)</span></td>
+<td style="text-align: right;">3.5</td>
+<td>m</td>
+</tr>
+<tr>
+<td>Solved symmetric draft <span class="math inline">\(T_S\)</span></td>
+<td style="text-align: right;">3.1858</td>
+<td>m</td>
+</tr>
+<tr>
+<td>Damaged displacement volume <span
+class="math inline">\(\nabla_S\)</span></td>
+<td style="text-align: right;">2160</td>
+<td>m^3</td>
+</tr>
+<tr>
+<td><span class="math inline">\(BM_{T_S}\)</span></td>
+<td style="text-align: right;">3.519</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(GM_S\)</span></td>
+<td style="text-align: right;">0.939</td>
+<td>m</td>
+</tr>
+<tr>
+<td>Total trim</td>
+<td style="text-align: right;">0.0154</td>
+<td>m</td>
+</tr>
+<tr>
+<td>Final aft draft <span class="math inline">\(T_A\)</span></td>
+<td style="text-align: right;">3.1781</td>
+<td>m</td>
+</tr>
+<tr>
+<td>Final forward draft <span class="math inline">\(T_F\)</span></td>
+<td style="text-align: right;">3.1935</td>
+<td>m</td>
+</tr>
+<tr>
+<td>Acceptance status</td>
+<td style="text-align: right;">PASS</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Note: - This worked example is intentionally simple and uses
+box-barge approximations for teaching flow. - In production
+calculations, replace simplified terms with your hydrostatic model
+outputs for each intermediate draft.</p>
+<h3
+id="additional-full-worked-example-5-equal-compartments-compartment-4-damaged">4.4
+Additional Full Worked Example: 5 Equal Compartments, Compartment 4
+Damaged</h3>
+<p>Given:</p>
+<ul>
+<li>Barge dimensions: <span class="math inline">\(L=100.0\
+\mathrm{m}\)</span>, <span class="math inline">\(B=20.0\
+\mathrm{m}\)</span>, <span class="math inline">\(D=12.0\
+\mathrm{m}\)</span></li>
+<li>Initial draft: <span class="math inline">\(T=3.50\
+\mathrm{m}\)</span></li>
+<li>5 equal longitudinal compartments, so each compartment length is
+<span class="math inline">\(L/5=20.0\ \mathrm{m}\)</span></li>
+<li>Damaged compartment: No.Â 4 (from AP), spanning <span
+class="math inline">\(x=60\)</span> to <span class="math inline">\(x=80\
+\mathrm{m}\)</span></li>
+<li>For this worked example, use <span class="math inline">\(\rho=1.025\
+\mathrm{t/m^3}\)</span> (seawater) and assume <span
+class="math inline">\(LCG=50.0\ \mathrm{m}\)</span> (midship)</li>
+<li>Box-barge vertical approximation at damaged equilibrium: <span
+class="math inline">\(KB_S \approx T_S/2\)</span></li>
+</ul>
+<figure>
+<img src="../../exports/Lekteren_har_5_vanntette_avdelinger.png"
+alt="Lekteren har 5 vanntette avdelinger" />
+<figcaption aria-hidden="true">Lekteren har 5 vanntette
+avdelinger</figcaption>
+</figure>
+<p><em>Figure: Five equal longitudinal watertight compartments, with one
+damaged compartment in the worked example.</em></p>
+<p>Step 1: Initial displacement</p>
+<p><span class="math display">\[
+\nabla = L \times B \times T = 100 \cdot 20 \cdot 3.50 = 7000\
+\mathrm{m^3}
+\]</span></p>
+<p><span class="math display">\[
+\Delta = \rho \times \nabla = 1.025\times 7000 = 7175\ \mathrm{t}
+\]</span></p>
+<p>Step 2: Symmetric damaged draft from lost buoyant length</p>
+<p>Damaged compartment length:</p>
+<p><span class="math display">\[
+l_d = 20.0\ \mathrm{m},\qquad L_S=L-l_d=80.0\ \mathrm{m}
+\]</span></p>
+<p>Solve equilibrium:</p>
+<p><span class="math display">\[
+L \times B \times T = (L-l_d) \times B \times T_S
+\]</span></p>
+<p><span class="math display">\[
+T_S = \frac{L}{L-l_d}T = \frac{100}{80}\cdot 3.50 = 4.375\ \mathrm{m}
+\]</span></p>
+<p>Displacement conservation:</p>
+<p><span class="math display">\[
+\nabla_S = \nabla = 7000\ \mathrm{m^3},\qquad \Delta_S = \Delta = 7175\
+\mathrm{t}
+\]</span></p>
+<p>Step 3: Damaged hydrostatic inputs from compartment geometry</p>
+<p>Surviving buoyant/waterplane regions are intervals <span
+class="math inline">\([0,60]\)</span> and <span
+class="math inline">\([80,100]\)</span> m from AP.</p>
+<p>Longitudinal centroids:</p>
+<p><span class="math display">\[
+LCB_S = LCF_S = \frac{60\cdot 30 + 20\cdot 90}{60+20} = 45.0\ \mathrm{m}
+\]</span></p>
+<p>Damaged transverse waterplane second moment:</p>
+<p><span class="math display">\[
+I_{WL_S}=\frac{1}{12}(80)B^3 = \frac{1}{12}(80)(20^3)=53{,}333.3\
+\mathrm{m^4}
+\]</span></p>
+<p>Damaged longitudinal flotation second moment about <span
+class="math inline">\(LCF_S\)</span>:</p>
+<p><span class="math display">\[
+I_{F_S}=\left[\frac{B\,60^3}{12}+A_1(30-45)^2\right]+\left[\frac{B\,20^3}{12}+A_2(90-45)^2\right]
+\]</span></p>
+<p>with <span class="math inline">\(A_1=60\cdot 20=1200\
+\mathrm{m^2}\)</span> and <span class="math inline">\(A_2=20\cdot
+20=400\ \mathrm{m^2}\)</span>, giving</p>
+<p><span class="math display">\[
+I_{F_S}=1{,}453{,}333.3\ \mathrm{m^4}
+\]</span></p>
+<p>Use <span class="math inline">\(KB_S \approx T_S/2 = 2.1875\
+\mathrm{m}\)</span>.</p>
+<p>Step 4: Updated stability quantities</p>
+<p><span class="math display">\[
+BM_{T_S}=\frac{I_{WL_S}}{\nabla}=\frac{53{,}333.3}{7000}=7.619\
+\mathrm{m}
+\]</span></p>
+<p><span class="math display">\[
+BM_{L_S}=\frac{I_{F_S}}{\nabla}=\frac{1{,}453{,}333.3}{7000}=207.619\
+\mathrm{m}
+\]</span></p>
+<p><span class="math display">\[
+GM_S=KB_S+BM_{T_S}-KG=2.1875+7.619-4.20=5.607\ \mathrm{m}
+\]</span></p>
+<p>Step 5: Trim and final drafts</p>
+<p><span class="math display">\[
+M_{trim}=\Delta \times (LCG-LCB_S)=7175\times(50.0-45.0)=35{,}875\
+\mathrm{t\,m}
+\]</span></p>
+<p><span class="math display">\[
+MCT_{1cm_S}=\frac{\Delta \times BM_{L_S}}{100\times L}=\frac{7175\times
+207.619}{100\times 100}=148.967\ \mathrm{t\,m/cm}
+\]</span></p>
+<p><span class="math display">\[
+trim_{cm}=\frac{M_{trim}}{MCT_{1cm_S}}=240.83\ \mathrm{cm},\qquad
+trim_m=2.4083\ \mathrm{m}
+\]</span></p>
+<p>Compute trim components <span class="math inline">\(t_a\)</span> and
+<span class="math inline">\(t_f\)</span> using AP-based distribution
+factors (<span class="math inline">\(LCF_S=45.0\
+\mathrm{m}\)</span>):</p>
+<p><span class="math display">\[
+    ext{aft share}=\frac{LCF_S}{L}=0.45,\qquad \text{forward
+share}=\frac{L-LCF_S}{L}=0.55
+\]</span></p>
+<p><span class="math display">\[
+t_a=trim_m\left(\frac{LCF_S}{L}\right)=2.4083\times 0.45=1.084\
+\mathrm{m}
+\]</span></p>
+<p><span class="math display">\[
+t_f=trim_m\left(\frac{L-LCF_S}{L}\right)=2.4083\times 0.55=1.3246\
+\mathrm{m}
+\]</span></p>
+<p>Final drafts:</p>
+<p><span class="math display">\[
+T_A=T_S-t_a=4.375-1.084=3.291\ \mathrm{m}
+\]</span></p>
+<p><span class="math display">\[
+T_F=T_S+t_f=4.375+1.3246=5.700\ \mathrm{m}
+\]</span></p>
+<p>Step 6: Acceptance checks</p>
+<p><span class="math display">\[
+GM_S=5.607\ \mathrm{m}&gt;0\ \mathrm{m}\ \checkmark
+\]</span></p>
+<p><span class="math display">\[
+T_{crit}=\max(T_A,T_F)=5.700\ \mathrm{m}&lt;D=12.0\ \mathrm{m}\
+\checkmark
+\]</span></p>
+<h3 id="final-results-additional-example">4.5 Final Results (Additional
+Example)</h3>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th style="text-align: right;">Value</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Initial displacement volume <span
+class="math inline">\(\nabla\)</span></td>
+<td style="text-align: right;">7000</td>
+<td>m^3</td>
+</tr>
+<tr>
+<td>Damaged compartment length <span
+class="math inline">\(l_d\)</span></td>
+<td style="text-align: right;">20.0</td>
+<td>m</td>
+</tr>
+<tr>
+<td>Solved symmetric draft <span class="math inline">\(T_S\)</span></td>
+<td style="text-align: right;">4.375</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(LCB_S=LCF_S\)</span></td>
+<td style="text-align: right;">45.0</td>
+<td>m from AP</td>
+</tr>
+<tr>
+<td><span class="math inline">\(I_{WL_S}\)</span></td>
+<td style="text-align: right;">53,333.3</td>
+<td>m^4</td>
+</tr>
+<tr>
+<td><span class="math inline">\(I_{F_S}\)</span></td>
+<td style="text-align: right;">1,453,333.3</td>
+<td>m^4</td>
+</tr>
+<tr>
+<td><span class="math inline">\(BM_{T_S}\)</span></td>
+<td style="text-align: right;">7.619</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="math inline">\(GM_S\)</span></td>
+<td style="text-align: right;">5.607</td>
+<td>m</td>
+</tr>
+<tr>
+<td>Total trim</td>
+<td style="text-align: right;">2.408</td>
+<td>m</td>
+</tr>
+<tr>
+<td>Final aft draft <span class="math inline">\(T_A\)</span></td>
+<td style="text-align: right;">3.291</td>
+<td>m</td>
+</tr>
+<tr>
+<td>Final forward draft <span class="math inline">\(T_F\)</span></td>
+<td style="text-align: right;">5.700</td>
+<td>m</td>
+</tr>
+<tr>
+<td>Acceptance status</td>
+<td style="text-align: right;">PASS</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h2 id="common-mistakes-and-sanity-checks">5. Common Mistakes and Sanity
+Checks</h2>
+<ul>
+<li>Unit mismatch between <span
+class="math inline">\(\mathrm{m}\)</span>, <span
+class="math inline">\(\mathrm{m^2}\)</span>, <span
+class="math inline">\(\mathrm{m^3}\)</span>, and tonnes.</li>
+<li>Treating displacement as changed after flooding in this model (<span
+class="math inline">\(\nabla_S\neq\nabla\)</span>).</li>
+<li>Mixing transverse and longitudinal inertias (<span
+class="math inline">\(I_{WL_S}\)</span> vs <span
+class="math inline">\(I_{F_S}\)</span>).</li>
+<li>Using opposite trim sign convention mid-calculation.</li>
+<li>Forgetting that acceptance uses the critical draft <span
+class="math inline">\(\max(T_A,T_F)\)</span>.</li>
+</ul>
+<p>Quick sanity checks:</p>
+<ul>
+<li><span class="math inline">\(T_S\)</span> should normally be greater
+than <span class="math inline">\(T\)</span>.</li>
+<li>Check that displacement is conserved in the setup: <span
+class="math inline">\(\nabla_S=\nabla\)</span> and <span
+class="math inline">\(\Delta_S=\Delta\)</span>.</li>
+<li><span class="math inline">\(GM_S\)</span> should decrease relative
+to intact condition in most damage cases.</li>
+</ul>
+<h2 id="quick-reference-algorithm">6. Quick Reference Algorithm</h2>
+<ol type="1">
+<li>Gather inputs: <span class="math inline">\(L\)</span>, <span
+class="math inline">\(B\)</span>, <span
+class="math inline">\(D\)</span>, <span
+class="math inline">\(T\)</span>, <span
+class="math inline">\(KG\)</span>, <span
+class="math inline">\(l_d\)</span>, <span
+class="math inline">\(I_{WL_S}\)</span>, <span
+class="math inline">\(I_{F_S}\)</span>, <span
+class="math inline">\(KB_S\)</span>, <span
+class="math inline">\(LCB_S\)</span>, <span
+class="math inline">\(LCF_S\)</span>.</li>
+<li>Solve symmetric damaged draft:</li>
+</ol>
+<p><span class="math display">\[
+T_S = \frac{L}{L-l_d}T
+\]</span></p>
+<ol start="3" type="1">
+<li>Set damaged equilibrium displacement state:</li>
+</ol>
+<p><span class="math display">\[
+\nabla_S=\nabla,\quad \Delta_S=\Delta
+\]</span></p>
+<ol start="4" type="1">
+<li>Compute hydrostatics:</li>
+</ol>
+<p><span class="math display">\[
+BM_{T_S}=\frac{I_{WL_S}}{\nabla},\quad
+BM_{L_S}=\frac{I_{F_S}}{\nabla},\quad GM_S=KB_S+BM_{T_S}-KG
+\]</span></p>
+<ol start="5" type="1">
+<li>Compute trim:</li>
+</ol>
+<p><span class="math display">\[
+M_{trim}=\Delta \times (LCG-LCB_S),\quad MCT_{1cm_S}=\frac{\Delta \times
+BM_{L_S}}{100 \times L},\quad trim_{cm}=\frac{M_{trim}}{MCT_{1cm_S}}
+\]</span></p>
+<ol start="6" type="1">
+<li>Distribute trim to get <span class="math inline">\(T_A\)</span> and
+<span class="math inline">\(T_F\)</span>.</li>
+<li>Acceptance checks: <span class="math inline">\(GM_S&gt;0\)</span>
+and <span class="math inline">\(\max(T_A,T_F)&lt;D\)</span>.</li>
+</ol>
+<h2 id="references-and-figure-placeholders">7. References and Figure
+Placeholders</h2>
+<p>Suggested references:</p>
+<ul>
+<li>Class notes on hydrostatics and damage stability.</li>
+<li>Standard naval architecture texts for lost buoyancy and trim.</li>
+</ul>
+<p>Figure placeholders (existing exports):</p>
+<ul>
+<li>Symmetric damage equilibrium figure.</li>
+<li>Reduction in transverse <span class="math inline">\(BM\)</span>
+figure.</li>
+<li>Longitudinal <span class="math inline">\(BM\)</span> and <span
+class="math inline">\(LCF\)</span> shift figure.</li>
+<li>Trim setup and trim distribution figure.</li>
+</ul>
+</body>
+</html>
+

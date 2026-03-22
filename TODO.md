@@ -1,4 +1,4 @@
-# TODO: Damage Stability Learning Module
+﻿# TODO: Damage Stability Learning Module
 
 ## Goal
 
@@ -21,8 +21,8 @@ Create a learning module (Markdown first, optional LaTeX/PDF export later) cover
 
 ## Deliverables
 
-- [ ] `damage_stability_module.md` (theory + worked examples)
-- [ ] `damage_stability_exercises.md` (exercise set + solutions)
+- [ ] `docs/en/damage_stability_module.md` (theory + worked examples)
+- [ ] `docs/en/damage_stability_exercises.md` (exercise set + solutions)
 - [ ] Optional PDF export
 - [ ] Optional supporting figures from existing PNG export scenes
 
@@ -74,6 +74,7 @@ Definition of done:
 
 Definition of done:
 - [ ] Material is ready for lecture and student self-study
+
 
 
 

@@ -1,0 +1,5 @@
+Tilfelle,L (m),B (m),T (m),Antall avdelinger N,l_d = L/N (m),T_S (m),BM_T_S (m),GM_S (m)
+Basis,60.0,12.0,3.00,5,,,,
+Foerre avdelinger,60.0,12.0,3.00,3,,,,
+Bredere lekter,60.0,14.0,3.00,5,,,,
+Stor initial dypgang,60.0,12.0,3.50,5,,,,
