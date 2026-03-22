@@ -17,7 +17,7 @@ foreach ($p in $pages) {
 }
 
 # --- Post-processing ---
-$hint = ' <em style="font-size:0.85em; color:#666;">(Høyreklikk → Lagre lenke som... om filen åpnes i nettleseren i stedet for å lastes ned)</em>'
+$hint = ' <em style="font-size:0.85em; color:#666;">(H&oslash;yreklikk &rarr; Lagre lenke som... om filen &aring;pnes i nettleseren i stedet for &aring; lastes ned)</em>'
 foreach ($p in $pages) {
     $c = Get-Content $p.out -Raw -Encoding UTF8
     $c = [regex]::Replace($c, '<figcaption aria-hidden="true">.*?</figcaption>', '', [System.Text.RegularExpressions.RegexOptions]::Singleline)
@@ -31,7 +31,7 @@ if ($LASTEXITCODE -ne 0) { exit 1 }
 
 $changed = git diff --name-only HEAD
 if (-not $changed) {
-    Write-Host "Ingen endringer å publisere."
+    Write-Host "Ingen endringer a publisere."
     exit 0
 }
 

@@ -74,21 +74,21 @@ Lekteren har i initial kondisjon (før skade) følgende opplysninger oppgitt:
 
 - Volumdeplasement:
 
-$
+$$
 \nabla = L \times B \times T
-$
+$$
 
 - Vektdeplasement:
 
-$
+$$
 \Delta = \rho \times \nabla
-$
+$$
 
 - Vannlinjearealets "treghetsmoment":
 
-$
+$$
 BM_T = \frac{I_{WL}}{\nabla},\qquad BM_L = \frac{I_F}{\nabla}
-$
+$$
 
 Mini-sjekk:
 
@@ -107,34 +107,34 @@ For en rektangulær lekter med en skadet avdeling blir effektiv oppdriftsgivende
 
 Volumdeplasementet forblir konstant i tapt oppdriftsmethoden:
 
-$
+$$
 L \times B \times T = (L-l_d) \times B \times T_S
-$
+$$
 
 Ligningen over løses med hensyn på $T_S$, og vi finner ny dypgang i skadet tilstand:
 
-$
+$$
 T_S = \frac{L}{L-l_d}T
-$
+$$
 
 Kontroller deretter: 
 
-$
+$$
 \nabla_S = \nabla
-$
+$$
 
 Eksempel: lekter med 3 like store avdelinger (midtre avdeling skadet)
 
 - Gitt: $L=60\ \mathrm{m}$, $B=12\ \mathrm{m}$, $T=3.00\ \mathrm{m}$, 3 like avdelinger
 - Lengde på skadet avdeling: $l_d=L/3=20\ \mathrm{m}$
 
-$
+$$
 T_S = \frac{L}{L-l_d}T = \frac{60}{60-20}\cdot 3.00 = 4.50\ \mathrm{m}
-$
+$$
 
-$
+$$
 \nabla_S = \nabla = L \times B \times T = 60\cdot 12\cdot 3.00 = 2160\ \mathrm{m^3}
-$
+$$
 
 Kontroll:
 
@@ -155,37 +155,37 @@ Vi skal her se på hva som skjer med de hydrostatiske verdiene $KB$, $A_WL$ og $
 
 For en rektangulær lekter er oppdriftssenteret i skadet tilstand:
 
-$
+$$
 KB_S = \frac{T_S}{2}
-$
+$$
 
-#### 3.4.2 Reduksjon av vannlinjearealet, $ A_{WL}$ og metasenterradien $ BM_T $ 
+#### 3.4.2 Reduksjon av vannlinjearealet, $A_{WL}$ og metasenterradien $BM_T$
 ![BargeDamageBMScene animasjon](exports/BargeDamageBMScene_ManimCE_v0.20.1_mid.gif)
 
 *Animasjon: Reduksjon av tverrskips metasenterradius $BM_{T_S}$ på grunn av redusert vannlinjeareal.*
 
 Skadet vannlinjeareal uttrykt ved skadet lengde $l_d$:
 
-$
+$$
 A_{WL_S} = (L-l_d)B
-$
+$$
 
 For en rektangulær vannlinje blir tilhørende annet arealmoment:
 
-$
+$$
 I_{WL_S} = \frac{(L-l_d)B^3}{12}
-$
+$$
 
-$
+$$
 BM_{T_S} = \frac{I_{WL_S}}{\nabla},\qquad BM_{L_S} = \frac{I_{F_S}}{\nabla}
-$
+$$
 
 #### 3.5 Initialstabilitet ved skade $GM_S$
 
 Basert på hydrostatikken i skadet tilstand beregnes ny GM: 
-$
+$$
 GM_S = KB_S + BM_{T_S} - KG
-$
+$$
 
 Mini-sjekk:
 
@@ -204,9 +204,9 @@ Vi skal her se på hva som skjer med de hydrostatiske verdiene $LCB$, $LCF$ og $
 
 - Langskips metasenterradius om flotasjonssenter, $LCF_S$ i skadet tilstand:
 
-$
+$$
 BM_{L_S} = \frac{I_{F_S}}{\nabla}
-$
+$$
 
 ### 3.7 Trimfordeling ($t_a$, $t_f$, $T_A$, $T_F$)
 
@@ -216,33 +216,33 @@ $
 
 #### 3.7.1 Trimmoment 
 
-For å beregne den totale trimmen må vi se på trimmomentet forårsaket av $ LCG-LCB_S $
+For å beregne den totale trimmen må vi se på trimmomentet forårsaket av $LCG-LCB_S$
 
 - Trimarm:
 
-$
+$$
 l_k = LCG-LCB_S
-$
+$$
 
 - Trimmoment:
 
-$
+$$
 M_{T} = \Delta \times l_k
-$
+$$
 
 #### 3.7.2 Total trimendring 
 
 - Den totale trimendringen beregnes etter (husk denne kommer ut i cm, ikke m) 
 
-$
+$$
 t = \frac{M_{T}}{MCT_{1cm_S}}
-$
+$$
 
 - Og der momentet for å endre trim 1 cm:
 
-$
+$$
 MCT_{1cm_S} = \frac{\Delta \times BM_{L_S}}{100 \times L}
-$
+$$
 
 #### 3.7.3 Fordeling av trim om $LCF_S$
 
@@ -251,31 +251,31 @@ $
 *Figur: Fordeling av total trim om $LCF_S$.*
 
 $LCF_S$ er rotasjonsaksen som lekteren vil rotere om langskips, og vi får følgende forhold: 
-$
+$$
 	aft =\frac{LCF_S}{L},
 \qquad
 	fore =\frac{L-LCF_S}{L}
-$
+$$
 
 - Trimendring forut og akter: :
 
-$
+$$
 t_a = t\left(\frac{LCF_S}{L}\right),
 \qquad
 t_f = t\left(\frac{L-LCF_S}{L}\right)
-$
+$$
 
 - Spesialtilfelle (hvis $LCF_S=L/2$, dvs. midskips):
 
-$
+$$
 t_a = \frac{t}{2},\qquad t_f = \frac{t}{2}
-$
+$$
 
 - Endelige dypganger forut og akter: 
 
-$
+$$
 T_A= T_S - \frac{t_a}{100},\qquad T_F= T_S + \frac{t_f}{100}
-$
+$$
 
 $t_a$ og $t_f$ er her uttrykt i $cm$, og deles derfor på $100$ for å få endelig dypgang uttryk i $m$.
 
@@ -283,15 +283,15 @@ MERK: Hvis trimmomentet er mot klokken, reverseres fortegnene i likningene under
 
 ### 3.8 Kontroll av dypgang og stabilitet ved usymmetrisk skade
 
-$
+$$
 GM_S > 0\ \mathrm{m}
-$
+$$
 
 - Kritisk dypgang:
 
-$
+$$
 T_{crit}=\max(T_A,T_F) < D
-$
+$$
 
 Konklusjon:
 
@@ -322,9 +322,9 @@ Konklusjon:
 
 Steg 1: Initialt deplasement og oppsett
 
-$
+$$
 \nabla = L \times B \times T = 60 \cdot 12 \cdot 3.00 = 2160\ \mathrm{m^3}
-$
+$$
 
 Med $\rho = 1.0\ \mathrm{t/m^3}$ er initialt deplasement $\Delta = 2160\ \mathrm{t}$.
 
@@ -332,87 +332,87 @@ Steg 2: Parallell nedsynking løst fra avdelingslengden
 
 For en rektangulær lekter med en fullt skadet langskips avdeling er oppdriftsgivende lengde $(L-l_d)$. Likevekt gir:
 
-$
+$$
 L \times B \times T = (L-l_d) \times B \times T_S
-$
+$$
 
-$
+$$
 T_S = \frac{L}{L-l_d}T = \frac{60}{60-3.5}\cdot 3.00 = 3.1858\ \mathrm{m}
-$
+$$
 
 Anvend bevaring av deplasement for dette oppsettet med tapt oppdrift:
 
-$
+$$
 \nabla_S = \nabla = 2160\ \mathrm{m^3}
-$
+$$
 
 Dermed forblir deplasementet:
 
-$
+$$
 \Delta_S = \Delta = 2160\ \mathrm{t}
-$
+$$
 
 Steg 3: Oppdatert hydrostatikk ($BM_{T_S}$, $BM_{L_S}$, $GM_S$)
 
-$
+$$
 BM_{T_S} = \frac{I_{WL_S}}{\nabla} = \frac{7600}{2160} = 3.519\ \mathrm{m}
-$
+$$
 
-$
+$$
 BM_{L_S} = \frac{I_{F_S}}{\nabla} = \frac{2.10 \times 10^6}{2160} = 972.2\ \mathrm{m}
-$
+$$
 
-$
+$$
 GM_S = KB_S + BM_{T_S} - KG = 1.62 + 3.519 - 4.20 = 0.939\ \mathrm{m}
-$
+$$
 
 Steg 4: Trim og endelige dypganger
 
 Bruk AP-baserte koordinater med $LCG = 30.00\ \mathrm{m}$ og $LCB_S = 29.75\ \mathrm{m}$:
 
-$
+$$
 M_{trim} = \Delta \times (LCG - LCB_S) = 2160\,(30.00 - 29.75) = 540.0\ \mathrm{t\,m}
-$
+$$
 
 Bruk en box-barge-tilnærming for moment til å endre trim 1 cm:
 
-$
+$$
 MCT_{1cm_S} = \frac{\Delta \times BM_{L_S}}{100 \times L} = \frac{2160 \cdot 972.2}{100 \cdot 60} = 350.0\ \mathrm{t\,m/cm}
-$
+$$
 
-$
+$$
 trim = \frac{M_{trim}}{MCT_{1cm_S}} = \frac{540.0}{350.0} = 1.543\ \mathrm{cm} = 0.01543\ \mathrm{m}
-$
+$$
 
 Anta trim om $LCF_S = 30.00\ \mathrm{m}$ fra AP (midskips i dette tilfellet), slik at trimkomponentene $t_a$ og $t_f$ hver blir halvparten av total trim:
 
-$
+$$
 t_a = \frac{trim_m}{2} = 0.00771\ \mathrm{m},\qquad t_f = \frac{trim_m}{2} = 0.00771\ \mathrm{m}
-$
+$$
 
 Endelige dypganger:
 
-$
+$$
 T_F = T_S + t_f = 3.1858 + 0.00771 = 3.1935\ \mathrm{m}
-$
+$$
 
-$
+$$
 T_A = T_S - t_a = 3.1858 - 0.00771 = 3.1781\ \mathrm{m}
-$
+$$
 
 Steg 5: Akseptkontroll
 
 - Reststabilitet:
 
-$
+$$
 GM_S = 0.939\ \mathrm{m} > 0\ \mathrm{m}\ \checkmark
-$
+$$
 
 - Kontroll av dypgang mot dybde (bruk største dypgang i dette enkle tilfellet):
 
-$
+$$
 T_{S,\max} \approx T_F = 3.1935\ \mathrm{m} < D = 6.0\ \mathrm{m}\ \checkmark
-$
+$$
 
 ### 4.3 Endelige resultater
 
@@ -457,37 +457,37 @@ Gitt:
 
 Steg 1: Initialt deplasement
 
-$
+$$
 \nabla = L \times B \times T = 100 \cdot 20 \cdot 3.50 = 7000\ \mathrm{m^3}
-$
+$$
 
-$
+$$
 \Delta = \rho \times \nabla = 1.025\times 7000 = 7175\ \mathrm{t}
-$
+$$
 
 Steg 2: Symmetrisk skadet dypgang fra tapt oppdriftsgivende lengde
 
 Lengde på skadet avdeling:
 
-$
+$$
 l_d = 20.0\ \mathrm{m},\qquad L_S=L-l_d=80.0\ \mathrm{m}
-$
+$$
 
 Løs likevekt:
 
-$
+$$
 L \times B \times T = (L-l_d) \times B \times T_S
-$
+$$
 
-$
+$$
 T_S = \frac{L}{L-l_d}T = \frac{100}{80}\cdot 3.50 = 4.375\ \mathrm{m}
-$
+$$
 
 Bevaring av deplasement:
 
-$
+$$
 \nabla_S = \nabla = 7000\ \mathrm{m^3},\qquad \Delta_S = \Delta = 7175\ \mathrm{t}
-$
+$$
 
 Steg 3: Hydrostatiske inndata i skadet tilstand fra avdelingsgeometrien
 
@@ -495,91 +495,91 @@ Gjenværende oppdrifts- og vannplanområder er intervallene $[0,60]$ og $[80,100
 
 Langskips tyngdepunkter:
 
-$
+$$
 LCB_S = LCF_S = \frac{60\cdot 30 + 20\cdot 90}{60+20} = 45.0\ \mathrm{m}
-$
+$$
 
 Skadet annet arealmoment for vannlinjearealet om tverrakse:
 
-$
+$$
 I_{WL_S}=\frac{1}{12}(80)B^3 = \frac{1}{12}(80)(20^3)=53{,}333.3\ \mathrm{m^4}
-$
+$$
 
 Skadet annet arealmoment for vannlinjearealet om $LCF_S$:
 
-$
+$$
 I_{F_S}=\left[\frac{B\,60^3}{12}+A_1(30-45)^2\right]+\left[\frac{B\,20^3}{12}+A_2(90-45)^2\right]
-$
+$$
 
 med $A_1=60\cdot 20=1200\ \mathrm{m^2}$ og $A_2=20\cdot 20=400\ \mathrm{m^2}$, som gir
 
-$
+$$
 I_{F_S}=1{,}453{,}333.3\ \mathrm{m^4}
-$
+$$
 
 Bruk $KB_S \approx T_S/2 = 2.1875\ \mathrm{m}$.
 
 Steg 4: Oppdaterte stabilitetsstørrelser
 
-$
+$$
 BM_{T_S}=\frac{I_{WL_S}}{\nabla}=\frac{53{,}333.3}{7000}=7.619\ \mathrm{m}
-$
+$$
 
-$
+$$
 BM_{L_S}=\frac{I_{F_S}}{\nabla}=\frac{1{,}453{,}333.3}{7000}=207.619\ \mathrm{m}
-$
+$$
 
-$
+$$
 GM_S=KB_S+BM_{T_S}-KG=2.1875+7.619-4.20=5.607\ \mathrm{m}
-$
+$$
 
 Steg 5: Trim og endelige dypganger
 
-$
+$$
 M_{trim}=\Delta \times (LCG-LCB_S)=7175\times(50.0-45.0)=35{,}875\ \mathrm{t\,m}
-$
+$$
 
-$
+$$
 MCT_{1cm_S}=\frac{\Delta \times BM_{L_S}}{100\times L}=\frac{7175\times 207.619}{100\times 100}=148.967\ \mathrm{t\,m/cm}
-$
+$$
 
-$
+$$
 trim_{cm}=\frac{M_{trim}}{MCT_{1cm_S}}=240.83\ \mathrm{cm},\qquad trim_m=2.4083\ \mathrm{m}
-$
+$$
 
 Beregne trimkomponentene $t_a$ og $t_f$ ved bruk av AP-baserte fordelingsfaktorer ($LCF_S=45.0\ \mathrm{m}$):
 
-$
+$$
 a_{akter}=\frac{LCF_S}{L}=0.45,\qquad a_{for}=\frac{L-LCF_S}{L}=0.55
-$
+$$
 
-$
+$$
 t_a=trim_m\left(\frac{LCF_S}{L}\right)=2.4083\times 0.45=1.084\ \mathrm{m}
-$
+$$
 
-$
+$$
 t_f=trim_m\left(\frac{L-LCF_S}{L}\right)=2.4083\times 0.55=1.3246\ \mathrm{m}
-$
+$$
 
 Endelige dypganger:
 
-$
+$$
 T_A=T_S-t_a=4.375-1.084=3.291\ \mathrm{m}
-$
+$$
 
-$
+$$
 T_F=T_S+t_f=4.375+1.3246=5.700\ \mathrm{m}
-$
+$$
 
 Steg 6: Akseptkontroll
 
-$
+$$
 GM_S=5.607\ \mathrm{m}>0\ \mathrm{m}\ \checkmark
-$
+$$
 
-$
+$$
 T_{crit}=\max(T_A,T_F)=5.700\ \mathrm{m}<D=12.0\ \mathrm{m}\ \checkmark
-$
+$$
 
 ### 5.2 Endelige Resultater (ekstra eksempel)
 
@@ -620,34 +620,34 @@ Rimelighetskontroller før svaret godkjennes:
 1. Samle inndata: $L$, $B$, $D$, $T$, $KG$, $LCG$, $l_d$, samt skadede hydrostatiske størrelser eller geometridata som trengs for å finne $KB_S$, $LCB_S$, $LCF_S$, $I_{WL_S}$ og $I_{F_S}$.
 2. Finn symmetrisk skadet dypgang fra tapt oppdriftsgivende lengde:
 
-$
+$$
 T_S = \frac{L}{L-l_d}T
-$
+$$
 
 3. Sett likevekten i skadet tilstand ved bevart deplasement:
 
-$
+$$
 \nabla_S=\nabla,\quad \Delta_S=\Delta
-$
+$$
 
 4. Beregn oppdaterte hydrostatiske størrelser:
 
-$
+$$
 BM_{T_S}=\frac{I_{WL_S}}{\nabla},\quad BM_{L_S}=\frac{I_{F_S}}{\nabla},\quad GM_S=KB_S+BM_{T_S}-KG
-$
+$$
 
 5. Beregn trimmomentet og total trim:
 
-$
+$$
 M_{trim}=\Delta \times (LCG-LCB_S),\quad MCT_{1cm_S}=\frac{\Delta \times BM_{L_S}}{100 \times L},\quad trim_{cm}=\frac{M_{trim}}{MCT_{1cm_S}}
-$
+$$
 
 6. Fordel trimmen om $LCF_S$ for å finne trimkomponentene $t_a$ og $t_f$.
 7. Beregn endelige dypganger:
 
-$
+$$
 T_A=T_S-t_a,\quad T_F=T_S+t_f
-$
+$$
 
 8. Utfør akseptkontroll: $GM_S>0$ og $\max(T_A,T_F)<D$.
 

@@ -102,6 +102,20 @@ Notatfiler for gjenbruk i forelesningsdisposisjon, LaTeX og HTML:
 
 Den anbefalte strukturen er å bygge videre på `scenes/`, med `illustrations/main.py` som samlet entry point. Eldre eksperimentelle og erstattede animasjonsfiler er tatt ut av den støttede strukturen.
 
+## Publisering til GitHub Pages
+
+Bruk `publish.ps1` til å committe og publisere endringer i `docs/`:
+
+```powershell
+# Med commit-melding direkte:
+.\publish.ps1 -Message "docs: oppdater teori-side"
+
+# La skriptet spørre om melding:
+.\publish.ps1
+```
+
+Skriptet stager kun `docs/`, committer og pusher. Det stopper med feil hvis noe går galt.
+
 ## Git-strategi (anbefalt)
 
 - En commit per tema:
